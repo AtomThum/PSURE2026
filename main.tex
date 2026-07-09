@@ -1,0 +1,217 @@
+% !TEX program = lualatex
+\documentclass{beamer}
+
+%%% Fonts setup
+\usepackage[no-math]{fontspec}
+\setmainfont[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{ZillaSlab}
+\setmonofont[
+  Path = fonts/,
+  Extension = .ttf,
+  Scale = MatchLowercase,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{MapleMono-NF}
+\setsansfont[
+  Path = fonts/,
+  Extension = .ttf,
+  Scale = MatchLowercase,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{RedHatText}
+\defaultfontfeatures{Mapping = tex-text, Ligatures = {TeX, Common}, Scale = MatchLowercase}
+\usepackage[protrusion = true, expansion = true, tracking = true]{microtype}
+
+\usepackage{mathtools}
+\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
+\usepackage{stmaryrd}
+\allowdisplaybreaks
+\setoperatorfont\symscr
+\everymath{\displaystyle}
+\AtBeginDocument{ % Switching epsilon and varepsilon
+  \NewCommandCopy{\tempepsilon}{\epsilon}
+  \NewCommandCopy{\tempvarepsilon}{\varepsilon}
+  \DeclareDocumentCommand{\epsilon}{}{\tempvarepsilon}
+  \DeclareDocumentCommand{\varepsilon}{}{\tempepsilon}
+}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\usepackage{tikz}
+\usetikzlibrary{calc, math}
+
+\definecolor{oldwhite}{HTML}{EFEFEF}
+\definecolor{ink}{HTML}{16161D}
+\definecolor{blueink}{HTML}{2D4F67}
+\definecolor{grayink}{HTML}{727169}
+\definecolor{violet}{HTML}{B194D1}
+\definecolor{green}{HTML}{BCE3C0}
+\definecolor{magenta}{HTML}{E8B0E4}
+\definecolor{softmagenta}{HTML}{FCC6EF}
+\definecolor{softblue}{HTML}{C5CFDD}
+
+\setbeamercolor{frametitle}{fg=blueink}
+\setbeamercolor{title}{fg=blueink}
+\setbeamercolor{subtitle}{fg=grayink}
+\setbeamercolor{author}{fg=ink}
+\setbeamercolor{institute}{fg=ink}
+\setbeamercolor{date}{fg=blueink}
+\setbeamercolor{section in toc}{fg=ink}
+
+\setbeamercolor{footnote}{fg=grayink}
+\setbeamercolor{footnote mark}{fg=grayink}
+
+\setbeamercolor{background canvas}{bg=oldwhite}
+\setbeamercolor{normal text}{fg=ink}
+\setbeamercolor{item}{fg=violet}
+\setbeamercolor{subitem}{fg=green}
+
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{enumerate items}[default]
+
+\renewcommand{\familydefault}{\rmdefault}
+\setbeamerfont{title}{series=\bfseries\sffamily, size=\LARGE}
+\setbeamerfont{frametitle}{series=\bfseries\sffamily, size=\Large}
+\setbeamerfont{author}{series=\itshape\sffamily, size=\large}
+\setbeamerfont{normal font}{series=\rmfamily}
+
+\defbeamertemplate*{title page}{Compact}{%
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+  \vspace{0.3cm}%
+  {\usebeamerfont{author}\insertauthor}\par
+  \vspace{0.4cm}%
+}
+\defbeamertemplate*{frametitle}{Compact}{%
+  \vspace{0.8cm}%
+  \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}%
+  \insertframetitle%
+}
+
+\AtBeginSection[]{
+  {
+    \setbeamercolor{background canvas}{bg=ink}%
+    \begin{frame}[plain, noframenumbering]
+      \vfill
+      \usebeamerfont{title}\color{oldwhite}
+      \Huge
+      \begin{tikzpicture}
+        \node[draw, rectangle, minimum size = 2cm, thick] (secnum) at (0, 0) {\thesection};
+        \node[right = 11pt, text width = 10cm] at (secnum.east) {\secname};
+      \end{tikzpicture}
+      \vfill
+    \end{frame}%
+  }
+}
+
+\usepackage{tcolorbox}
+\usepackage{cleveref}
+\tcbuselibrary{breakable, theorems, skins, listings}
+\NewTcbTheorem[number within = section, list inside = mathboxes]{thm}{Lemma\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = lemma,
+  coltitle = black,
+  sharp corners,
+  colback = softmagenta,
+  colframe = magenta,
+  leftrule = 3pt,
+  rightrule = 0pt,
+  toprule = 0pt,
+  bottomrule = 0pt,
+  detach title = true,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  before upper = {\tcbtitle\quad},
+}{thm}
+\newtcolorbox{blk}{%
+  breakable,
+  coltitle = ink,
+  sharp corners,
+  colback = softblue,
+  leftrule = 3pt,
+  rightrule = 0pt,
+  toprule = 0pt,
+  bottomrule = 0pt,
+  description font = \bfseries\sffamily
+}
+
+\title{Nonequilibrium Relaxation and the Odd-Even Effect in 2D Electron Gases}
+\author{Eric Nilsson, Ulf Gran, and Johannes Hofmann}
+\date{October 15, 2025}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Fermi Liquid Scaling}
+\begin{frame}{Introduction: The Fermi Liquid Scaling}
+  \begin{itemize}
+    \item \textbf{Standard Fermi Liquid: } Decay rate of quasiparticles governed by $\gamma \sim T^2/\hbar T_F$.
+    \item \textbf{Odd-Parity Modes:} Predicted to have anomalously long lifetimes with $\gamma \sim T^4/\hbar T_F^3$.
+    \item \textbf{Goal:} Map the full spectrum of relaxational eigenmodes beyond the low-$T$ asymptotic limit.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Kinetic Theory \& Basis Expansion}
+  \begin{itemize}
+    \item \textbf{Linearized Collision Integral:}
+          $\hat{J}[\delta f] = - \frac{m^*}{4\pi\hbar^3} \int \dots F_{121'2'} [\psi_1 + \psi_2 - \psi_{1'} - \psi_{2'}]$ [7, 8].
+    \item \textbf{Parametrization:} $\delta f = f_0(1-f_0)\psi(t,p)$, where $\psi$ is a momentum-dependent chemical potential variation [7].
+    \item \textbf{Radial Basis Expansion:} $\psi_m(p) = \sum_{i=1}^N c_i u_i(w)$ using orthonormal polynomials derived from a Fermi-Dirac scalar product [9, 10].
+    \item \textbf{Low-$T$ Basis Functions:} $u_1=1, u_2=\frac{\sqrt{3}}{\pi}w, u_3=\frac{3\sqrt{5}}{4\pi^2}w^2 - \frac{\sqrt{5}}{4}$ [11].
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Microscopic Origin: Even vs. Odd Parity}
+  \begin{blk}{Even-Parity Modes}
+    Relax via \textbf{head-on scattering} ($P=0$), which is efficient at high momentum transfer $O(k_F)$. Results in standard $T^2$ scaling
+  \end{blk}
+  \begin{thm}{Odd-Parity Modes (Orange)}{}
+    Cannot relax via head-on processes. They relax through repeated \textbf{small-angle scattering} (subdiffusive), leading to $T^4$ scaling [4, 14, 15].
+  \end{thm}
+  \begin{itemize}
+    \item This subdiffusive behavior spreads localized deformations as $t^{1/4}$ [16].
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The Spectrum of Decay Rates}
+  \begin{itemize}
+    \item \textbf{Isolated Band:} There exists a distinct set of long-lived odd-parity modes separated by a large gap from the continuum [6, 17].
+    \item \textbf{Mode Hierarchy:} The number of long-lived modes increases at low temperatures as $\sim \sqrt{T_F/T}$ [18, 19].
+    \item \textbf{Continuum Scaling:} All higher-order eigenmodes in both sectors revert to standard $T^2$ Fermi-liquid behavior [6, 18].
+    \item \textbf{Persistence:} The odd-even effect remains detectable up to $T \approx 0.15 T_F$ [1, 20].
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tunability with Coulomb Interaction $r_s$}
+  \begin{itemize}
+    \item \textbf{Interaction Strength ($r_s$):} Screened Coulomb potential $V(k) = \frac{2\pi e^2}{k + k_{TF}}$ [21, 22].
+    \item \textbf{Even-Mode Sensitivity:} Strongly dependent on $r_s$ because they involve momentum transfers of order $O(k_F)$ [13, 23].
+    \item \textbf{Odd-Mode Independence:} Nearly independent of $r_s$ due to overscreening at small angles [23, 24].
+    \item \textbf{Experimental Control:} The gap between lifetimes is tunable via density (doping), which changes $r_s$ [25].
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion: The Tomographic Transport Regime}
+  \begin{itemize}
+    \item \textbf{Beyond Hydrodynamics:} The large disparity in lifetimes allows for an intermediate regime: \textbf{Tomographic Transport} [26].
+    \item \textbf{Timescales:} Exists for $\gamma_{even}^{-1} \ll t \ll \gamma_{odd}^{-1}$, where odd modes must be included in the dynamics [26, 27].
+    \item \textbf{Summary:} We provide a numerically exact diagonalization that confirms anomalously long-lived modes in experimentally relevant regimes [1, 28].
+  \end{itemize}
+\end{frame}
+
+\end{document}
