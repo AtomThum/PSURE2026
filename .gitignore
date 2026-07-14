@@ -23,5 +23,5 @@
 **.mathboxes
 **.theorems
 **.pygstyle
-**.nav
+# **.nav
 **.snm
