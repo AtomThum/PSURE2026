@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{$k$-space}{4}{0}{1}
-\beamer@subsectionintoc {1}{2}{Fermi surface}{7}{0}{1}
-\beamer@sectionintoc {2}{Boltzmann equation}{8}{0}{2}
-\beamer@subsectionintoc {2}{1}{Linearized collision operator}{11}{0}{2}
-\beamer@sectionintoc {3}{Odd-Even effect}{13}{0}{3}
