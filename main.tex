@@ -394,8 +394,9 @@
 
 \subsection{Fermi surface}
 
-\section{Boltzmann equation}
+\section{Problem Setup}
 
+\subsection{Boltzmann equation}
 \begin{frame}
   \begin{itemize}
     \item Dilute gas
@@ -405,6 +406,13 @@
   \begin{blk}{}
     \begin{equation}
       \pdv{f}{t} + \vv{v} \vdot \grad_{\vv{r}}f + \vv{F} \vdot \grad_{\vv{v}}f = \pdv{f}{t}_{\textrm{coll}}
+    \end{equation}
+  \end{blk}
+
+  Under the assumption of no thermal gradient, no external force, and spatial homogeneity, the Boltzmann equation reduces to
+  \begin{blk}{}
+    \begin{equation}
+      \pdv{f}{t} = \pdv{f}{t}_{\textrm{coll}}
     \end{equation}
   \end{blk}
 \end{frame}
@@ -418,7 +426,30 @@
     \end{equation}
   \end{blk}
 
+  \begin{itemize}
+    \item \(f_2(\vv{r}, \vv{r}, \vv{p}_1, \vv{p}_2)\) is the two-particle distribution function, \\ which may be written as \(f(\vv{p}_1)f(\vv{p}_2)()\)
+    \item \(W(\vv{p}_1', \vv{p}_2' | \vv{p}, \vv{p}_2)\) is the transition rate from \((\vv{p}, \vv{p}_2)\) to \((\vv{p}_1', \vv{p}_2')\)
+  \end{itemize}
+
   In equilibrium, \(\pdv{f}{t}_{\textrm{coll}} = 0\)
+\end{frame}
+
+\subsection{Fermi Dirac distribution}
+
+\begin{frame}
+  \begin{blk}{}
+    \begin{equation}
+      f_0(\vv{p}) = \frac{1}{\e^{\beta(\epsilon(\vv{p}) - \mu)} + 1}
+    \end{equation}
+  \end{blk}
+
+  \begin{itemize}
+    \item \(f_0(\vv{p})\) is the Fermi-Dirac distribution
+    \item \(\beta = 1/k_B T\) is the inverse temperature
+    \item \(\mu\) is the chemical potential
+  \end{itemize}
+
+  The Fermi-Dirac distribution is in equilibrium; the collision integral is zero.
 \end{frame}
 
 \subsection{Linearized collision operator}
