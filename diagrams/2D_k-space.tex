@@ -1,0 +1,77 @@
+% !TEX program = lualatex
+\documentclass[tikz, crop, border = {2pt 2pt 2pt 2pt}]{standalone}
+
+\usepackage{mathtools}
+\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
+
+\usepackage{pgfplots}
+\usetikzlibrary{calc, angles, quotes, patterns, decorations.pathreplacing, decorations.pathmorphing, calligraphy, arrows.meta}
+
+\definecolor{oldwhite}{HTML}{EFEFEF}
+\definecolor{ink}{HTML}{16161D}
+\definecolor{blueink}{HTML}{2D4F67}
+\definecolor{grayink}{HTML}{727169}
+\definecolor{violet}{HTML}{B194D1}
+\definecolor{green}{HTML}{BCE3C0}
+\definecolor{magenta}{HTML}{E8B0E4}
+\definecolor{softmagenta}{HTML}{FCC6EF}
+\definecolor{softblue}{HTML}{C5CFDD}
+
+\begin{document}
+\begin{tikzpicture}[
+    arrowline/.style={color=blueink, thick, -stealth},
+    dot/.style={circle, fill=blueink, inner sep=0pt, minimum size=4pt},
+    squiggly/.style={color=blueink, line width=1.2pt, smooth, samples=50}
+  ]
+  \draw[thick, -stealth] (-3, 0) -- (3, 0) node [right] {\(k_x\)};
+  \draw[thick, -stealth] (0, -3) -- (0, 3) node [above] {\(k_y\)};
+
+  % K-space coordinate dots
+  \node[dot] (p1) at (0, 2) {};
+  \node[dot] (p2) at (-2, 0) {};
+  \node[dot] (p3) at ({sqrt(2)}, {sqrt(2)}) {};
+  \node[dot] (p4) at (0, -0.5) {};
+
+  \pgfplotsset{
+    myaxis/.style = {
+        view = {0}{90},
+        samples = 30,
+        hide axis,
+        colormap = {bw}{gray(0cm)=(0); gray(0.1cm)=(0.15) ; gray(1cm)=(1)},
+        width = 4cm,
+        height = 4cm,
+        trig format plots=rad
+      }
+  }
+
+  \begin{scope}[shift={(-5, 0.5)}, local bounding box = topleft]
+    \begin{axis}[myaxis]
+      \addplot3[surf, shader=interp, domain=-10:10] {sin(2*y)};
+    \end{axis}
+  \end{scope}
+  \draw[arrowline] (p1) -- (topleft.east);
+
+  \begin{scope}[shift={(-5, -3)}, local bounding box = botleft]
+    \begin{axis}[myaxis]
+      \addplot3[surf, shader=interp, domain=-10:10] {sin(2*x)};
+    \end{axis}
+  \end{scope}
+  \draw[arrowline] (p2) -- (botleft.east);
+
+  \begin{scope}[shift={(3, 0.5)}, local bounding box = topright]
+    \begin{axis}[myaxis]
+      \addplot3[surf, shader=interp, domain=-10:10] {sin(sqrt(2)/2*(x+y))};
+    \end{axis}
+  \end{scope}
+  \draw[arrowline] (p3) -- (topright.west);
+
+  \begin{scope}[shift={(3, -3)}, local bounding box = botright]
+    \begin{axis}[myaxis]
+      \addplot3[surf, shader=interp, domain=-10:10] {sin(2/3*y)};
+    \end{axis}
+  \end{scope}
+  \draw[arrowline] (p4) -- (botright.west);
+\end{tikzpicture}
+\end{document}

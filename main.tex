@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass{beamer}
+\documentclass[aspectratio = 169]{beamer}
 
 %%% Fonts setup
 \usepackage[no-math]{fontspec}
@@ -35,6 +35,8 @@
 \usepackage{mathtools}
 \usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
 \setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\newtagform{compact}[\footnotesize\sffamily]{}{}
+\usetagform{compact}
 \setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
 \usepackage{stmaryrd}
 \allowdisplaybreaks
@@ -46,112 +48,19 @@
   \DeclareDocumentCommand{\epsilon}{}{\tempvarepsilon}
   \DeclareDocumentCommand{\varepsilon}{}{\tempepsilon}
 }
+\graphicspath{{diagrams/}}
 
 \renewcommand{\baselinestretch}{1.25}
 
-\usepackage{tikz}
-\usetikzlibrary{calc, math, backgrounds}
+\usepackage{caption}
+\captionsetup{width=0.8\textwidth}
 
-\usepackage{totcount}
-\regtotcounter{section}
-
-\definecolor{oldwhite}{HTML}{EFEFEF}
-\definecolor{ink}{HTML}{16161D}
-\definecolor{blueink}{HTML}{2D4F67}
-\definecolor{grayink}{HTML}{727169}
-\definecolor{violet}{HTML}{B194D1}
-\definecolor{green}{HTML}{BCE3C0}
-\definecolor{magenta}{HTML}{E8B0E4}
-\definecolor{softmagenta}{HTML}{FCC6EF}
-\definecolor{softblue}{HTML}{C5CFDD}
-
-\setbeamercolor{frametitle}{fg=blueink}
-\setbeamercolor{title}{fg=blueink}
-\setbeamercolor{subtitle}{fg=grayink}
-\setbeamercolor{author}{fg=ink}
-\setbeamercolor{institute}{fg=ink}
-\setbeamercolor{date}{fg=blueink}
-
-\setbeamercolor{footnote}{fg=grayink}
-\setbeamercolor{footnote mark}{fg=grayink}
-
-\setbeamercolor{background canvas}{bg=oldwhite}
-\setbeamercolor{normal text}{fg=ink}
-\setbeamercolor{item}{fg=blueink}
-\setbeamercolor{subitem}{fg=green}
-
-\setbeamertemplate{items}[circle]
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{enumerate items}[default]
-\setbeamertemplate{section in toc}{
-  \leavevmode
-  \makebox[0pt][l]{%
-    \tikz[remember picture]{%
-      \node[circle, white, fill=blueink, inner sep=0, minimum size=1.5em] (secnode-\inserttocsectionnumber) {};
-      \node[right=1.5em] at (secnode-\inserttocsectionnumber.center) {\large\bfseries\color{blueink}\inserttocsection};
-    }%
-  }
-}
-\setbeamertemplate{subsection in toc}{%
-  \leavevmode
-  \hspace{1.5em}
-  \makebox[0pt][l]{%
-    \tikz[remember picture]{%
-      \node[rectangle, fill=blueink!40, inner sep=0, minimum size=0.5em] {};
-    }
-    \hspace{1.5em}{\small\color{blueink}\inserttocsubsection}\par\vspace{0.2em}
-  }%
-}
-
-\renewcommand{\familydefault}{\rmdefault}
-\setbeamerfont{title}{series=\bfseries\sffamily, size=\LARGE}
-\setbeamerfont{frametitle}{series=\bfseries\sffamily, size=\Large}
-\setbeamerfont{author}{series=\itshape\sffamily, size=\large}
-\setbeamerfont{normal font}{series=\rmfamily}
-\setbeamerfont{section in toc}{series=\sffamily, size=\large}
-
-\defbeamertemplate*{title page}{Compact}{%
-  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
-  \vspace{0.3cm}%
-  {\usebeamerfont{author}\insertauthor}\par
-  \vspace{0.4cm}%
-}
-\defbeamertemplate*{frametitle}{Compact}{%
-  \vspace{0.8cm}%
-  \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}%
-  \insertframetitle%
-}
-
-\AtBeginSection[]{
-  {
-    \setbeamercolor{background canvas}{bg=ink}%
-    \begin{frame}[plain, noframenumbering]
-      \vfill
-      \usebeamerfont{title}\color{oldwhite}
-      \Huge
-      \begin{tikzpicture}
-        \node[draw, rectangle, minimum size = 2cm, thick, blend mode = lighten] (secnum) at (0, 0) {\thesection};
-        \node[right = 11pt, text width = 7cm] at (secnum.east) {\secname};
-      \end{tikzpicture}
-      \vfill
-    \end{frame}%
-  }
-}
-
-\AtBeginSubsection[]{
-  {
-    \setbeamercolor{background canvas}{bg=blueink}
-    \begin{frame}[plain, noframenumbering]
-      \vfill
-      \color{oldwhite}
-      \begin{tikzpicture}
-        \node[draw, rectangle, minimum size = 2cm, thick] (secnum) at (0, 0) {\usebeamerfont{title}\huge\thesection.\thesubsection};
-        \node[right = 11pt, text width = 7cm] at (secnum.east) {\bfseries\huge\subsecname};
-      \end{tikzpicture}
-      \vfill
-    \end{frame}%
-  }
-}
+% Packages: Mathematics
+\usepackage[makeroom]{cancel}
+\usepackage{physics2, derivative, siunitx}
+\usephysicsmodule{ab, ab.braket}
+\DeclareDifferential{\adif}{\symrm{\Delta}}
+\DeclareDerivative{\adv}{\symrm{\Delta}}
 
 \usepackage{tcolorbox}
 \usepackage{cleveref}
@@ -184,17 +93,269 @@
   description font = \bfseries\sffamily
 }
 
+%%% Commands
+% Commands: Geometry
+\let\line\overline
+% Commands: Mathematical constants
+\NewDocumentCommand{\e}{}{\symrm{e}}
+\NewDocumentCommand{\im}{}{\symrm{i}}
+\NewDocumentCommand{\cpi}{}{\symrm{\pi}}
+% Commands: Mathematical operators
+\DeclareMathOperator{\dotsint}{\int\!\dots\!\int}
+\DeclareMathOperator*{\ssum}{\symrm{\Sigma}}
+\DeclareMathOperator*{\Proj}{\symrm{Proj}}
+\DeclareMathOperator*{\sgn}{\symrm{sgn}}
+\DeclareMathOperator{\kdel}{\symrm{\delta}}
+\DeclareMathOperator{\ddel}{\symrm{\delta}}
+\DeclareMathOperator*{\intr}{\symrm{int}}
+\DeclareMathOperator*{\clos}{\symrm{cls}}
+\DeclareMathOperator*{\li}{\symrm{li}}
+\DeclareMathOperator*{\bnd}{\symrm{bnd}}
+\NewDocumentCommand{\grad}{e{_^}}{%
+  \mathop{}\!%
+  \nabla
+  \IfValueT{#1}{_{\!#1}}
+  \IfValueT{#2}{^{#2}}
+}
+\NewDocumentCommand{\divop}{e{_^}}{\grad_#1^#2 \vdot}
+\NewDocumentCommand{\curl}{e{_^}}{\grad_#1^#2 \times}
+% Commands: Mathematical Delimiters
+\DeclarePairedDelimiter{\peval}{(}{|}
+% Commands: Vectors notation
+\NewDocumentCommand{\vv}{m}{\symbfup{#1}}
+\NewDocumentCommand{\vdot}{}{\symbf{\cdot}}
+\NewDocumentCommand{\conj}{}{^{\ast}}
+\NewDocumentCommand{\dagr}{}{^{\dag}}
+\NewDocumentCommand{\trnsp}{}{^{\intercal}}
+\NewDocumentCommand{\iden}{}{\symbb{I}}
+\NewDocumentCommand{\uv}{m}{\hat{\vv{e}}_{#1}}
+\NewCommandCopy{\tensor}{\otimes}
+\NewDocumentCommand{\bmat}{m}{
+  \begin{bmatrix}
+    #1
+  \end{bmatrix}
+}
+\NewDocumentCommand{\ihat}{}{\hat{\i}}
+\NewDocumentCommand{\jhat}{}{\hat{\j}}
+\NewDocumentCommand{\khat}{}{\hat{k}}
+\NewDocumentCommand{\xhat}{}{\hat{\vv{x}}}
+\NewDocumentCommand{\yhat}{}{\hat{\vv{y}}}
+\NewDocumentCommand{\zhat}{}{\hat{\vv{z}}}
+\NewDocumentCommand{\rc}{}{{{\mbox{$\resizebox{1.2ex}{1.15ex}{\includegraphics[trim= 1em 0 14em 0,clip]{fonts/scriptr.pdf}}$}}}}
+\NewDocumentCommand{\brc}{}{{{\mbox{$\resizebox{1.2ex}{1.15ex}{\includegraphics[trim= 1em 0 14em 0,clip]{fonts/boldcursiver.pdf}}$}}}}
+\NewDocumentCommand{\rchat}{}{{{\mbox{$\hat\brc$}}}}
+% Commands: Intervals
+\NewDocumentCommand{\ointv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\rrbracket #2 \llbracket\mathclose{}}
+  {\mathopen{}\left\rrbracket #2 \right\llbracket\mathclose{}}
+}
+\NewDocumentCommand{\cintv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\llbracket #2 \rrbracket\mathclose{}}
+  {\mathopen{}\left\llbracket #2 \right\rrbracket\mathclose{}}
+}
+\NewDocumentCommand{\cointv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\llbracket #2 \llbracket\mathclose{}}
+  {\mathopen{}\left\llbracket #2 \right\llbracket\mathclose{}}
+}
+\NewDocumentCommand{\ocintv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\rrbracket #2 \rrbracket\mathclose{}}
+  {\mathopen{}\left\rrbracket #2 \right\rrbracket\mathclose{}}
+}
+% Commands: Real analysis
+\NewDocumentCommand{\Zint}{m}{#1^{\ddagger}}
+\NewDocumentCommand{\Zreal}{m}{\mathfrak{R}\ab(#1)}
+\NewDocumentCommand{\oball}{mmm}{B_{#1}\ab({#2};{#3})}
+\NewDocumentCommand{\cball}{mmm}{\overline{B}_{#1}\ab({#2}; {#3})}
+\NewDocumentCommand{\sequence}{mmm}{\ab(#1)_{#2}^{#3}}
+\NewDocumentCommand{\forwarddir}{}{\(\symbb{( \Rightarrow )}~\)}
+\NewDocumentCommand{\backwarddir}{}{\(\symbb{( \Leftarrow )}~\)}
+% Commands: Physical quantities
+\NewDocumentCommand{\lagr}{}{\mathcal{L}}
+\NewDocumentCommand{\haml}{}{\mathcal{H}}
+\NewDocumentCommand{\hilb}{}{\mathcal{E}}
+% Commands: Calculus
+\NewDocumentCommand{\appr}{}{\rightarrow}
+\newcommand{\alc}[2][0.3]{&\parbox[c]{#1\textwidth}{#2}}
+% Commands: Mathematical conjunctions and expressions
+\NewDocumentCommand{\mathand}{}{\quad\textrm{and}\quad}
+\NewDocumentCommand{\mathor}{}{\quad\textrm{or}\quad}
+\NewDocumentCommand{\mathif}{}{\quad\textrm{if}\quad}
+\NewDocumentCommand{\mathiff}{}{\quad\textrm{\emph{iff}}\quad}
+\NewDocumentCommand{\maththerefore}{}{\emquad\textrm{\emph{therefore,}}\emquad}
+\NewDocumentCommand{\ifft}{}{\emph{iff}~}
+\NewDocumentCommand{\basecase}{}{\noindent\textbf{Base case:}~}
+\NewDocumentCommand{\inductivestep}{}{\noindent\textbf{Inductive step:}~}
+% Commands: Typesetting
+\NewDocumentCommand{\smin}{}{\backslash}
+\NewDocumentCommand{\flatfrac}{mm}{#1\fracslash#2}
+
+\usepackage{tikz}
+\usetikzlibrary{calc, math, backgrounds}
+
+\usepackage{totcount}
+\regtotcounter{section}
+
+\definecolor{oldwhite}{HTML}{EFEFEF}
+\definecolor{ink}{HTML}{16161D}
+\definecolor{blueink}{HTML}{2D4F67}
+\definecolor{grayink}{HTML}{727169}
+\definecolor{violet}{HTML}{957FB8}
+\definecolor{green}{HTML}{BCE3C0}
+\definecolor{magenta}{HTML}{E8B0E4}
+\definecolor{softmagenta}{HTML}{FCC6EF}
+\definecolor{softblue}{HTML}{C5CFDD}
+
+\setbeamercolor{frametitle}{fg=blueink}
+\setbeamercolor{title}{fg=blueink}
+\setbeamercolor{subtitle}{fg=grayink}
+\setbeamercolor{author}{fg=ink}
+\setbeamercolor{institute}{fg=ink}
+\setbeamercolor{date}{fg=blueink}
+
+\setbeamercolor{footnote}{fg=grayink}
+\setbeamercolor{footnote mark}{fg=grayink}
+
+\setbeamercolor{background canvas}{bg=oldwhite}
+\setbeamercolor{normal text}{fg=ink}
+\setbeamercolor{item}{fg=blueink}
+\setbeamercolor{subitem}{fg=green}
+
+\setbeamercolor{caption name}{fg=blueink}
+\setbeamercolor{caption}{fg=ink}
+
+\setbeamercolor{alerted text}{fg=violet}
+
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{section in toc}{
+  \leavevmode
+  \makebox[0pt][l]{%
+    \tikz[remember picture]{%
+      \node[circle, white, fill=blueink, inner sep=0, minimum size=1.5em] (secnode-\inserttocsectionnumber) {};
+      \node[right=1.5em] at (secnode-\inserttocsectionnumber.center) {\large\bfseries\color{blueink}\inserttocsection};
+    }%
+  }
+}
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode
+  \hspace{1.5em}
+  \makebox[0pt][l]{%
+    \tikz[remember picture]{%
+      \node[rectangle, fill=blueink!50, inner sep=0, minimum size=0.5em] (subsecnode-\inserttocsubsectionnumber){};
+      \node[right=1.5em] at (subsecnode-\inserttocsubsectionnumber.center) {\small\color{blueink}\inserttocsubsection};
+    }%
+  }%
+  \par
+}
+\setbeamercolor{subsection in head/foot}{bg=softblue}
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{subsection in head/foot}
+    \leavevmode
+    \vspace{0.2em}
+    \hbox to \textwidth{
+      \hspace{1em}
+      \textcolor{ink}{\rule{2ex}{2ex}}
+      \hspace{1ex}
+      {%
+        \color{ink}\footnotesize\sffamily
+        \thesection. \insertsection
+        \ifx\insertsubsectionhead\empty
+        \else \ $\blacktriangleright$ \ {\color{ink!60}\insertsubsectionhead}\fi
+      }%
+      \hfill
+      \raisebox{-0.6em}{
+        \begin{tikzpicture}
+          \pgfmathsetmacro{\progress}{(\insertframenumber - 1)/(\inserttotalframenumber - 1)}
+          \node[circle, inner sep=0cm, minimum size=2em, fill=ink, draw=ink!40, line width=1pt] 
+            (sliderpos) at ({\progress*\pagesliderlength}, 0) {\color{oldwhite}\footnotesize\insertframenumber};
+          \begin{scope}[on background layer]
+            \draw[blueink!20, line width=7pt, line cap=round] (0, 0) -- ++ (\pagesliderlength, 0);
+            \draw[blueink, line width=5pt, line cap=round] (0, 0) -- (sliderpos.center);
+            \draw[blueink!40, line width=5pt, line cap=round] (sliderpos.center) -- (\pagesliderlength, 0);
+          \end{scope}
+        \end{tikzpicture}%
+      }
+      \hspace{1em}
+    }%
+    \vspace{0.4em}
+  \end{beamercolorbox}
+}
+
+\renewcommand{\familydefault}{\rmdefault}
+\setbeamerfont{title}{series=\bfseries\sffamily, size=\LARGE}
+\setbeamerfont{frametitle}{series=\bfseries\sffamily, size=\Large}
+\setbeamerfont{author}{series=\itshape\sffamily, size=\large}
+\setbeamerfont{normal font}{series=\rmfamily}
+\setbeamerfont{section in toc}{series=\sffamily, size=\large}
+\setbeamerfont{alerted text}{series=\sffamily\bfseries}
+\setbeamerfont{caption}{series=\scshape}
+\setbeamerfont{caption name}{series=\sffamily\bfseries}
+
+\defbeamertemplate*{title page}{Compact}{%
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+  \vspace{0.3cm}%
+  {\usebeamerfont{author}\insertauthor}\par
+  \vspace{0.4cm}%
+}
+\defbeamertemplate*{frametitle}{Compact}{%
+  \vspace{0.8cm}%
+  \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}%
+  \insertframetitle%
+}
+
+\AtBeginSection[]{
+  {
+    \setbeamercolor{background canvas}{bg=ink}%
+    \begin{frame}[plain, noframenumbering]
+      \vfill
+      \usebeamerfont{title}\color{oldwhite}
+      \Huge
+      \begin{tikzpicture}
+        \node[draw, rectangle, minimum size = 2cm, thick, blend mode = lighten] (secnum) at (0, 0) {\thesection};
+        \node[right = 11pt, text width = 0.7\textwidth] at (secnum.east) {\secname};
+      \end{tikzpicture}
+      \vfill
+    \end{frame}%
+  }
+}
+
+\AtBeginSubsection[]{
+  {
+    \setbeamercolor{background canvas}{bg=blueink}
+    \begin{frame}[plain, noframenumbering]
+      \vfill
+      \color{oldwhite}
+      \begin{tikzpicture}
+        \node[draw, rectangle, minimum size = 2cm, thick] (secnum) at (0, 0) {\usebeamerfont{title}\huge\thesection.\thesubsection};
+        \node[right = 11pt, text width = 0.7\textwidth] at (secnum.east) {\bfseries\huge\subsecname};
+      \end{tikzpicture}
+      \vfill
+    \end{frame}%
+  }
+}
+
+% Page Sliders
+\newlength{\pagesliderlength}
+\setlength{\pagesliderlength}{4cm}
+
 \title{Relaxation and Odd-Even Effect in Fermi Liquids}
 \author{Kittipat Pongarunotai, Puripat Thumbanthu}
 \date{October 15, 2025}
 
 \begin{document}
 
-\begin{frame}
+\begin{frame}[plain, noframenumbering]
   \titlepage
 \end{frame}
 
-\begin{frame}
+\begin{frame}[plain, noframenumbering, allowframebreaks]
+  \vspace{2em}
   \hspace{2.5em}{\usebeamerfont{title}Outline}
   \tableofcontents
   \begin{tikzpicture}[remember picture, overlay]
@@ -205,15 +366,64 @@
   \end{tikzpicture}
 \end{frame}
 
-\section{Introduction: Fermi liquids}
+\section{Introduction}
+
+\subsection{$k$-space}
+
+\begin{frame}{\(k\)-space}
+  \begin{itemize}
+    \item Analogous to momentum space
+    \item Each point \(\vv{k}\) in \(k\)-space corresponds to a wave $\e^{\im \vv{k}}$
+    \item \alert{Fourier transform} converts between \(k\)-space to real space
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[]
+    \centering
+    \includegraphics[scale=0.75]{2D_k-space.pdf}
+    \caption{Representative waves of \(k\)-space}
+    \label{}
+  \end{figure}
+
+  \begin{itemize}
+    \item Distance from origin \(\propto\) Wave frequency
+    \item Direction on \(k\)-space \(\implies\) Wave direction
+  \end{itemize}
+\end{frame}
+
+\subsection{Fermi surface}
 
 \section{Boltzmann equation}
 
-\subsection{One-particle distribution function}
-
-\begin{frame}{One-particle distribution function}
+\begin{frame}
+  \begin{blk}{}
+    \begin{equation}
+      \pdv{f}{t} + \vv{v} \vdot \grad_{\vv{r}}f + \vv{F} \vdot \grad_{\vv{v}}f = \pdv{f}{t}_{\textrm{coll}}
+    \end{equation}
+  \end{blk}
 \end{frame}
 
-\section{Relaxation time for Fermi liquids}
+\begin{frame}
+  \begin{blk}{}
+    \begin{equation}
+      \pdv{f}{t}_{\textrm{coll}} \approx
+      \dotsint \odif[ord = 3]{\vv{p}_2} \odif[ord = 3]{\vv{p}_1'} \odif[ord = 3]{\vv{p}_2'} W(\vv{p}_1', \vv{p}_2' | \vv{p}, \vv{p}_2)
+      \ab[f_2(\vv{r}, \vv{r}, \vv{p}_1', \vv{p}_2') - f_2(\vv{r}, \vv{r}, \vv{p}_1, \vv{p}_2)]
+    \end{equation}
+  \end{blk}
+
+  In equilibrium, \(\pdv{f}{t}_{\textrm{coll}} = 0\)
+\end{frame}
+
+\subsection{Linearized collision operator}
+
+\begin{frame}
+  \begin{itemize}
+    \item No chemical potential
+  \end{itemize}
+\end{frame}
+
+\section{Odd-Even effect}
 
 \end{document}
