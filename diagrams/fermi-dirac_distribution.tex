@@ -1,0 +1,85 @@
+% !TEX program = lualatex
+\documentclass[tikz, crop, border = {2pt 2pt 2pt 2pt}]{standalone}
+
+\usepackage[no-math]{fontspec}
+\setmainfont[
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{ZillaSlab}
+\defaultfontfeatures{Mapping = tex-text, Ligatures = {TeX, Common}, Scale = MatchLowercase}
+
+\usepackage{mathtools}
+\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
+
+\usepackage{pgfplots}
+\usetikzlibrary{calc, angles, quotes, patterns, decorations.pathreplacing, decorations.pathmorphing, decorations.text, calligraphy, arrows.meta, intersections}
+
+\definecolor{oldwhite}{HTML}{EFEFEF}
+\definecolor{ink}{HTML}{16161D}
+\definecolor{blueink}{HTML}{2D4F67}
+\definecolor{grayink}{HTML}{727169}
+\definecolor{violet}{HTML}{B194D1}
+\definecolor{green}{HTML}{BCE3C0}
+\definecolor{magenta}{HTML}{E8B0E4}
+\definecolor{softmagenta}{HTML}{FCC6EF}
+\definecolor{softblue}{HTML}{C5CFDD}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+      axis lines = left,
+      xlabel = {Energy (\(E\))},
+      ylabel = {Occupancy (\(f(E)\))},
+      ymin = 0, ymax = 1.1,
+      xmin = -3, xmax = 3.2,
+      xtick = {0},
+      xticklabels = {\(E_F\)},
+      ytick = {0, 0.5, 1},
+      samples = 100,
+      domain = -3:3,
+      every axis plot/.append style = {ultra thick},
+      axis line style={thick, -stealth},
+      legend pos = north east,
+      legend cell align = {left},
+    ]
+    \addplot[color=blueink, domain=-3:0] {1} node[midway, above]{Absolute Zero};
+    \addplot[color=blueink, forget plot] coordinates {(0,1) (0,0)};
+    \addplot[color=blueink, forget plot, domain=0:3] {0};
+
+    \addplot[%
+      color=blueink!50!violet, draw,
+      postaction={
+          decorate,
+          decoration = {
+              text along path,
+              text={Low temp.},
+              text align={left indent=1.5cm},
+              raise=0.4em,
+              text color=blueink!50!violet
+            }
+        }
+    ] {1 / (exp(x / 0.75) + 1)};
+
+
+    \addplot[
+      color=violet, draw,
+      postaction={
+          decorate,
+          decoration = {
+              text along path,
+              text={High temp.},
+              text align={left indent=1cm},
+              raise=0.4em,
+              text color=violet
+            }
+        }
+    ] {1 / (exp(x / 1.5) + 1)};
+    % \legend{Absolute Zero, Low Temperature (\(T_1\)), High Temperature (\(T_3\))}
+  \end{axis}
+\end{tikzpicture}
+\end{document}
