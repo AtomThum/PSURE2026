@@ -394,39 +394,70 @@
 
 \subsection{Fermi surface}
 
-\section{Boltzmann equation}
+\section{Recovering equations}
 
-\begin{frame}
+\subsection{Linearization of the collision integral}
+
+\begin{frame}{Ideas}
   \begin{itemize}
-    \item Dilute gas
-    \item Only short range interactions
+    \item Consider \alert{only perturbation near Fermi's equilibrium}
+          \begin{equation}
+            f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p}) \nonumber
+          \end{equation}
+    \item Transform the integrals into a linear operator
   \end{itemize}
-
-  \begin{blk}{}
-    \begin{equation}
-      \pdv{f}{t} + \vv{v} \vdot \grad_{\vv{r}}f + \vv{F} \vdot \grad_{\vv{v}}f = \pdv{f}{t}_{\textrm{coll}}
-    \end{equation}
-  \end{blk}
 \end{frame}
 
-\begin{frame}
-  \begin{blk}{}
+\begin{frame}{Preparation}
+  \begin{blk}{Fermi equilibrium}
     \begin{equation}
-      \pdv{f}{t}_{\textrm{coll}} \approx
-      \dotsint \odif[ord = 3]{\vv{p}_2} \odif[ord = 3]{\vv{p}_1'} \odif[ord = 3]{\vv{p}_2'} W(\vv{p}_1', \vv{p}_2' | \vv{p}, \vv{p}_2)
-      \ab[f_2(\vv{r}, \vv{r}, \vv{p}_1', \vv{p}_2') - f_2(\vv{r}, \vv{r}, \vv{p}_1, \vv{p}_2)]
+      f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}
     \end{equation}
   \end{blk}
 
-  In equilibrium, \(\pdv{f}{t}_{\textrm{coll}} = 0\)
+  \begin{align}
+    \pdv{f_0}{\epsilon} & = -\frac{1}{T} f_0 (1 - f_0) \\
+    \pdv{f_0}{\mu}      & = \frac{1}{T} f_0 (1 - f_0)
+  \end{align}
+
+  \begin{equation}
+    \pdv{f_0}{\epsilon} = -\pdv{f_0}{\mu}
+  \end{equation}
 \end{frame}
 
-\subsection{Linearized collision operator}
+\begin{frame}
+  \visible<1->{
+    \begin{align}
+      f(t, \vv{p})                   & = f_0(\vv{p}) + \fdif{f}(t, \vv{p})            &  & \textrm{Perturbation}                    \\
+                                     & \approx f_0(\vv{p}) + \pdv{f_0}{\mu}\fdif{\mu} &  & \textrm{Taylor series. Fix \(\epsilon\)} \\
+      \therefore \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}\fdif{\mu}
+    \end{align}
+  }
+
+  \visible<2->{
+    \begin{blk}{Perturbation of interest}
+      \begin{equation}
+        \fdif{\mu} = T\psi
+      \end{equation}
+    \end{blk}
+
+    \(\fdif{\mu}\) represents temperature independent change in chemical potential
+  }
+\end{frame}
 
 \begin{frame}
-  \begin{itemize}
-    \item No chemical potential
-  \end{itemize}
+  \begin{align}
+    \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}T\psi                         \\
+                        & = \ab(-\frac{1}{T} f_0(1 - f_0)) \times T\psi \\
+                        & = f_0(1 - f_0) \psi
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  \begin{multline}
+    \hat{\mathcal{J}}[f] = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \\
+    \ab\big[f(\vv{p}_1)f(\vv{p}_2)(1 - f(\vv{p}_1'))(1 - f(\vv{p_2}')) - f(\vv{p}_1')f(\vv{p}_2')(1 - f(\vv{p}_1))(1 - f(\vv{p_2}))]
+  \end{multline}
 \end{frame}
 
 \section{Odd-Even effect}
