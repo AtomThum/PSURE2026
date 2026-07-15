@@ -397,8 +397,7 @@
 \subsection{Fermi Dirac distribution}
 
 \begin{frame}
-  \begin{blk}{}
-    \alert{Fermi-Dirac distribution}
+  \begin{blk}{Fermi-Dirac distribution}
     \begin{equation}
       f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}
     \end{equation}
@@ -680,23 +679,56 @@
 
 \begin{frame}{Expression of \(W\) - the collision rate}
   \begin{blk}{}
-    \begin{equation}
-      W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) = \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \delta(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2') \delta\ab\big(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2'))
-    \end{equation}
+    \vspace{-\abovedisplayskip}
+    \begin{multline}
+      W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) = \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \\
+      \times\delta(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2')
+      \delta\ab\big(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2'))
+    \end{multline}
   \end{blk}
+
+  \begin{align}
+    \hat{\mathcal{J}}[f(t, \vv{p}_1)]
+     & = \begin{multlined}[t]
+           - \frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \times \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \\
+           \times \delta(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2')
+           \delta\big(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2')) \\
+           \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined}
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  Perform a change of coordinates \(\vv{P} = \vv{p}_1 + \vv{p}_2\), \(\vv{Q} = \frac{1}{2}(\vv{p}_1 - \vv{p}_2)\).
+
+  \begin{align}
+    \hat{\mathcal{J}}[f(t, \vv{p}_1)]
+     & = \begin{multlined}[t]
+           -\frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2,\vv{P}',\vv{Q}'}
+           \delta(\vv{P} - \vv{P}') \delta\ab(\frac{\hbar^2}{2 m^*} \ab(p_1^2 + p_2^2 - p_1'^2 - p_2'^2)) \\
+           \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined} \nonumber \\
+     & = \begin{multlined}[t]
+           - \frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{Q'}}
+           \delta\ab(\frac{\hbar^2}{4m^*}(4Q^2 - 4Q'^2)) \\
+           \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined}
+  \end{align}
 \end{frame}
 
 \subsection{Eigenvalue problem}
 
 \begin{frame}{Reducing the Boltzmann equation}
   \begin{equation}
-    \ab(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar \vv{p}}) f(t, \vv{r}, \vv{p}) = \hat{\mathcal{J}}[f(t, \vv{r}, \vv{p})]
+    \ab(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar \vv{p}}) f(t, \vv{r}, \vv{p})
+    = \hat{\mathcal{J}}[f(t, \vv{r}, \vv{p})]
   \end{equation}
 
   \begin{itemize}
     \item No external force: \(\vv{F} = \vv{0}\),
     \item No thermal gradient: \(\pdv{f}{\vv{r}} = 0\).
   \end{itemize}
+
   The equation reduces to
   \begin{equation}
     \pdv{f}{t} = \hat{\mathcal{J}}[f]
@@ -710,16 +742,5 @@
 \end{frame}
 
 \section{Odd-Even effect}
-\subsubsection{Eigenvalue problem}
-
-\appendix
-
-\begin{frame}{Evaluation of \(W(\vv{p}_1, \vv{p}_2 | \vv{p}_1', \vv{p}_2')\)}
-  \begin{blk}{}
-    \begin{equation}
-      W(\vv{p}_1, \vv{p}_2 | \vv{p}_1, \vv{p}_2) = \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \delta(\vv{p})
-    \end{equation}
-  \end{blk}
-\end{frame}
 
 \end{document}
