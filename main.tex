@@ -398,18 +398,19 @@
 
 \begin{frame}
   \begin{blk}{}
+    \alert{Fermi-Dirac distribution}
     \begin{equation}
       f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}
     \end{equation}
   \end{blk}
 
   \begin{itemize}
-    \item \(f_0(\vv{p})\) is the Fermi-Dirac distribution
     \item \(\beta = 1/k_B T\) is the inverse temperature
+    \item \(\epsilon(\vv{p}) = \frac{\hbar^2 \vv{p}^2}{2m}\) is the energy of particles with momentum \(\vv{p}\)
     \item \(\mu\) is the chemical potential
   \end{itemize}
 
-  The Fermi-Dirac distribution is in equilibrium; the collision integral is zero.
+  The Fermi-Dirac distribution is in \alert{equilibrium}.
 \end{frame}
 
 \begin{frame}
@@ -426,7 +427,7 @@
   \end{itemize}
 \end{frame}
 
-\subsection{Fermi surface}
+% \subsection{Fermi surface}
 
 \begin{frame}
   \begin{blk}{}
@@ -445,6 +446,23 @@
   \end{figure}
 
   The Fermi surface may be perturbed by external fields. Since a perturbation has to be smooth, we can expand the perturbation in terms of circular harmonics \(\e^{\im m \theta}\) in 2D.
+\end{frame}
+
+\subsection{Boltzmann equation}
+\begin{frame}
+  \begin{blk}{}
+    The Boltzmann equation describes the time evolution of the distribution function \(f(t, \vv{p})\) in phase space:
+    \begin{equation}
+      \left(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar\vv{p}}\right) f(t,\vv{x},\vv{p}) = \hat{\mathcal{J}}[f(t,\vv{x},\vv{p})]
+    \end{equation}
+  \end{blk}
+
+  \begin{itemize}
+    \item \(\pdv{f}{t}\) is the time evolution of the distribution function
+    \item \(\vv{v} \vdot \pdv{f}{\vv{r}}\) is the advection term (by, for example, thermal gradients)
+    \item \(\vv{F} \vdot \pdv{f}{\hbar\vv{p}}\) is the external force term
+    \item \(\hat{\mathcal{J}}[f]\) is the collision integral, which describes the effect of collisions on the distribution function
+  \end{itemize}
 \end{frame}
 
 \section{Recovering equations}
@@ -592,5 +610,6 @@
 \end{frame}
 
 \section{Odd-Even effect}
+\subsubsection{Eigenvalue problem}
 
 \end{document}
