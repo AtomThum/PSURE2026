@@ -736,11 +736,69 @@
 \end{frame}
 
 \begin{frame}
+  Recall that 
+  \begin{itemize}
+    \item \(f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p})\)
+    \item \(\fdif{f}(t, \vv{p}) = f_0(1 - f_0)\psi(t, \vv{p})\)
+    \item \(\pdv{f_0}{t} = 0, \hat{\mathcal{J}}[f_0] = 0\)
+  \end{itemize}
+  Thus, the equation further reduces to
+  \begin{equation}
+    \pdv{\psi(t, \vv{p})}{t} = \hat{\mathcal{J}}[\psi(t, \vv{p})]
+  \end{equation}
+\end{frame}
+
+\begin{frame}
   \begin{blk}{Proposed ansatz}
     \(\psi(t, \vv{p}) = \e^{-\gamma t} \phi(\vv{p})\) (Chemical potential decays with time)
   \end{blk}
+  So, the equation reduces to an eigenvalue problem:
+  \begin{equation}
+    \hat{\mathcal{J}}[\phi(\vv{p})] = -\gamma \phi(\vv{p})
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  Under the constraints of continuity and smoothness, the eigenfunctions are sums of circular harmonics \(\e^{\im m \theta}\) in 2D. Picking a test mode $m$, we obtain
+  \begin{equation}
+    \hat{\mathcal{J}}[\e^{\im m \theta}] = -\gamma_m \e^{\im m \theta}
+  \end{equation}
+
+  Our goal is to study the eigenvalues \(\gamma_m\) as a function of \(m\) and temperature \(T\).
 \end{frame}
 
 \section{Odd-Even effect}
 
+\subsection{Zero modes}
+
+\begin{frame}
+  We will first consider the zero modes, which are when \(\gamma_m = 0\), associated with quantities that are conserved.
+  \begin{itemize}
+    \item \(\gamma_0 = 0\) has two eigenfunctions: \(\phi_0 = 1\) and \(\phi_0 = \epsilon(\vv{p})\), corresponding to the conservation of particle number and energy, respectively.
+    \item \(\gamma_1 = 0\) has two eigenfunctions: \(\phi_1 = \e^{\im \theta}\) and \(\phi_1 = \e^{-\im \theta}\), corresponding to the conservation of momentum in the \(x\) and \(y\) directions, respectively.
+  \end{itemize}
+\end{frame}
+
+\subsection{Kinematic Constraints}
+
+\begin{frame}
+  As the perturbations are near the fermi surface, we have $\epsilon(\vv{p}_1) \approx \epsilon(\vv{p}_2) \approx \epsilon(\vv{p}_1') \approx \epsilon(\vv{p}_2') \approx \epsilon_F$.
+  Thus, conservation of energy implies conservation of momentum: \(\vv{p}_1 + \vv{p}_2 = \vv{p}_1' + \vv{p}_2'\).
+  There are only three types of solutions that satisfy this constraint:
+  \begin{itemize}
+    \item Head-on collisions: \(\vv{p}_1 = -\vv{p}_2, \vv{p}_1' = -\vv{p}_2'\)
+    \item Forward exchange: \(\vv{p}_1' = \vv{p}_2, \vv{p}_2' = \vv{p}_1\)
+    \item No collision: \(\vv{p}_1' = \vv{p}_1, \vv{p}_2' = \vv{p}_2\)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  Forward exchange and no collisions has \(\{\vv{p}_1, \vv{p}_2\} = \{\vv{p}_1', \vv{p}_2'\}\). Thus, \(\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') = 0\) (recall that this is the term in the collision integral). These two types of collisions do not contribute to the collision integral. Only head-on collisions contribute to the collision integral. 
+\end{frame}
+
+\begin{frame}
+  For head-on collisions, we have \(\theta_2 = \theta_1 + \pi\) and \(\theta_2' = \theta_1' + \pi\). Substituting a test mode $m$, and recalling $e^{\im m (\theta+\pi)} = (-1)^m e^{\im m \theta}$, Thus, \(\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') = (1+(-1)^m)e^{\im m \theta_1} - (1+(-1)^m)e^{\im m \theta_{1'}}\).
+
+  This implies that for odd \(m\), the term vanishes, and thus the collision integral vanishes. For even \(m\), the term does not vanish.
+\end{frame}
 \end{document}
