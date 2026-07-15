@@ -1,0 +1,71 @@
+% !TEX program = lualatex
+\documentclass[tikz, crop, border = {2pt 2pt 2pt 2pt}]{standalone}
+
+\usepackage[no-math]{fontspec}
+\setmainfont[
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{ZillaSlab}
+\defaultfontfeatures{Mapping = tex-text, Ligatures = {TeX, Common}, Scale = MatchLowercase}
+
+\usepackage{mathtools}
+\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
+
+\usepackage{pgfplots}
+\usetikzlibrary{calc, angles, quotes, patterns, decorations.pathreplacing, decorations.pathmorphing, decorations.text, calligraphy, arrows.meta, intersections}
+
+\definecolor{oldwhite}{HTML}{EFEFEF}
+\definecolor{ink}{HTML}{16161D}
+\definecolor{blueink}{HTML}{2D4F67}
+\definecolor{grayink}{HTML}{727169}
+\definecolor{violet}{HTML}{B194D1}
+\definecolor{green}{HTML}{BCE3C0}
+\definecolor{magenta}{HTML}{E8B0E4}
+\definecolor{softmagenta}{HTML}{FCC6EF}
+\definecolor{softblue}{HTML}{C5CFDD}
+
+\begin{document}
+\begin{tikzpicture}[every node/.style={font=\Large}, line join=round]
+
+\newcommand{\setdirection}[1]{%
+  \ifcase#1 % Check the value of the input variable
+    \newcommand{\direction}{-1}%   Case 0: set to 1
+  \or
+    \newcommand{\direction}{-1}%   Case 1: set to 1
+  \else
+    \newcommand{\direction}{1}%  Any other case: set to -1
+  \fi
+}
+
+% ---------- geometry ----------
+\def\R{1.0}
+\def\dx{2.35}
+\def\labelY{-1.45}
+\def\amp{0.1}
+
+% ---------- panels 2-5: r(theta) = R + A cos(m theta), transparent fill, no stroke ----------
+\foreach \m/\col/\i in {0/ink/0, 1/grayink/1, 2/green/2, 3/magenta/3, 4/green/4, 5/magenta/5}{
+  \begin{scope}[shift={(\i*\dx,0)}]
+    \setdirection{\i}
+    \draw[ink, thin] (0,0) circle (\R);
+    \pgfmathsetmacro{\mirror}{or(\m==0,mod(\m,2)==1) ? -1 : 1}
+    \pgfmathsetmacro{\opa}{\m==0 ? 0.5 : (\m==1 ? 0.5 : (mod(\m,2)==0 ? 0.85 : 0.75))}
+    \pgfmathsetmacro{\ampsign}{\m==0 ? -1 : 1}
+    \fill[\col, opacity=\opa]
+      plot[domain=0:360, samples=220, smooth cycle]
+      ({\mirror*(\R+\ampsign*\amp*cos(\m*\x))*cos(\x)}, {(\R+\ampsign*\amp*cos(\m*\x))*sin(\x)});
+    \node at (0,\labelY) {$m=\i$};
+  \end{scope}
+}
+
+% ---------- trailing ellipsis ----------
+\node at (6*\dx-0.15,0) {\Huge $\cdots$};
+
+
+\end{tikzpicture}
+\end{document}

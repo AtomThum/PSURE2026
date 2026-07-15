@@ -392,7 +392,58 @@
   \end{itemize}
 \end{frame}
 
+\subsection{Fermi Dirac distribution}
+
+\begin{frame}
+  \begin{blk}{}
+    \begin{equation}
+      f_0(\vv{p}) = \frac{1}{\e^{\beta(\epsilon(\vv{p}) - \mu)} + 1}
+    \end{equation}
+  \end{blk}
+
+  \begin{itemize}
+    \item \(f_0(\vv{p})\) is the Fermi-Dirac distribution
+    \item \(\beta = 1/k_B T\) is the inverse temperature
+    \item \(\mu\) is the chemical potential
+  \end{itemize}
+
+  The Fermi-Dirac distribution is in equilibrium; the collision integral is zero.
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[]
+    \centering
+    \includegraphics[scale=0.75]{fermi-dirac_distribution.pdf}
+    \caption{Fermi-Dirac distribution at different temperatures}
+    \label{}
+  \end{figure}
+
+  \begin{itemize}
+    \item At \(T = 0\), all states below the Fermi energy are filled, all states above are empty.
+    \item As \(T\) increases, the distribution smooths out.
+  \end{itemize}
+\end{frame}
+
 \subsection{Fermi surface}
+
+\begin{frame}
+  \begin{blk}{}
+    The Fermi surface is the set of points in \(k\)-space where the energy of the electrons is equal to the Fermi energy.
+  \end{blk}
+
+  Under no thermal gradients and external force, the Fermi surface is a a circle in 2D \(k\)-space.
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[]
+    \centering
+    \includegraphics[scale=0.75]{fermi-surface_perturbations.pdf}
+    \caption{Circular harmonical perturbations of the Fermi surface}
+    \label{}
+  \end{figure}
+
+  The Fermi surface may be perturbed by external fields. Since a perturbation has to be smooth, we can expand the perturbation in terms of circular harmonics \(e^{\im m \theta}\) in 2D.
+\end{frame}
 
 \section{Recovering equations}
 
@@ -443,24 +494,6 @@
 
     \(\fdif{\mu}\) represents temperature independent change in chemical potential
   }
-\end{frame}
-
-\subsection{Fermi Dirac distribution}
-
-\begin{frame}
-  \begin{blk}{}
-    \begin{equation}
-      f_0(\vv{p}) = \frac{1}{\e^{\beta(\epsilon(\vv{p}) - \mu)} + 1}
-    \end{equation}
-  \end{blk}
-
-  \begin{itemize}
-    \item \(f_0(\vv{p})\) is the Fermi-Dirac distribution
-    \item \(\beta = 1/k_B T\) is the inverse temperature
-    \item \(\mu\) is the chemical potential
-  \end{itemize}
-
-  The Fermi-Dirac distribution is in equilibrium; the collision integral is zero.
 \end{frame}
 
 \subsection{Linearized collision operator}

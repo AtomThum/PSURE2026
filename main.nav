@@ -16,45 +16,51 @@
 \headcommand {\slideentry {1}{1}{3}{6/6}{$k$-space}{0}}
 \headcommand {\beamer@framepages {6}{6}}
 \headcommand {\beamer@subsectionpages {4}{6}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{7}{Fermi surface}}
-\headcommand {\slideentry {1}{2}{1}{7/7}{Fermi surface}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{7}{Fermi Dirac distribution}}
+\headcommand {\slideentry {1}{2}{1}{7/7}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@sectionpages {3}{7}}
-\headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\sectionentry {2}{Recovering equations}{8}{Recovering equations}{0}}
-\headcommand {\slideentry {2}{0}{1}{8/8}{}{0}}
+\headcommand {\slideentry {1}{2}{2}{8/8}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{9}{Linearization of the collision integral}}
-\headcommand {\slideentry {2}{1}{1}{9/9}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {1}{2}{3}{9/9}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {2}{1}{2}{10/10}{Linearization of the collision integral}{0}}
+\headcommand {\beamer@subsectionpages {7}{9}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{10}{Fermi surface}}
+\headcommand {\slideentry {1}{3}{1}{10/10}{Fermi surface}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {2}{1}{3}{11/11}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {1}{3}{2}{11/11}{Fermi surface}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {2}{1}{4}{12/13}{Linearization of the collision integral}{0}}
-\headcommand {\beamer@framepages {12}{13}}
-\headcommand {\beamer@subsectionpages {9}{13}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{14}{Fermi Dirac distribution}}
-\headcommand {\slideentry {2}{2}{1}{14/14}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{3}{3}{12/12}{Fermi surface}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@sectionpages {3}{12}}
+\headcommand {\beamer@subsectionpages {10}{12}}
+\headcommand {\sectionentry {2}{Recovering equations}{13}{Recovering equations}{0}}
+\headcommand {\slideentry {2}{0}{1}{13/13}{}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{14}{Linearization of the collision integral}}
+\headcommand {\slideentry {2}{1}{1}{14/14}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {2}{2}{2}{15/15}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {2}{1}{2}{15/15}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@subsectionpages {14}{15}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{16}{Linearized collision operator}}
-\headcommand {\slideentry {2}{3}{1}{16/16}{Linearized collision operator}{0}}
+\headcommand {\slideentry {2}{1}{3}{16/16}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {2}{3}{2}{17/17}{Linearized collision operator}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {2}{3}{3}{18/18}{Linearized collision operator}{0}}
-\headcommand {\beamer@framepages {18}{18}}
-\headcommand {\beamer@sectionpages {8}{18}}
-\headcommand {\beamer@subsectionpages {16}{18}}
-\headcommand {\sectionentry {3}{Odd-Even effect}{19}{Odd-Even effect}{0}}
-\headcommand {\slideentry {3}{0}{1}{19/19}{}{0}}
+\headcommand {\slideentry {2}{1}{4}{17/18}{Linearization of the collision integral}{0}}
+\headcommand {\beamer@framepages {17}{18}}
+\headcommand {\beamer@subsectionpages {14}{18}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{19}{Linearized collision operator}}
+\headcommand {\slideentry {2}{2}{1}{19/19}{Linearized collision operator}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {19}{19}}
-\headcommand {\beamer@sectionpages {19}{19}}
-\headcommand {\beamer@documentpages {19}}
-\headcommand {\gdef \inserttotalframenumber {8}}
+\headcommand {\slideentry {2}{2}{2}{20/20}{Linearized collision operator}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {2}{2}{3}{21/21}{Linearized collision operator}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\beamer@sectionpages {13}{21}}
+\headcommand {\beamer@subsectionpages {19}{21}}
+\headcommand {\sectionentry {3}{Odd-Even effect}{22}{Odd-Even effect}{0}}
+\headcommand {\slideentry {3}{0}{1}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@partpages {1}{22}}
+\headcommand {\beamer@subsectionpages {22}{22}}
+\headcommand {\beamer@sectionpages {22}{22}}
+\headcommand {\beamer@documentpages {22}}
+\headcommand {\gdef \inserttotalframenumber {11}}
