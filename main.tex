@@ -76,13 +76,12 @@
   rightrule = 0pt,
   toprule = 0pt,
   bottomrule = 0pt,
-  detach title = true,
   fonttitle = \bfseries\sffamily,
   description font = \normalfont\itshape\sffamily,
   before upper = {\tcbtitle\quad},
 }{thm}
-\newtcolorbox{blk}{%
-  breakable,
+\newtcolorbox{blk}[1]{%
+  enhanced, breakable,
   coltitle = ink,
   sharp corners,
   colback = softblue,
@@ -90,7 +89,10 @@
   rightrule = 0pt,
   toprule = 0pt,
   bottomrule = 0pt,
-  description font = \bfseries\sffamily
+  detach title,
+  title = {#1},
+  fonttitle = \bfseries\sffamily,
+  before upper = {\ifblank{#1}{}{\tcbtitle\quad}},
 }
 
 %%% Commands
@@ -409,10 +411,8 @@
 \end{frame}
 
 \begin{frame}{Preparation}
-  \begin{blk}{Fermi equilibrium}
-    \begin{equation}
-      f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}
-    \end{equation}
+  \begin{blk}{Fermi equilibrium:}
+    \(f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}\)
   \end{blk}
 
   \begin{align}
@@ -435,13 +435,9 @@
   }
 
   \visible<2->{
-    \begin{blk}{Perturbation of interest}
-      \begin{equation}
-        \fdif{\mu} = T\psi
-      \end{equation}
+    \begin{blk}{Perturbation of interest:}
+      \(\fdif{\mu} = T\psi\) (temperature dependent change in chemical potential)
     \end{blk}
-
-    \(\fdif{\mu}\) represents temperature independent change in chemical potential
   }
 \end{frame}
 
@@ -463,8 +459,6 @@
   The Fermi-Dirac distribution is in equilibrium; the collision integral is zero.
 \end{frame}
 
-\subsection{Linearized collision operator}
-
 \begin{frame}
   \begin{align}
     \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}T\psi                         \\
@@ -474,10 +468,94 @@
 \end{frame}
 
 \begin{frame}{Collision integral}
-  \begin{multline}
-    \hat{\mathcal{J}}[f] = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \\
-    \ab\big[f(\vv{p}_1)f(\vv{p}_2)(1 - f(\vv{p}_1'))(1 - f(\vv{p_2}')) - f(\vv{p}_1')f(\vv{p}_2')(1 - f(\vv{p}_1))(1 - f(\vv{p_2}))]
-  \end{multline}
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{gather}
+      \hat{\mathcal{J}}[f] = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \mathcal{B}, \\
+      \mathcal{B} = f_1 f_2 (1 - f_{1'})(1 - f_{2'}) - f_{1'} f_{2'} (1 - f_1)(1 - f_2), \\
+      f_i = f(\vv{p}_i), \quad f_{0, i} = f_0(\vv{p}_i).
+    \end{gather}
+  \end{blk}
+\end{frame}
+
+\begin{frame}{Linearization}
+  Taylor expansion of \(\mathcal{B}\) at \(f_0\):
+  \begin{align}
+    \mathcal{B} & = \mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}} \\
+  \end{align}
+
+  The linear part is:
+  \begin{align}
+    \mathcal{B}_{\textrm{lin}} = \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1} + \pdv{\mathcal{B}}{f_2}_{f_0} \fdif{f_2}
+    + \pdv{\mathcal{B}}{f_1'}_{f_0} \fdif{f_{1'}} + \pdv{\mathcal{B}}{f_{2'}}_{f_0} \fdif{f_{2'}}
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  \begin{gather}
+    \pdv{\mathcal{B}}{f_1}_{f_0} = f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1'}f_{0, 2'}(1 - f_{0, 2}), \\
+    \pdv{\mathcal{B}}{f_2}_{f_0} = f_{0, 1}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1}f_{0, 2}(1 - f_{0, 1}), \\
+    \pdv{\mathcal{B}}{f_{1'}}_{f_0} = - f_{0, 1}f_{0, 2}(1 - f_{0, 2'}) - f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2}), \\
+    \pdv{\mathcal{B}}{f_{2'}}_{f_0} = - f_{0, 1}f_{0, 2}(1 - f_{0, 1'}) - f_{0, 1'}(1 - f_{0, 1})(1 - f_{0, 2}).
+  \end{gather}
+\end{frame}
+
+\begin{frame}
+  Substitute \(\fdif{f_i} = f_{0, i}(1 - f_{0, i})\psi_i\). E.g.,
+  \begin{align}
+    \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1}
+     & = \ab\Big[f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1'}f_{0, 2'}(1 - f_{0, 2})] \times f_{0, 1}(1 - f_{0, 1})\psi_1 \\
+     & = \ab\Big[f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'})(1 - f_{0, 1})
+    + f_{0, 1}f_{0, 1'}f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2})]\psi_1                                                             \\
+     & = \ab\Big(f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}))\ab\Big[(1 - f_{0, 1}) + f_{0, 1}]\psi_1                        \\
+     & = \ab\Big(f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}))\psi_1
+  \end{align}
+
+  Define \(F_{121'2'} = f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) = f_{0, 1'}f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2})\). So that
+  \begin{equation}
+    \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1} = F_{121'2'}\psi_1
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \begin{blk}{}
+    \begin{equation}
+      \pdv{\mathcal{B}}{f_i}_{f_0} \fdif{f_i} = F_{121'2'}\psi_i
+    \end{equation}
+  \end{blk}
+
+  Hence,
+  \begin{align}
+    \mathcal{B}_{\textrm{lin}}
+     & = \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1} + \pdv{\mathcal{B}}{f_2}_{f_0} \fdif{f_2}
+    + \pdv{\mathcal{B}}{f_1'}_{f_0} \fdif{f_{1'}} + \pdv{\mathcal{B}}{f_{2'}}_{f_0} \fdif{f_{2'}} \\
+     & = F_{121'2'}\ab\big[\psi_1 + \psi_2 - \psi_{1'} - \psi_{2'}]                               \\
+     & = F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  \begin{align}
+    \hat{\mathcal{J}}[f]
+     & = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'}
+    W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2)\mathcal{B}                 \\
+     & = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'}
+    W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2)
+    (\mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}})
+  \end{align}
+
+  \begin{itemize}
+    \item \(\hat{\mathcal{J}}[f_0] = 0\): Collision integral vanishes at equilibrium
+    \item Throw out \(\mathcal{B}_{\textrm{non-lin}}\)
+  \end{itemize}
+
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{multline}
+      \hat{\mathcal{J}}[f] = -\frac{1}{(2\cpi^6)} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'} \\
+      \times W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) F_{121'2'} [\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+    \end{multline}
+  \end{blk}
 \end{frame}
 
 \section{Odd-Even effect}

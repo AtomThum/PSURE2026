@@ -40,21 +40,27 @@
 \headcommand {\beamer@framepages {14}{14}}
 \headcommand {\slideentry {2}{2}{2}{15/15}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@subsectionpages {14}{15}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{16}{Linearized collision operator}}
-\headcommand {\slideentry {2}{3}{1}{16/16}{Linearized collision operator}{0}}
+\headcommand {\slideentry {2}{2}{3}{16/16}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {2}{3}{2}{17/17}{Linearized collision operator}{0}}
+\headcommand {\slideentry {2}{2}{4}{17/17}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {2}{3}{3}{18/18}{Linearized collision operator}{0}}
+\headcommand {\slideentry {2}{2}{5}{18/18}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\beamer@sectionpages {8}{18}}
-\headcommand {\beamer@subsectionpages {16}{18}}
-\headcommand {\sectionentry {3}{Odd-Even effect}{19}{Odd-Even effect}{0}}
-\headcommand {\slideentry {3}{0}{1}{19/19}{}{0}}
+\headcommand {\slideentry {2}{2}{6}{19/19}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {19}{19}}
-\headcommand {\beamer@sectionpages {19}{19}}
-\headcommand {\beamer@documentpages {19}}
-\headcommand {\gdef \inserttotalframenumber {8}}
+\headcommand {\slideentry {2}{2}{7}{20/20}{Fermi Dirac distribution}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {2}{2}{8}{21/21}{Fermi Dirac distribution}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {2}{2}{9}{22/22}{Fermi Dirac distribution}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@sectionpages {8}{22}}
+\headcommand {\beamer@subsectionpages {14}{22}}
+\headcommand {\sectionentry {3}{Odd-Even effect}{23}{Odd-Even effect}{0}}
+\headcommand {\slideentry {3}{0}{1}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\beamer@partpages {1}{23}}
+\headcommand {\beamer@subsectionpages {23}{23}}
+\headcommand {\beamer@sectionpages {23}{23}}
+\headcommand {\beamer@documentpages {23}}
+\headcommand {\gdef \inserttotalframenumber {13}}
