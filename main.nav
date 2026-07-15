@@ -84,18 +84,33 @@
 \headcommand {\beamer@framepages {35}{35}}
 \headcommand {\slideentry {2}{2}{3}{36/36}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {36}{36}}
-\headcommand {\beamer@sectionpages {14}{36}}
-\headcommand {\beamer@subsectionpages {34}{36}}
-\headcommand {\sectionentry {3}{Odd-Even effect}{37}{Odd-Even effect}{0}}
-\headcommand {\slideentry {3}{0}{1}{37/37}{}{0}}
+\headcommand {\slideentry {2}{2}{4}{37/37}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\beamer@sectionpages {37}{37}}
-\headcommand {\beamer@subsectionpages {37}{37}}
-\headcommand {\sectionentry {4}{Further works}{38}{Further works}{0}}
-\headcommand {\slideentry {4}{0}{1}{38/38}{}{0}}
+\headcommand {\slideentry {2}{2}{5}{38/38}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {38}{38}}
-\headcommand {\beamer@partpages {1}{38}}
-\headcommand {\beamer@subsectionpages {38}{38}}
-\headcommand {\beamer@sectionpages {38}{38}}
-\headcommand {\beamer@documentpages {38}}
-\headcommand {\gdef \inserttotalframenumber {26}}
+\headcommand {\beamer@sectionpages {14}{38}}
+\headcommand {\beamer@subsectionpages {34}{38}}
+\headcommand {\sectionentry {3}{Odd-Even effect}{39}{Odd-Even effect}{0}}
+\headcommand {\slideentry {3}{0}{1}{39/39}{}{0}}
+\headcommand {\beamer@framepages {39}{39}}
+\headcommand {\beamer@subsectionpages {39}{39}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{40}{Zero modes}}
+\headcommand {\slideentry {3}{1}{1}{40/40}{Zero modes}{0}}
+\headcommand {\beamer@framepages {40}{40}}
+\headcommand {\slideentry {3}{1}{2}{41/41}{Zero modes}{0}}
+\headcommand {\beamer@framepages {41}{41}}
+\headcommand {\beamer@subsectionpages {40}{41}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{42}{Kinematic Constraints}}
+\headcommand {\slideentry {3}{2}{1}{42/42}{Kinematic Constraints}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\slideentry {3}{2}{2}{43/43}{Kinematic Constraints}{0}}
+\headcommand {\beamer@framepages {43}{43}}
+\headcommand {\slideentry {3}{2}{3}{44/44}{Kinematic Constraints}{0}}
+\headcommand {\beamer@framepages {44}{44}}
+\headcommand {\slideentry {3}{2}{4}{45/45}{Kinematic Constraints}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\beamer@partpages {1}{45}}
+\headcommand {\beamer@subsectionpages {42}{45}}
+\headcommand {\beamer@sectionpages {39}{45}}
+\headcommand {\beamer@documentpages {45}}
+\headcommand {\gdef \inserttotalframenumber {32}}

@@ -298,6 +298,7 @@
 \setbeamerfont{alerted text}{series=\ifmmode\else\sffamily\bfseries\fi}
 \setbeamerfont{caption}{series=\scshape}
 \setbeamerfont{caption name}{series=\sffamily\bfseries}
+\setbeamerfont{description item}{series=\bfseries}
 
 \defbeamertemplate*{title page}{Compact}{%
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
@@ -306,7 +307,7 @@
   \vspace{0.4cm}%
 }
 \defbeamertemplate*{frametitle}{Compact}{%
-  \vspace{0.8cm}%
+  \vspace{0.3cm}%
   \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}%
   \insertframetitle%
 }
@@ -385,7 +386,6 @@
     \centering
     \includegraphics[scale=0.75]{2D_k-space.pdf}
     \caption{Representative waves of \(k\)-space}
-    \label{}
   \end{figure}
 
   \begin{itemize}
@@ -417,7 +417,6 @@
     \centering
     \includegraphics[scale=0.75]{fermi-dirac_distribution.pdf}
     \caption{Fermi-Dirac distribution at different temperatures}
-    \label{}
   \end{figure}
 
   \begin{itemize}
@@ -441,7 +440,6 @@
     \centering
     \includegraphics[scale=0.75]{fermi-surface_perturbations.pdf}
     \caption{Circular harmonical perturbations of the Fermi surface}
-    \label{}
   \end{figure}
 
   The Fermi surface may be perturbed by external fields. Since a perturbation has to be smooth, we can expand the perturbation in terms of circular harmonics \(\e^{\im m \theta}\) in 2D.
@@ -602,7 +600,7 @@
   \begin{blk}{}
     \vspace{-\abovedisplayskip}
     \begin{multline}
-      \hat{\mathcal{J}}[f] = -\frac{1}{(2\cpi^6)} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'} \\
+      \hat{\mathcal{J}}[f] = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'} \\
       \times W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) F_{121'2'} [\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
     \end{multline}
   \end{blk}
@@ -742,7 +740,7 @@
 \end{frame}
 
 \begin{frame}
-  Recall that 
+  Recall that
   \begin{itemize}
     \item \(f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p})\)
     \item \(\fdif{f}(t, \vv{p}) = f_0(1 - f_0)\psi(t, \vv{p})\)
@@ -788,24 +786,72 @@
 \subsection{Kinematic Constraints}
 
 \begin{frame}
-  As the perturbations are near the fermi surface, we have $\epsilon(\vv{p}_1) \approx \epsilon(\vv{p}_2) \approx \epsilon(\vv{p}_1') \approx \epsilon(\vv{p}_2') \approx \epsilon_F$.
-  Thus, conservation of energy implies conservation of momentum: \(\vv{p}_1 + \vv{p}_2 = \vv{p}_1' + \vv{p}_2'\).
-  There are only three types of solutions that satisfy this constraint:
-  \begin{itemize}
-    \item Head-on collisions: \(\vv{p}_1 = -\vv{p}_2, \vv{p}_1' = -\vv{p}_2'\)
-    \item Forward exchange: \(\vv{p}_1' = \vv{p}_2, \vv{p}_2' = \vv{p}_1\)
-    \item No collision: \(\vv{p}_1' = \vv{p}_1, \vv{p}_2' = \vv{p}_2\)
-  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      Near the Fermi surface,
+      \begin{equation}
+        \epsilon(\vv{p}_1) \approx \epsilon(\vv{p}_2) \approx \epsilon(\vv{p}_1') \approx \epsilon(\vv{p}_2') \approx \epsilon_F.
+      \end{equation}
+      Thus, \alert{conservation of energy} implies \alert{conservation of momentum magnitude}:
+      \begin{equation}
+        p_1 + p_2 = p_1' + p_2'.
+      \end{equation}
+      Three types of collisions that satisfy this constraint:
+      \begin{itemize}
+        \item Head-on collisions: \(\vv{p}_1 = -\vv{p}_2, \vv{p}_1' = -\vv{p}_2'\)
+        \item Forward exchange: \(\vv{p}_1' = \vv{p}_2, \vv{p}_2' = \vv{p}_1\)
+        \item No collision: \(\vv{p}_1' = \vv{p}_1, \vv{p}_2' = \vv{p}_2\)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[]
+        \centering
+        \includegraphics{collision_types.pdf}
+        \caption{Relevant collision types}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
-  Forward exchange and no collisions has \(\{\vv{p}_1, \vv{p}_2\} = \{\vv{p}_1', \vv{p}_2'\}\). Thus, \(\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') = 0\) (recall that this is the term in the collision integral). These two types of collisions do not contribute to the collision integral. Only head-on collisions contribute to the collision integral. 
+  \begin{description}
+    \item [\textbf{No collisions:}] Has no contribution to the collision integral.
+    \item [\textbf{Forward exchange \& No collisions:}]
+          \begin{itemize}
+            \item \(\vv{p}_1 = \vv{p}_1'\), \(\vv{p}_2 = \vv{p}_2'\).
+            \item \(\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') = 0\)\footnote{Recall that this is a multiplier in the collision integral}
+            \item \(\therefore\) These collisions has no contribution to the collision integral.
+          \end{itemize}
+  \end{description}
+
+  Only \alert{head-on collision} contribute to the collision integral.
 \end{frame}
 
-\begin{frame}
-  For head-on collisions, we have \(\theta_2 = \theta_1 + \pi\) and \(\theta_2' = \theta_1' + \pi\). Substituting a test mode $m$, and recalling $e^{\im m (\theta+\pi)} = (-1)^m e^{\im m \theta}$, Thus, \(\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') = (1+(-1)^m)e^{\im m \theta_1} - (1+(-1)^m)e^{\im m \theta_{1'}}\).
-
-  This implies that for odd \(m\), the term vanishes, and thus the collision integral vanishes. For even \(m\), the term does not vanish.
+\begin{frame}{Head on collision}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics{head-on_collision.pdf}
+        \caption{Head-on collision angle}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{equation}
+        \theta_2 = \theta_1 + \cpi, \mathand \theta_2' = \theta_1' + \cpi.
+      \end{equation}
+      Substituting test mode \(m\), and recalling \(\e^{\im m (\theta + \cpi)} = (-1)^m \e^{\im m \theta}\), then
+      \begin{multline}
+        \psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') \\
+        = (1 + (-1)^m)\e^{\im m \theta_1} - (1 + (-1)^m)\e^{\im m \theta_{1'}}.
+      \end{multline}
+      \vspace{-1.5em}
+      \begin{description}
+        \item [\(m\) is odd:] the term vanishes; thus the collision integral vanishes.
+        \item [\(m\) is even:] the term does not vanish.
+      \end{description}
+    \end{column}
+  \end{columns}
 \end{frame}
 \end{document}
 

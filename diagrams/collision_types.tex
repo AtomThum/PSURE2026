@@ -1,0 +1,63 @@
+% !TEX program = lualatex
+\documentclass[tikz, crop, border = {2pt 2pt 2pt 2pt}]{standalone}
+
+\usepackage[no-math]{fontspec}
+\setmainfont[
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{ZillaSlab}
+\defaultfontfeatures{Mapping = tex-text, Ligatures = {TeX, Common}, Scale = MatchLowercase}
+
+\usepackage{mathtools}
+\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
+
+\NewDocumentCommand{\vv}{m}{\symbfup{#1}}
+
+\usepackage{pgfplots}
+\usetikzlibrary{calc, angles, quotes, patterns, decorations.pathreplacing, decorations.pathmorphing, calligraphy, arrows.meta}
+
+\definecolor{oldwhite}{HTML}{EFEFEF}
+\definecolor{ink}{HTML}{16161D}
+\definecolor{blueink}{HTML}{2D4F67}
+\definecolor{grayink}{HTML}{727169}
+\definecolor{violet}{HTML}{B194D1}
+\definecolor{green}{HTML}{BCE3C0}
+\definecolor{magenta}{HTML}{E8B0E4}
+\definecolor{softmagenta}{HTML}{FCC6EF}
+\definecolor{softblue}{HTML}{C5CFDD}
+
+\begin{document}
+\begin{tikzpicture}
+  \newlength{\circleradius}
+  \setlength{\circleradius}{1.25cm}
+
+  \begin{scope}
+    \node[
+      draw, circle, blueink, inner sep = 0cm, minimum size = 2*\circleradius
+    ] (circle1) at (0, 0) {};
+    \node[below] at (circle1.south) {Head-on process};
+    \draw[thick, -stealth, violet] (0, 0) -- (30:\circleradius) node[right, ink]{\(\vv{p}_i\)};
+    \draw[thick, -stealth, violet] (0, 0) -- (150:\circleradius) node[left, ink]{\(\vv{p}_{i'}\)};
+    \draw[thick, -stealth, green] (0, 0) -- (-150:\circleradius) node[left, ink]{\(\vv{p}_j\)};
+    \draw[thick, -stealth, green] (0, 0) -- (-30:\circleradius) node[right, ink]{\(\vv{p}_{j'}\)};
+    \node[circle, fill=blueink, inner sep = 0cm, minimum size = 2pt] at (circle1) {};
+  \end{scope}
+
+  \begin{scope}[shift = {(0, -3.2)}]
+    \node[
+      draw, circle, blueink, inner sep = 0cm, minimum size = 2*\circleradius
+    ] (circle2) at (0, 0) {};
+    \node[below] at (circle2.south) {Exchange process};
+    \draw[thick, -stealth, violet] (0, 0) -- (30:\circleradius) node[below right=1pt, ink]{\(\vv{p}_{j'}\)};
+    \draw[thick, -stealth, violet] (0, 0) -- (150:\circleradius) node[below left=1pt, ink]{\(\vv{p}_{j}\)};
+    \draw[thick, -stealth, green, shift = {(0, 0.1)}] (0, 0) -- (30:\circleradius) node[above right=-4pt, ink]{\(\vv{p}_{i}\)};
+    \draw[thick, -stealth, green, shift = {(0, 0.1)}] (0, 0) -- (150:\circleradius) node[above left=-4pt, ink]{\(\vv{p}_{i'}\)};
+    \node[circle, fill=blueink, inner sep = 0cm, minimum size = 2pt] at (circle2) {};
+  \end{scope}
+\end{tikzpicture}
+\end{document}
