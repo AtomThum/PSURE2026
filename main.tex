@@ -295,7 +295,7 @@
 \setbeamerfont{author}{series=\itshape\sffamily, size=\large}
 \setbeamerfont{normal font}{series=\rmfamily}
 \setbeamerfont{section in toc}{series=\sffamily, size=\large}
-\setbeamerfont{alerted text}{series=\sffamily\bfseries}
+\setbeamerfont{alerted text}{series=\ifmmode\else\sffamily\bfseries\fi}
 \setbeamerfont{caption}{series=\scshape}
 \setbeamerfont{caption name}{series=\sffamily\bfseries}
 
@@ -531,9 +531,9 @@
 
 \begin{frame}{Linearization}
   Taylor expansion of \(\mathcal{B}\) at \(f_0\):
-  \begin{align}
-    \mathcal{B} & = \mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}} \\
-  \end{align}
+  \begin{equation}
+    \mathcal{B} = \mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}}
+  \end{equation}
 
   The linear part is:
   \begin{align}
@@ -557,7 +557,7 @@
     \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1}
      & = \ab\Big[f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1'}f_{0, 2'}(1 - f_{0, 2})] \times f_{0, 1}(1 - f_{0, 1})\psi_1 \\
      & = \ab\Big[f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'})(1 - f_{0, 1})
-    + f_{0, 1}f_{0, 1'}f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2})]\psi_1                                                             \\
+    + f_{0, 1}f_{0, 1'}f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2})]\psi_1 \nonumber                                                   \\
      & = \ab\Big(f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}))\ab\Big[(1 - f_{0, 1}) + f_{0, 1}]\psi_1                        \\
      & = \ab\Big(f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}))\psi_1
   \end{align}
@@ -592,11 +592,11 @@
     W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2)\mathcal{B}                 \\
      & = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'}
     W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2)
-    (\mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}})
+    \alert{(\mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}})}
   \end{align}
 
   \begin{itemize}
-    \item \(\hat{\mathcal{J}}[f_0] = 0\): Collision integral vanishes at equilibrium
+    \item Collision integral vanishes at equilibrium: \(\hat{\mathcal{J}}[f_0] = 0\)
     \item Throw out \(\mathcal{B}_{\textrm{non-lin}}\)
   \end{itemize}
 
@@ -609,7 +609,117 @@
   \end{blk}
 \end{frame}
 
+\begin{frame}{Expression of \(F_{121'2'}\)}
+  \begin{itemize}
+    \item For convenience, write \(F_{121'2'}\) as \alert{total momentum} (\(\vv{P}\)) and \alert{center of momentum} (\(\vv{Q}\))
+  \end{itemize}
+
+  \begin{blk}{}
+    \begin{equation}
+      \vv{P} = \vv{p}_1 + \vv{p}_2, \quad \vv{Q} = \frac{1}{2}\vv{p}_1 - \frac{1}{2}\vv{p}_2.
+    \end{equation}
+  \end{blk}
+\end{frame}
+
+\begin{frame}
+  \begin{align}
+    \vv{p}_1            & = \frac{1}{2}\vv{P} - \vv{Q},    \\
+    \vv{p}_2            & = \frac{1}{2}\vv{P} + \vv{Q},    \\
+    \vv{P} \vdot \vv{Q} & = \frac{1}{2}\ab(p_1^2 - p_2^2).
+  \end{align}
+
+  \begin{align}
+    \epsilon(\vv{p}_1) & = \frac{\hbar^2 p_1^2}{2 m^*} = \frac{\hbar^2}{2 m^*}\ab(\frac{1}{4}P^2 + Q^2 \alert{- \vv{P} \vdot \vv{Q}}), \\
+    \epsilon(\vv{p}_2) & = \frac{\hbar^2 p_2^2}{2 m^*} = \frac{\hbar^2}{2 m^*}\ab(\frac{1}{4}P^2 + Q^2 \alert{+ \vv{P} \vdot \vv{Q}}).
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  Define\footnote{\(X\) can possibly be interpretted as: \emph{average deviation from background chemical potential}}
+  \begin{equation}
+    \xi = \frac{\hbar^2 \beta}{2 m^*}, \mathand X = \beta\ab(\frac{\hbar^2 P^2}{8 m^*} + \frac{\hbar^2 Q^2}{2 m^*} - \mu)
+  \end{equation}
+  Then,
+  \begin{align}
+    \beta\ab\big(\epsilon(\vv{p}_1) - \mu)
+                                           & = \beta\ab(\frac{\hbar^2}{8 m^*} P^2 + \frac{\hbar^2}{2 m^*} Q^2 - \mu) - \frac{\hbar^2\beta}{2 m^*} \vv{P} \vdot \vv{Q} \\
+                                           & = X - \xi \vv{P} \vdot \vv{Q}.                                                                                           \\
+    \shortintertext{Similarly,}
+    \beta\ab\big(\epsilon(\vv{p}_2) - \mu) & = X + \xi \vv{P} \vdot \vv{Q}.
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  Hence,
+  \begin{gather}
+    f_0(\vv{p}_1) = \frac{1}{\exp[\beta\ab\big(\epsilon(\vv{p}_1) - \mu)]} = \frac{1}{\exp[X \alert{-} \xi \vv{P} \vdot \vv{Q}]}. \\
+    f_0(\vv{p}_2) = \frac{1}{\exp[\beta\ab\big(\epsilon(\vv{p}_1) - \mu)]} = \frac{1}{\exp[X \alert{+} \xi \vv{P} \vdot \vv{Q}]}
+  \end{gather}
+\end{frame}
+
+\begin{frame}
+  Recall that \(F_{121'2'} = f_0(\vv{p}_1)f_0(\vv{p}_2)(1 - f_0(\vv{p}_1'))(1 - f_0(\vv{p}_2'))\)
+  \begin{align}
+    f_0(\vv{p}_1)f_0(\vv{p}_2)
+     & = \frac{1}{\exp[X - \xi \vv{P} \vdot \vv{Q}]\exp[X + \xi \vv{P} \vdot \vv{Q}]}                        \\
+     & = \frac{1}{\exp[2X] + \exp[X]\ab(\exp[\xi \vv{P} \vdot \vv{Q}] + \exp[-\xi \vv{P} \vdot \vv{Q}]) + 1} \\
+     & = \frac{1}{\exp[2X] + 2\exp[X]\cosh(\xi \vv{P} \vdot \vv{Q}) + 1}                                     \\
+     & = \frac{1}{2\ab\big(\cosh X + \cosh(\xi \vv{P} \vdot \vv{Q}))}
+  \end{align}
+  By symmetry,
+  \begin{align}
+    (1 - f_0(\vv{p}_1'))(1 - f_0(\vv{p}_2')) = \frac{1}{2\ab\big(\cosh X + \cosh(\xi \vv{P'} \vdot \vv{Q'}))}
+  \end{align}
+
+  \begin{blk}{}
+    \begin{equation}
+      F_{121'2'} = \frac{1}{4[\cosh X + \cosh(\xi \vv{P} \vdot \vv{Q})][\cosh X + \cosh(\xi \vv{P} \vdot \vv{Q})]}
+    \end{equation}
+  \end{blk}
+\end{frame}
+
+\begin{frame}{Expression of \(W\) - the collision rate}
+  \begin{blk}{}
+    \begin{equation}
+      W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) = \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \delta(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2') \delta\ab\big(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2'))
+    \end{equation}
+  \end{blk}
+\end{frame}
+
+\subsection{Eigenvalue problem}
+
+\begin{frame}{Reducing the Boltzmann equation}
+  \begin{equation}
+    \ab(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar \vv{p}}) f(t, \vv{r}, \vv{p}) = \hat{\mathcal{J}}[f(t, \vv{r}, \vv{p})]
+  \end{equation}
+
+  \begin{itemize}
+    \item No external force: \(\vv{F} = \vv{0}\),
+    \item No thermal gradient: \(\pdv{f}{\vv{r}} = 0\).
+  \end{itemize}
+  The equation reduces to
+  \begin{equation}
+    \pdv{f}{t} = \hat{\mathcal{J}}[f]
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \begin{blk}{Proposed ansatz}
+    \(\psi(t, \vv{p}) = \e^{-\gamma t} \phi(\vv{p})\) (Chemical potential decays with time)
+  \end{blk}
+\end{frame}
+
 \section{Odd-Even effect}
 \subsubsection{Eigenvalue problem}
+
+\appendix
+
+\begin{frame}{Evaluation of \(W(\vv{p}_1, \vv{p}_2 | \vv{p}_1', \vv{p}_2')\)}
+  \begin{blk}{}
+    \begin{equation}
+      W(\vv{p}_1, \vv{p}_2 | \vv{p}_1, \vv{p}_2) = \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \delta(\vv{p})
+    \end{equation}
+  \end{blk}
+\end{frame}
 
 \end{document}
