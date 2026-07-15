@@ -399,7 +399,7 @@
 \begin{frame}
   \begin{blk}{}
     \begin{equation}
-      f_0(\vv{p}) = \frac{1}{\e^{\beta(\epsilon(\vv{p}) - \mu)} + 1}
+      f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}
     \end{equation}
   \end{blk}
 
@@ -444,7 +444,7 @@
     \label{}
   \end{figure}
 
-  The Fermi surface may be perturbed by external fields. Since a perturbation has to be smooth, we can expand the perturbation in terms of circular harmonics \(e^{\im m \theta}\) in 2D.
+  The Fermi surface may be perturbed by external fields. Since a perturbation has to be smooth, we can expand the perturbation in terms of circular harmonics \(\e^{\im m \theta}\) in 2D.
 \end{frame}
 
 \section{Recovering equations}
@@ -490,24 +490,6 @@
       \(\fdif{\mu} = T\psi\) (temperature dependent change in chemical potential)
     \end{blk}
   }
-\end{frame}
-
-\subsection{Fermi Dirac distribution}
-
-\begin{frame}
-  \begin{blk}{}
-    \begin{equation}
-      f_0(\vv{p}) = \frac{1}{\e^{\beta(\epsilon(\vv{p}) - \mu)} + 1}
-    \end{equation}
-  \end{blk}
-
-  \begin{itemize}
-    \item \(f_0(\vv{p})\) is the Fermi-Dirac distribution
-    \item \(\beta = 1/k_B T\) is the inverse temperature
-    \item \(\mu\) is the chemical potential
-  \end{itemize}
-
-  The Fermi-Dirac distribution is in equilibrium; the collision integral is zero.
 \end{frame}
 
 \begin{frame}
