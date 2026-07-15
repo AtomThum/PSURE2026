@@ -699,9 +699,9 @@
 \end{frame}
 
 \begin{frame}
-  Perform a change of coordinates \(\vv{P} = \vv{p}_1 + \vv{p}_2\), \(\vv{Q} = \frac{1}{2}(\vv{p}_1 - \vv{p}_2)\).
+  Change of coordinates: \(\vv{P} = \vv{p}_1 + \vv{p}_2\), \(\vv{Q} = \frac{1}{2}(\vv{p}_1 - \vv{p}_2)\).
 
-  \begin{align}
+  \begin{align*}
     \hat{\mathcal{J}}[f(t, \vv{p}_1)]
      & = \begin{multlined}[t]
            -\frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2,\vv{P}',\vv{Q}'}
@@ -709,11 +709,17 @@
            \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
          \end{multlined} \nonumber \\
      & = \begin{multlined}[t]
-           - \frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{Q'}}
+           - \frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2,\vv{Q'}}
            \delta\ab(\frac{\hbar^2}{4m^*}(4Q^2 - 4Q'^2)) \\
            \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
-         \end{multlined}
-  \end{align}
+         \end{multlined} \\
+     & = \begin{multlined}[t]
+           - \frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2} Q' \odif{Q',\Omega} \frac{m^*}{\hbar^2}\delta(Q^2 - Q'^2) \\
+           \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined} \\
+     & = -\frac{m^*}{4\cpi\hbar^3} \dotsint \frac{\odif{\vv{p}_2}}{(2\cpi)^2} \int \odif{\Omega}
+    |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+  \end{align*}
 \end{frame}
 
 \subsection{Eigenvalue problem}
@@ -742,5 +748,7 @@
 \end{frame}
 
 \section{Odd-Even effect}
+
+\section{Further works}
 
 \end{document}
