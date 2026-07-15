@@ -109,8 +109,13 @@
 \headcommand {\beamer@framepages {44}{44}}
 \headcommand {\slideentry {3}{2}{4}{45/45}{Kinematic Constraints}{0}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\beamer@partpages {1}{45}}
-\headcommand {\beamer@subsectionpages {42}{45}}
 \headcommand {\beamer@sectionpages {39}{45}}
-\headcommand {\beamer@documentpages {45}}
+\headcommand {\beamer@subsectionpages {42}{45}}
+\headcommand {\sectionentry {4}{Further works}{46}{Further works}{0}}
+\headcommand {\slideentry {4}{0}{1}{46/46}{}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\beamer@partpages {1}{46}}
+\headcommand {\beamer@subsectionpages {46}{46}}
+\headcommand {\beamer@sectionpages {46}{46}}
+\headcommand {\beamer@documentpages {46}}
 \headcommand {\gdef \inserttotalframenumber {32}}

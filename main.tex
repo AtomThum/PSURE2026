@@ -224,7 +224,7 @@
 \setbeamercolor{background canvas}{bg=oldwhite}
 \setbeamercolor{normal text}{fg=ink}
 \setbeamercolor{item}{fg=blueink}
-\setbeamercolor{subitem}{fg=green}
+\setbeamercolor{subitem}{fg=violet}
 
 \setbeamercolor{caption name}{fg=blueink}
 \setbeamercolor{caption}{fg=ink}
@@ -250,7 +250,7 @@
   \makebox[0pt][l]{%
     \tikz[remember picture]{%
       \node[rectangle, fill=blueink!50, inner sep=0, minimum size=0.5em] (subsecnode-\inserttocsubsectionnumber){};
-      \node[right=1.5em] at (subsecnode-\inserttocsubsectionnumber.center) {\small\color{blueink}\inserttocsubsection};
+      \node[right=1.5em] at (subsecnode-\inserttocsubsectionnumber.center) {\small\vphantom{Ay}\color{blueink}\inserttocsubsection};
     }%
   }%
   \par
@@ -388,6 +388,7 @@
     \caption{Representative waves of \(k\)-space}
   \end{figure}
 
+  \vspace{-1.5em}
   \begin{itemize}
     \item Distance from origin \(\propto\) Wave frequency
     \item Direction on \(k\)-space \(\implies\) Wave direction
@@ -418,6 +419,7 @@
     \includegraphics[scale=0.75]{fermi-dirac_distribution.pdf}
     \caption{Fermi-Dirac distribution at different temperatures}
   \end{figure}
+  \vspace{-1.5em}
 
   \begin{itemize}
     \item At \(T = 0\), all states below the Fermi energy are filled, all states above are empty.
@@ -442,7 +444,7 @@
     \caption{Circular harmonical perturbations of the Fermi surface}
   \end{figure}
 
-  The Fermi surface may be perturbed by external fields. Since a perturbation has to be smooth, we can expand the perturbation in terms of circular harmonics \(\e^{\im m \theta}\) in 2D.
+  Perturb the Fermi surface by external fields. For smooth perturbations, the perturbation can be expanded in harmonics basis: \(\e^{\im m \theta}\).
 \end{frame}
 
 \subsection{Boltzmann equation}
@@ -454,12 +456,12 @@
     \end{equation}
   \end{blk}
 
-  \begin{itemize}
-    \item \(\pdv{f}{t}\) is the time evolution of the distribution function
-    \item \(\vv{v} \vdot \pdv{f}{\vv{r}}\) is the advection term (by, for example, thermal gradients)
-    \item \(\vv{F} \vdot \pdv{f}{\hbar\vv{p}}\) is the external force term
-    \item \(\hat{\mathcal{J}}[f]\) is the collision integral, which describes the effect of collisions on the distribution function
-  \end{itemize}
+  \begin{description}[\(\vv{v} \vdot \pdv{f}{\vv{r}} + \vv{F} \vdot \pdv{f}{\hbar\vv{p}}\):]
+    \item[\(\pdv{f}{t}\):] Local time evolution
+    \item[\(\vv{v} \vdot \pdv{f}{\vv{r}}\):] Spatial streaming\footnote{aka the advection term}
+    \item[\(\vv{F} \vdot \pdv{f}{\hbar\vv{p}}\):] Force/acceleration term due to external fields
+    \item[\(\hat{\mathcal{J}}\lbrack f \rbrack\):] Collision integral - effect of collisions on distribution function
+  \end{description}
 \end{frame}
 
 \section{Recovering equations}
@@ -744,12 +746,14 @@
   \begin{itemize}
     \item \(f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p})\)
     \item \(\fdif{f}(t, \vv{p}) = f_0(1 - f_0)\psi(t, \vv{p})\)
-    \item \(\pdv{f_0}{t} = 0, \hat{\mathcal{J}}[f_0] = 0\)
+    \item \(\pdv{f_0}{t} = 0, \quad \hat{\mathcal{J}}[f_0] = 0\)
   \end{itemize}
-  Thus, the equation further reduces to
-  \begin{equation}
-    \pdv{\psi(t, \vv{p})}{t} = \hat{\mathcal{J}}[\psi(t, \vv{p})]
-  \end{equation}
+  Substituting,
+  \begin{align}
+    \pdv*{(f_0(\vv{p}) + \fdif{f}(t, \vv{p}))}{t} & = \hat{\mathcal{J}}[f_0(\vv{p}) + \fdif{f}(t, \vv{p})] \\
+    \pdv*{f_0(1 - f_0)\psi(t, \vv{p})}{t}         & = \hat{\mathcal{J}}[f_0(1 - f_0)\psi(t, \vv{p})]       \\
+    \pdv{\psi(t, \vv{p})}{t}                      & = \hat{\mathcal{J}}[\psi(t, \vv{p})]
+  \end{align}
 \end{frame}
 
 \begin{frame}
@@ -757,13 +761,21 @@
     \(\psi(t, \vv{p}) = \e^{-\gamma t} \phi(\vv{p})\) (Chemical potential decays with time)
   \end{blk}
   So, the equation reduces to an eigenvalue problem:
-  \begin{equation}
-    \hat{\mathcal{J}}[\phi(\vv{p})] = -\gamma \phi(\vv{p})
-  \end{equation}
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{equation}
+      \hat{\mathcal{J}}[\phi(\vv{p})] = -\gamma \phi(\vv{p})
+    \end{equation}
+  \end{blk}
 \end{frame}
 
 \begin{frame}
-  Under the constraints of continuity and smoothness, the eigenfunctions are sums of circular harmonics \(\e^{\im m \theta}\) in 2D. Picking a test mode $m$, we obtain
+  If \emph{perturbation is smooth}, it can be \emph{expanded in the circular harmonics basis}:
+  \begin{equation}
+    \e^{\im m \theta}, \quad m \in \mathbb{Z}
+  \end{equation}
+
+  For a test mode \(m\),
   \begin{equation}
     \hat{\mathcal{J}}[\e^{\im m \theta}] = -\gamma_m \e^{\im m \theta}
   \end{equation}
@@ -775,12 +787,29 @@
 
 \subsection{Zero modes}
 
-\begin{frame}
-  We will first consider the zero modes, which are when \(\gamma_m = 0\), associated with quantities that are conserved.
-  \begin{itemize}
-    \item \(\gamma_0 = 0\) has two eigenfunctions: \(\phi_0 = 1\) and \(\phi_0 = \epsilon(\vv{p})\), corresponding to the conservation of particle number and energy, respectively.
-    \item \(\gamma_1 = 0\) has two eigenfunctions: \(\phi_1 = \e^{\im \theta}\) and \(\phi_1 = \e^{-\im \theta}\), corresponding to the conservation of momentum in the \(x\) and \(y\) directions, respectively.
-  \end{itemize}
+\begin{frame}{Trivial solution}
+  \(\gamma_m = 0\) is associated with \alert{conserved quantities}.
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item \(\gamma_0 = 0\)
+              \begin{enumerate}
+                \item \(\phi_0 = 1\): particle number
+                \item \(\phi_0 = \epsilon(\vv{p})\): energy
+              \end{enumerate}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \begin{itemize}
+        \item \(\gamma_1 = 0\)
+              \begin{enumerate}
+                \item \(\phi_1 = \e^{\im \theta}\): \(x\)-momentum
+                \item \(\phi_1 = \e^{-\im \theta}\): \(y\)-momentum
+              \end{enumerate}
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \subsection{Kinematic Constraints}
@@ -853,6 +882,7 @@
     \end{column}
   \end{columns}
 \end{frame}
-\end{document}
 
 \section{Further works}
+
+\end{document}
