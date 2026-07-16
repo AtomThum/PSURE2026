@@ -230,7 +230,7 @@
 
 \setbeamercolor{alerted text}{fg=violet}
 
-\setbeamercolor{bibliography entry author}{fg=blueink}
+% \setbeamercolor{bibliography entry author}{fg=blueink}
 
 \setbeamertemplate{items}[circle]
 \setbeamertemplate{navigation symbols}{}
@@ -274,7 +274,12 @@
       \hfill
       \raisebox{-0.6em}{
         \begin{tikzpicture}
-          \pgfmathsetmacro{\progress}{(\insertframenumber - 1)/(\inserttotalframenumber - 1)}
+          \pgfmathtruncatemacro{\fullprogress}{\inserttotalframenumber - 1}
+          \ifnum\fullprogress=0
+            \pgfmathsetmacro{\progress}{1}
+          \else
+            \pgfmathsetmacro{\progress}{(\insertframenumber - 1)/(\inserttotalframenumber - 1)}
+          \fi
           \node[circle, inner sep=0cm, minimum size=2em, fill=ink, draw=ink!40, line width=1pt] 
             (sliderpos) at ({\progress*\pagesliderlength}, 0) {\color{oldwhite}\footnotesize\insertframenumber};
           \begin{scope}[on background layer]
@@ -348,9 +353,9 @@
 \newlength{\pagesliderlength}
 \setlength{\pagesliderlength}{4cm}
 
-% Bibliography
-\usepackage[style=phys, backend=biber]{biblatex}
-\addbibresource{references.bib}
+% % Bibliography
+% \usepackage[style=phys, backend=biber]{biblatex}
+% \addbibresource{references.bib}
 
 \title{Relaxation and Odd-Even Effect in Fermi Liquids}
 \author{Kittiphat Pongarunotai, Puripat Thumbanthu}
@@ -381,11 +386,22 @@
 \input{chapters/3-odd-even_effect}
 
 \input{chapters/4-further_works}
-%
-% \begin{frame}[allowframebreaks, plain, noframenumbering]{Bibliography}
-%   \nocite{*}
+
+% \setbeamertemplate{bibliography item}{\insertbiblabel}
+% \begin{frame}{Bibliography}
 %   \printbibliography[heading=none]
-%   \addtocounter{section}{-1}
 % \end{frame}
+
+{
+  \setbeamercolor{background canvas}{bg=ink}
+  \begin{frame}[t, noframenumbering]
+    \vfill
+    \begin{center}
+      \color{oldwhite}
+      \usebeamerfont{title}Thank you!\par
+    \end{center}
+    \vfill
+  \end{frame}
+}
 
 \end{document}

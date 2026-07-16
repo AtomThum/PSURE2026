@@ -2,16 +2,6 @@
 
 \subsection{Linearization of the collision integral}
 
-\begin{frame}{Ideas}
-  \begin{itemize}
-    \item Consider \alert{only perturbation near Fermi's equilibrium}
-          \begin{equation}
-            f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p}) \nonumber
-          \end{equation}
-    \item Transform the integrals into a linear operator
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{Preparation}
   \begin{blk}{Fermi equilibrium:}
     \(f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}\)
@@ -28,19 +18,15 @@
 \end{frame}
 
 \begin{frame}
-  \visible<1->{
-    \begin{align}
-      f(t, \vv{p})                   & = f_0(\vv{p}) + \fdif{f}(t, \vv{p})            &  & \textrm{Perturbation}                    \\
-                                     & \approx f_0(\vv{p}) + \pdv{f_0}{\mu}\fdif{\mu} &  & \textrm{Taylor series. Fix \(\epsilon\)} \\
-      \therefore \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}\fdif{\mu}
-    \end{align}
-  }
+  \begin{align}
+    f(t, \vv{p})                   & = f_0(\vv{p}) + \fdif{f}(t, \vv{p})            &  & \textrm{Perturbation}                    \\
+                                   & \approx f_0(\vv{p}) + \pdv{f_0}{\mu}\fdif{\mu} &  & \textrm{Taylor series. Fix \(\epsilon\)} \\
+    \therefore \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}\fdif{\mu}
+  \end{align}
 
-  \visible<2->{
-    \begin{blk}{Perturbation of interest:}
-      \(\fdif{\mu} = T\psi\) (temperature dependent change in chemical potential)
-    \end{blk}
-  }
+  \begin{blk}{Perturbation of interest:}
+    \(\fdif{\mu} = T\psi\) (temperature dependent change in chemical potential)
+  \end{blk}
 \end{frame}
 
 \begin{frame}
@@ -49,17 +35,6 @@
                         & = \ab(-\frac{1}{T} f_0(1 - f_0)) \times T\psi \\
                         & = f_0(1 - f_0) \psi
   \end{align}
-\end{frame}
-
-\begin{frame}{Collision integral}
-  \begin{blk}{}
-    \vspace{-\abovedisplayskip}
-    \begin{gather}
-      \hat{\mathcal{J}}[f] = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \mathcal{B}, \\
-      \mathcal{B} = f_1 f_2 (1 - f_{1'})(1 - f_{2'}) - f_{1'} f_{2'} (1 - f_1)(1 - f_2), \\
-      f_i = f(\vv{p}_i), \quad f_{0, i} = f_0(\vv{p}_i).
-    \end{gather}
-  \end{blk}
 \end{frame}
 
 \begin{frame}{Linearization}

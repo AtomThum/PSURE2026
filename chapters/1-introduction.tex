@@ -10,7 +10,7 @@
   \end{blk}
 
   \begin{description}[\(\vv{v} \vdot \pdv{f}{\vv{r}} + \vv{F} \vdot \pdv{f}{\hbar\vv{p}}\):]
-    \item[\(f(t, \vv{x}, \vv{p})\):] Chance of finding a particle at \(\vv{x}\) with momentum \(\vv{p}\) at time \(t\).
+    \item[\(f(t, \vv{x}, \vv{p})\):] One-particle density function
     \item[\(\pdv{f}{t}\):] Local time evolution
     \item[\(\vv{v} \vdot \pdv{f}{\vv{r}}\):] Streaming/advection term
     \item[\(\vv{F} \vdot \pdv{f}{\hbar\vv{p}}\):] Force/acceleration term due to external fields
@@ -80,12 +80,56 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Collision integral}
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{gather}
+      \hat{\mathcal{J}}[f] = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \mathcal{B}, \\
+      \mathcal{B} = f_1 f_2 (1 - f_{1'})(1 - f_{2'}) - f_{1'} f_{2'} (1 - f_1)(1 - f_2), \\
+      f_i = f(\vv{p}_i), \quad f_{0, i} = f_0(\vv{p}_i).
+    \end{gather}
+  \end{blk}
+
+  \begin{description}[\(W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2):\)]
+    \item [\(W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2):\)] Collision rates
+    \item [\(\mathcal{B}:\)] "Product of Fermi factors"\footnote{Non-standard in literatures}
+  \end{description}
+\end{frame}
+
 \begin{frame}
-  \begin{figure}[]
+  \begin{equation}
+    \left(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar\vv{p}}\right) f(t,\vv{x},\vv{p}) = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \mathcal{B}
+  \end{equation}
+
+  \begin{itemize}
+    \item Very hard (might be impossible) to solve analytically
+    \item Non-linear
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ideas of attacking the equation}
+  \begin{itemize}
+    \item Consider only perturbations near equilibrium: \(f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p})\)
+    \item Linearize \(\hat{\mathcal{J}}[f]\)
+    \item Let there be no external force and no thermal gradient
+  \end{itemize}
+
+  We will end up with
+  \begin{equation}
+    \hat{\mathcal{J}}[\phi] = -\gamma\phi
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
     \centering
     \includegraphics[scale=0.75]{fermi-surface_perturbations.pdf}
     \caption{Circular harmonical perturbations of the Fermi surface}
   \end{figure}
 
-  Perturb the Fermi surface by external fields. For smooth perturbations, the perturbation can be expanded in harmonics basis: \(\e^{\im m \theta}\).
+  \begin{enumerate}
+    \item Perturbation is smooth
+    \item Collision integral is \emph{linear}
+  \end{enumerate}
+  The perturbation can be expanded in the harmonics basis: \(\e^{\im m \theta}\).
 \end{frame}

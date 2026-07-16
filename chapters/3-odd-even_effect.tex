@@ -108,17 +108,17 @@
 \begin{frame}{Finding the Even Decay Rate : \alert{Auxiliary Variables}}
   Recall \(X-\xi\vv{P}\vdot\vv{Q} = \beta(\epsilon(\vv{p}_1)-\mu), X+\xi\vv{P}\vdot\vv{Q} = \beta(\epsilon(\vv{p}_2)-\mu)\). Define
   \begin{align}
-             \delta_1 = X-\xi\vv{P}\vdot\vv{Q}, &\mathand \delta_2 = X+\xi\vv{P}\vdot\vv{Q}. \\
-    \implies X=\frac{\delta_1+\delta_2}{2},     &\mathand \xi\vv{P}\vdot\vv{Q} = \frac{\delta_2-\delta_1}{2}
+    \delta_1 = X-\xi\vv{P}\vdot\vv{Q},      & \mathand \delta_2 = X+\xi\vv{P}\vdot\vv{Q}.                 \\
+    \implies X=\frac{\delta_1+\delta_2}{2}, & \mathand \xi\vv{P}\vdot\vv{Q} = \frac{\delta_2-\delta_1}{2}
   \end{align}
-  Assuming \(\epsilon(\vv{p}_1) \approx \mu\), \(\delta_1 \approx 0\), so \(X \approx \xi\vv{P}\vdot\vv{Q} \approx \frac{\delta_2}{2}\). 
+  Assuming \(\epsilon(\vv{p}_1) \approx \mu\), \(\delta_1 \approx 0\), so \(X \approx \xi\vv{P}\vdot\vv{Q} \approx \frac{\delta_2}{2}\).
 \end{frame}
 
 \begin{frame}{Finding the Even Decay Rate : \alert{Auxiliary Variables}}
   Define \(\theta_{12} = \theta_2 - \theta_1\). Then
   \begin{align}
-    & P=2p_F\ab|\cos(\theta_{12}/2)|, \mathand Q=p_F\ab|\sin(\theta_{12}/2)|. \\
-    & \implies \xi\vv{P}\vdot\vv{Q'} = \xi PQ \sin\Omega = \xi p_F^2|\sin(\theta_{12})|\sin\Omega. \\
+     & P=2p_F\ab|\cos(\theta_{12}/2)|, \mathand Q=p_F\ab|\sin(\theta_{12}/2)|.                      \\
+     & \implies \xi\vv{P}\vdot\vv{Q'} = \xi PQ \sin\Omega = \xi p_F^2|\sin(\theta_{12})|\sin\Omega. \\
   \end{align}
   Let \(\Lambda = \epsilon_F \beta = \xi p_F^2\). Finally, \(\xi\vv{P}\vdot\vv{Q'}=\Lambda|\sin(\theta_{12})|\sin\Omega\).
 \end{frame}
@@ -137,12 +137,12 @@
 
 \begin{frame}{Finding the Even Decay Rate : \alert{\(F_{121'2'}\)}}
   \begin{align}
-    F_{121'2'} &= \frac{1}{4[\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q}}][\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q'}}]} \\
-               &= \frac{1}{4[\cosh{(\delta_1+\delta_2)/2}+\cosh{(\delta_2-\delta_1)/2}][\cosh{(\delta_1+\delta_2)/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]} \\
-               &= \frac{1}{4[\cosh{\delta_2/2}+\cosh{\delta_2/2}][\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]} \\
-               &= \frac{1}{8\cosh{\delta_2/2}[\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}.
+    F_{121'2'} & = \frac{1}{4[\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q}}][\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q'}}]}                                                           \\
+               & = \frac{1}{4[\cosh{(\delta_1+\delta_2)/2}+\cosh{(\delta_2-\delta_1)/2}][\cosh{(\delta_1+\delta_2)/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]} \\
+               & = \frac{1}{4[\cosh{\delta_2/2}+\cosh{\delta_2/2}][\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}                                  \\
+               & = \frac{1}{8\cosh{\delta_2/2}[\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}.
   \end{align}
-  where we have used \(\delta_1=0\). 
+  where we have used \(\delta_1=0\).
 \end{frame}
 
 \begin{frame}{Finding the Even Decay Rate : \alert{Omega Integral}}
@@ -152,9 +152,9 @@
   \end{equation}
   For \(\theta_{12}\) not near \(0\) or \(\pi\), approximate \(\sin\Omega \approx u\), extend the integral to \((-\infty, \infty)\), and change integration variables to \(v=\Lambda|\sin(\theta_{12})|u\). Then the integral becomes
   \begin{align}
-    &= \int_{-\infty}^{\infty} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\Omega})} 
-    = \frac{1}{\Lambda|\sin(\theta_{12})|} \int_{-\infty}^{\infty}  \frac{\odif{v}}{\cosh{\delta_2/2}+\cosh{v}} \\
-    &= \frac{2\delta_2}{\Lambda|\sin(\theta_{12})|\sinh{\delta_2/2}}
+     & = \int_{-\infty}^{\infty} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\Omega})}
+    = \frac{1}{\Lambda|\sin(\theta_{12})|} \int_{-\infty}^{\infty}  \frac{\odif{v}}{\cosh{\delta_2/2}+\cosh{v}}    \\
+     & = \frac{2\delta_2}{\Lambda|\sin(\theta_{12})|\sinh{\delta_2/2}}
   \end{align}
   Where we have used the standard integral \(\int_{-\infty}^{\infty} \frac{\odif{x}}{\cosh{a}+\cosh{x}} = \frac{2a}{\sinh{a}}\). (\alert{Lambda is our second \(T\) factor}).
 \end{frame}
@@ -166,25 +166,29 @@
   \end{equation}
   Using the standard integral \(\int_{-\infty}^{\infty} \frac{x}{\sinh{x}} \odif{x} = \frac{\pi^2}{2}\), we have
   \begin{equation}
-    \int_{-\infty}^{\infty} \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}} \odif{\delta_2} = \frac{\pi^2}{4\Lambda|\sin(\theta_{12})|}.
+    \int_{-\infty}^{\infty} \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}} \odif{\delta_2} = \frac{\cpi^2}{4\Lambda|\sin(\theta_{12})|}.
   \end{equation}
 \end{frame}
 
 \begin{frame}{Finding the Even Decay Rate : \alert{\(\theta_{12}\) Integral}}
   Collecting terms that depend on \(\theta_{12}\), we have
   \begin{equation}
-    \int_{0}^{2\pi}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|}.
+    \int_{0}^{2\cpi}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|}.
   \end{equation}
-  The integral is divergent at \(0\) and \(\pi\). However, it is cut off by the \(\Omega\) integral. The cutoff occurs when \(\Lambda|\sin(\theta_{12})|\sim 1 \implies |\theta_{12}|\sim T/T_F\). Elsewhere, the antiderivative equals \(\ln(\tan(\theta_{12}/2))+C\). So, for \(\theta_{12}\) at least \(T/T_F\) from \(0\) or \(\pi\), we have
+  The integral is divergent at \(0\) and \(\cpi\). However, it is cut off by the \(\Omega\) integral. The cutoff occurs when \(\Lambda|\sin(\theta_{12})|\sim 1 \implies |\theta_{12}|\sim T/T_F\). Elsewhere, the antiderivative equals \(\ln(\tan(\theta_{12}/2))+C\).
+\end{frame}
+
+\begin{frame}{}
+  For \(\theta_{12}\) at least \(T/T_F\) from \(0\) or \(\cpi\), we have
   \begin{align}
-    &= \int_{T/T_F}^{\pi-T/T_F}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|}. \\
-    &= \frac{1}{\Lambda}[\ln(\tan((\pi-T/T_F)/2)) - \ln(\tan(T/T_F/2))] \\
-    &= \frac{1}{\Lambda}[-2\ln(\tan(T/T_F/2))] \\
+     & = \int_{T/T_F}^{\cpi-T/T_F}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|}. \\
+     & = \frac{1}{\Lambda}[\ln(\tan((\cpi-T/T_F)/2)) - \ln(\tan(T/T_F/2))]               \\
+     & = \frac{1}{\Lambda}[-2\ln(\tan(T/T_F/2))]
   \end{align}
   Using small angle approximation, \(\tan(T/T_F/2) \approx T/T_F/2\), we have
   \begin{equation}
-    \int_{0}^{2\pi}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|} \approx \frac{2}{\Lambda}\ln(T_F/T).
-  \end{equation} 
+    \int_{0}^{2\cpi}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|} \approx \frac{2}{\Lambda}\ln(T_F/T).
+  \end{equation}
 \end{frame}
 
 \begin{frame}{Finding the Even Decay Rate : \alert{Final Result}}
@@ -197,7 +201,7 @@
   Combining constants obtained during the change of integration variable, we obtain
   \begin{blk}{Collision Integral Approximation to Zero-th order}
     \begin{equation}
-      -\gamma_m \phi = \hat{\mathcal{J}}[\phi] = -\frac{k_B\pi^2m^{*2}|V|^2}{\hbar^4(2\pi)^3}\frac{T^2}{T_F}\ln(\frac{T_F}{T})\phi 
+      -\gamma_m \phi = \hat{\mathcal{J}}[\phi] = -\frac{k_B\pi^2m^{*2}|V|^2}{\hbar^4(2\pi)^3}\frac{T^2}{T_F}\ln(\frac{T_F}{T})\phi
     \end{equation}
   \end{blk}
   Thus, we have \alert{\(\gamma_m \propto T^2\log T\)}. Note that this only works for small \(\phi\).
