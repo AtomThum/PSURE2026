@@ -130,9 +130,9 @@
   \end{equation}
   Using \(\odif{\vv{p}_2} = p_2\odif{p_2}\odif{\theta_2}, \odif{\theta_2} = \odif{\theta_{12}}, \mathrm{and} \odif{\delta_2} = \beta\odif{\epsilon(p_2)}=\beta\frac{\hbar^2p_2}{m^*}\), we obtain the form
   \begin{equation}
-    (\dots) \dotsint \odif{\delta_2} \odif{\theta_{12}} \odif{\Omega} F_{121'2'} (\dots)
+    (\dots) \dotsint \odif{\delta_2} \odif{\theta_{12}} \odif{\Omega} F_{121'2'} \cdot(\dots)
   \end{equation}
-  with constants absorbed into the first \((\dots)\) (restored later on). Recall $\beta=\frac{1}{k_B T}$. \alert{This is our first $T$ factor}.
+  with constants absorbed into the first \((\dots)\) (restored later on). Recall \(\beta=\frac{1}{k_B T}\). \alert{This is our first \(T\) factor}.
 \end{frame}
 
 \begin{frame}{Finding the Even Decay Rate : \alert{\(F_{121'2'}\)}}
@@ -156,7 +156,7 @@
     = \frac{1}{\Lambda|\sin(\theta_{12})|} \int_{-\infty}^{\infty}  \frac{\odif{v}}{\cosh{\delta_2/2}+\cosh{v}} \\
     &= \frac{2\delta_2}{\Lambda|\sin(\theta_{12})|\sinh{\delta_2/2}}
   \end{align}
-  Where we have used the standard integral \(\int_{-\infty}^{\infty} \frac{\odif{x}}{\cosh{a}+\cosh{x}} = \frac{2a}{\sinh{a}}\).
+  Where we have used the standard integral \(\int_{-\infty}^{\infty} \frac{\odif{x}}{\cosh{a}+\cosh{x}} = \frac{2a}{\sinh{a}}\). (\alert{Lambda is our second \(T\) factor}).
 \end{frame}
 
 \begin{frame}{Finding the Even Decay Rate : \alert{\(\delta_{12}\) Integral}}
@@ -168,4 +168,47 @@
   \begin{equation}
     \int_{-\infty}^{\infty} \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}} \odif{\delta_2} = \frac{\pi^2}{4\Lambda|\sin(\theta_{12})|}.
   \end{equation}
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{\(\theta_{12}\) Integral}}
+  Collecting terms that depend on \(\theta_{12}\), we have
+  \begin{equation}
+    \int_{0}^{2\pi}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|}.
+  \end{equation}
+  The integral is divergent at \(0\) and \(\pi\). However, it is cut off by the \(\Omega\) integral. The cutoff occurs when \(\Lambda|\sin(\theta_{12})|\sim 1 \implies |\theta_{12}|\sim T/T_F\). Elsewhere, the antiderivative equals \(\ln(\tan(\theta_{12}/2))+C\). So, for \(\theta_{12}\) at least \(T/T_F\) from \(0\) or \(\pi\), we have
+  \begin{align}
+    &= \int_{T/T_F}^{\pi-T/T_F}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|}. \\
+    &= \frac{1}{\Lambda}[\ln(\tan((\pi-T/T_F)/2)) - \ln(\tan(T/T_F/2))] \\
+    &= \frac{1}{\Lambda}[-2\ln(\tan(T/T_F/2))] \\
+  \end{align}
+  Using small angle approximation, \(\tan(T/T_F/2) \approx T/T_F/2\), we have
+  \begin{equation}
+    \int_{0}^{2\pi}\frac{\odif{\theta_{12}}}{\Lambda|\sin(\theta_{12})|} \approx \frac{2}{\Lambda}\ln(T_F/T).
+  \end{equation} 
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{Final Result}}
+  Collecting all the \(T\) factors, we have
+  \begin{itemize}
+    \item One from \(\beta\) in the change of variables from \(p_2\) to \(\delta_2\).
+    \item One from the \(\Lambda\) from \(\Omega\) integral.
+    \item One \(\log\) factor from the \(\theta_{12}\) integral.
+  \end{itemize}
+  Combining constants obtained during the change of integration variable, we obtain
+  \begin{blk}{Collision Integral Approximation to Zero-th order}
+    \begin{equation}
+      -\gamma_m \phi = \hat{\mathcal{J}}[\phi] = -\frac{k_B\pi^2m^{*2}|V|^2}{\hbar^4(2\pi)^3}\frac{T^2}{T_F}\ln(\frac{T_F}{T})\phi 
+    \end{equation}
+  \end{blk}
+  Thus, we have \alert{\(\gamma_m \propto T^2\log T\)}. Note that this only works for small \(\phi\).
+\end{frame}
+
+\begin{frame}{Strategy for the Odd Decay Rate}
+  Since, to the zeroth order, the \(\phi\) terms vanish, we need the second order perturbation (first order also vanishes). The strategy is to
+  \begin{itemize}
+    \item Develop eigenvalue perturbation around \(\delta_T=T/T_F \ll 1\)
+    \item Expand the \(\phi\) around \(0\) to obtain a power series in \(\epsilon(p_i)/\epsilon_F = \delta_Tu_i\), where \(u_i=\epsilon_i/T\).
+    \item Integrate the power series against the Fermi functions.
+    \item Use the eigenvalue perturbation theory to obtain the lowest order approximation of $\gamma_m$.
+  \end{itemize}
 \end{frame}
