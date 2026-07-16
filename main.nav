@@ -89,29 +89,39 @@
 \headcommand {\sectionentry {3}{Odd-Even effect}{38}{Odd-Even effect}{0}}
 \headcommand {\slideentry {3}{0}{1}{38/38}{}{0}}
 \headcommand {\beamer@framepages {38}{38}}
-\headcommand {\beamer@subsectionpages {38}{38}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{39}{Zero modes}}
-\headcommand {\slideentry {3}{1}{1}{39/39}{Zero modes}{0}}
+\headcommand {\slideentry {3}{0}{2}{39/39}{}{0}}
 \headcommand {\beamer@framepages {39}{39}}
-\headcommand {\slideentry {3}{1}{2}{40/40}{Zero modes}{0}}
+\headcommand {\slideentry {3}{0}{3}{40/40}{}{0}}
 \headcommand {\beamer@framepages {40}{40}}
-\headcommand {\beamer@subsectionpages {39}{40}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{41}{Kinematic Constraints}}
-\headcommand {\slideentry {3}{2}{1}{41/41}{Kinematic Constraints}{0}}
+\headcommand {\slideentry {3}{0}{4}{41/41}{}{0}}
 \headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {3}{2}{2}{42/42}{Kinematic Constraints}{0}}
+\headcommand {\slideentry {3}{0}{5}{42/42}{}{0}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\slideentry {3}{2}{3}{43/43}{Kinematic Constraints}{0}}
+\headcommand {\slideentry {3}{0}{6}{43/43}{}{0}}
 \headcommand {\beamer@framepages {43}{43}}
-\headcommand {\slideentry {3}{2}{4}{44/44}{Kinematic Constraints}{0}}
+\headcommand {\slideentry {3}{0}{7}{44/44}{}{0}}
 \headcommand {\beamer@framepages {44}{44}}
-\headcommand {\beamer@sectionpages {38}{44}}
-\headcommand {\beamer@subsectionpages {41}{44}}
-\headcommand {\sectionentry {4}{Further works}{45}{Further works}{0}}
-\headcommand {\slideentry {4}{0}{1}{45/45}{}{0}}
+\headcommand {\slideentry {3}{0}{8}{45/45}{}{0}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\beamer@partpages {1}{45}}
-\headcommand {\beamer@subsectionpages {45}{45}}
-\headcommand {\beamer@sectionpages {45}{45}}
-\headcommand {\beamer@documentpages {45}}
-\headcommand {\gdef \inserttotalframenumber {32}}
+\headcommand {\slideentry {3}{0}{9}{46/46}{}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\slideentry {3}{0}{10}{47/47}{}{0}}
+\headcommand {\beamer@framepages {47}{47}}
+\headcommand {\slideentry {3}{0}{11}{48/48}{}{0}}
+\headcommand {\beamer@framepages {48}{48}}
+\headcommand {\slideentry {3}{0}{12}{49/49}{}{0}}
+\headcommand {\beamer@framepages {49}{49}}
+\headcommand {\beamer@sectionpages {38}{49}}
+\headcommand {\beamer@subsectionpages {38}{49}}
+\headcommand {\sectionentry {4}{Further works}{50}{Further works}{0}}
+\headcommand {\slideentry {4}{0}{1}{50/50}{}{0}}
+\headcommand {\beamer@framepages {50}{50}}
+\headcommand {\slideentry {4}{0}{2}{51/51}{}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\slideentry {4}{0}{3}{52/52}{}{0}}
+\headcommand {\beamer@framepages {52}{52}}
+\headcommand {\beamer@partpages {1}{52}}
+\headcommand {\beamer@subsectionpages {50}{52}}
+\headcommand {\beamer@sectionpages {50}{52}}
+\headcommand {\beamer@documentpages {52}}
+\headcommand {\gdef \inserttotalframenumber {41}}
