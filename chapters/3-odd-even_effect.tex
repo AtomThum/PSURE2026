@@ -1,7 +1,5 @@
 \section{Odd-Even effect}
 
-\subsection{Zero modes}
-
 \begin{frame}{Trivial solution}
   \(\gamma_m = 0\) is associated with \alert{conserved quantities}.
 
@@ -26,8 +24,6 @@
     \end{column}
   \end{columns}
 \end{frame}
-
-\subsection{Kinematic Constraints}
 
 \begin{frame}
   \begin{columns}
@@ -96,4 +92,80 @@
       \end{description}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{Overview}}
+  \begin{itemize}
+    \item Use \alert{auxiliary variable} \(\delta_1 = X-\xi\vv{P}\vdot\vv{Q}\) and \(\delta_2 = X+\xi\vv{P}\vdot\vv{Q}\), together with \(\delta_1=0\), and \(\theta_{12} = \theta_2 - \theta_1\).
+    \item Collision integral over \(\vv{p}_2\) and \(\vv{\Omega}\). Decompose \(\vv{p}_2\) into \alert{magnitude} \(p_2\) and \alert{angle} \(\theta_2\).
+    \item \alert{Change integration variable} from \(p_2\) to \(\delta_2\) and \(\theta_2\) to \(\theta_{12}=\theta_2-\theta_1\).
+    \item \alert{Omega integral}: Approximate far from \(\theta_{12}=0,\pi\), reduces to standard hyperbolic integral. Gains a \(T\) factor.
+    \item \alert{\(\delta_2\) integral}: Standard numeric integral. Gains another \(T\) factor from change of variables.
+    \item \alert{\(\theta_{12}\) integral}: Seemingly diverges, but cut off by \(\Omega\) integral. Gains a \(\log(T)\) factor.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{Auxiliary Variables}}
+  Recall \(X-\xi\vv{P}\vdot\vv{Q} = \beta(\epsilon(\vv{p}_1)-\mu), X+\xi\vv{P}\vdot\vv{Q} = \beta(\epsilon(\vv{p}_2)-\mu)\). Define
+  \begin{align}
+             \delta_1 = X-\xi\vv{P}\vdot\vv{Q}, &\mathand \delta_2 = X+\xi\vv{P}\vdot\vv{Q}. \\
+    \implies X=\frac{\delta_1+\delta_2}{2},     &\mathand \xi\vv{P}\vdot\vv{Q} = \frac{\delta_2-\delta_1}{2}
+  \end{align}
+  Assuming \(\epsilon(\vv{p}_1) \approx \mu\), \(\delta_1 \approx 0\), so \(X \approx \xi\vv{P}\vdot\vv{Q} \approx \frac{\delta_2}{2}\). 
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{Auxiliary Variables}}
+  Define \(\theta_{12} = \theta_2 - \theta_1\). Then
+  \begin{align}
+    & P=2p_F\ab|\cos(\theta_{12}/2)|, \mathand Q=p_F\ab|\sin(\theta_{12}/2)|. \\
+    & \implies \xi\vv{P}\vdot\vv{Q'} = \xi PQ \sin\Omega = \xi p_F^2|\sin(\theta_{12})|\sin\Omega. \\
+  \end{align}
+  Let \(\Lambda = \epsilon_F \beta = \xi p_F^2\). Finally, \(\xi\vv{P}\vdot\vv{Q'}=\Lambda|\sin(\theta_{12})|\sin\Omega\).
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{Integration Variables}}
+  The collision integral has the form (note the first \((\dots)\) contains constants, the second contains dimensionless inteegration quantities like \(\phi\)).
+  \begin{equation}
+    (\dots) \dotsint \odif{\vv{p}_2} \odif{\Omega} F_{121'2'} (\dots)
+  \end{equation}
+  Using \(\odif{\vv{p}_2} = p_2\odif{p_2}\odif{\theta_2}, \odif{\theta_2} = \odif{\theta_{12}}, \mathrm{and} \odif{\delta_2} = \beta\odif{\epsilon(p_2)}=\beta\frac{\hbar^2p_2}{m^*}\), we obtain the form
+  \begin{equation}
+    (\dots) \dotsint \odif{\delta_2} \odif{\theta_{12}} \odif{\Omega} F_{121'2'} (\dots)
+  \end{equation}
+  with constants absorbed into the first \((\dots)\) (restored later on). Recall $\beta=\frac{1}{k_B T}$. \alert{This is our first $T$ factor}.
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{\(F_{121'2'}\)}}
+  \begin{align}
+    F_{121'2'} &= \frac{1}{4[\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q}}][\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q'}}]} \\
+               &= \frac{1}{4[\cosh{(\delta_1+\delta_2)/2}+\cosh{(\delta_2-\delta_1)/2}][\cosh{(\delta_1+\delta_2)/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]} \\
+               &= \frac{1}{4[\cosh{\delta_2/2}+\cosh{\delta_2/2}][\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]} \\
+               &= \frac{1}{8\cosh{\delta_2/2}[\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}.
+  \end{align}
+  where we have used \(\delta_1=0\). 
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{Omega Integral}}
+  Collecting terms that depend on \(\Omega\), we have
+  \begin{equation}
+    \int_0^{2\pi} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})}.
+  \end{equation}
+  For \(\theta_{12}\) not near \(0\) or \(\pi\), approximate \(\sin\Omega \approx u\), extend the integral to \((-\infty, \infty)\), and change integration variables to \(v=\Lambda|\sin(\theta_{12})|u\). Then the integral becomes
+  \begin{align}
+    &= \int_{-\infty}^{\infty} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\Omega})} 
+    = \frac{1}{\Lambda|\sin(\theta_{12})|} \int_{-\infty}^{\infty}  \frac{\odif{v}}{\cosh{\delta_2/2}+\cosh{v}} \\
+    &= \frac{2\delta_2}{\Lambda|\sin(\theta_{12})|\sinh{\delta_2/2}}
+  \end{align}
+  Where we have used the standard integral \(\int_{-\infty}^{\infty} \frac{\odif{x}}{\cosh{a}+\cosh{x}} = \frac{2a}{\sinh{a}}\).
+\end{frame}
+
+\begin{frame}{Finding the Even Decay Rate : \alert{\(\delta_{12}\) Integral}}
+  Collecting terms that depend on \(\delta_2\), we have
+  \begin{equation}
+    \frac{1}{8\cosh{\delta_2/2}} \frac{2\delta_2}{\Lambda\sin(\theta_{12})|\sinh{\delta_2/2}} = \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}}.
+  \end{equation}
+  Using the standard integral \(\int_{-\infty}^{\infty} \frac{x}{\sinh{x}} \odif{x} = \frac{\pi^2}{2}\), we have
+  \begin{equation}
+    \int_{-\infty}^{\infty} \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}} \odif{\delta_2} = \frac{\pi^2}{4\Lambda|\sin(\theta_{12})|}.
+  \end{equation}
 \end{frame}
