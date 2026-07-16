@@ -353,9 +353,9 @@
 \newlength{\pagesliderlength}
 \setlength{\pagesliderlength}{4cm}
 
-% % Bibliography
-% \usepackage[style=phys, backend=biber]{biblatex}
-% \addbibresource{references.bib}
+% Bibliography
+\usepackage[style=phys, backend=biber, biblabel=brackets, articletitle=false, chaptertitle=false]{biblatex}
+\addbibresource{references.bib}
 
 \title{Relaxation and Odd-Even Effect in Fermi Liquids}
 \author{Kittiphat Pongarunotai, Puripat Thumbanthu}
@@ -387,10 +387,10 @@
 
 \input{chapters/4-further_works}
 
-% \setbeamertemplate{bibliography item}{\insertbiblabel}
-% \begin{frame}{Bibliography}
-%   \printbibliography[heading=none]
-% \end{frame}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\begin{frame}{Bibliography}
+  \printbibliography[heading=none]
+\end{frame}
 
 {
   \setbeamercolor{background canvas}{bg=ink}
