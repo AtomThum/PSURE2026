@@ -1,0 +1,318 @@
+\section{Recovering equations}
+
+\subsection{Linearization of the collision integral}
+
+\begin{frame}{Ideas}
+  \begin{itemize}
+    \item Consider \alert{only perturbation near Fermi's equilibrium}
+          \begin{equation}
+            f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p}) \nonumber
+          \end{equation}
+    \item Transform the integrals into a linear operator
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Preparation}
+  \begin{blk}{Fermi equilibrium:}
+    \(f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}\)
+  \end{blk}
+
+  \begin{align}
+    \pdv{f_0}{\epsilon} & = -\frac{1}{T} f_0 (1 - f_0) \\
+    \pdv{f_0}{\mu}      & = \frac{1}{T} f_0 (1 - f_0)
+  \end{align}
+
+  \begin{equation}
+    \pdv{f_0}{\epsilon} = -\pdv{f_0}{\mu}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \visible<1->{
+    \begin{align}
+      f(t, \vv{p})                   & = f_0(\vv{p}) + \fdif{f}(t, \vv{p})            &  & \textrm{Perturbation}                    \\
+                                     & \approx f_0(\vv{p}) + \pdv{f_0}{\mu}\fdif{\mu} &  & \textrm{Taylor series. Fix \(\epsilon\)} \\
+      \therefore \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}\fdif{\mu}
+    \end{align}
+  }
+
+  \visible<2->{
+    \begin{blk}{Perturbation of interest:}
+      \(\fdif{\mu} = T\psi\) (temperature dependent change in chemical potential)
+    \end{blk}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{align}
+    \fdif{f}(t, \vv{p}) & = \pdv{f_0}{\mu}T\psi                         \\
+                        & = \ab(-\frac{1}{T} f_0(1 - f_0)) \times T\psi \\
+                        & = f_0(1 - f_0) \psi
+  \end{align}
+\end{frame}
+
+\begin{frame}{Collision integral}
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{gather}
+      \hat{\mathcal{J}}[f] = - \dotsint \frac{1}{(2\cpi)^6} \odif{\vv{p}_2,\vv{p}_1',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \mathcal{B}, \\
+      \mathcal{B} = f_1 f_2 (1 - f_{1'})(1 - f_{2'}) - f_{1'} f_{2'} (1 - f_1)(1 - f_2), \\
+      f_i = f(\vv{p}_i), \quad f_{0, i} = f_0(\vv{p}_i).
+    \end{gather}
+  \end{blk}
+\end{frame}
+
+\begin{frame}{Linearization}
+  Taylor expansion of \(\mathcal{B}\) at \(f_0\):
+  \begin{equation}
+    \mathcal{B} = \mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}}
+  \end{equation}
+
+  The linear part is:
+  \begin{align}
+    \mathcal{B}_{\textrm{lin}} = \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1} + \pdv{\mathcal{B}}{f_2}_{f_0} \fdif{f_2}
+    + \pdv{\mathcal{B}}{f_1'}_{f_0} \fdif{f_{1'}} + \pdv{\mathcal{B}}{f_{2'}}_{f_0} \fdif{f_{2'}}
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  \begin{gather}
+    \pdv{\mathcal{B}}{f_1}_{f_0} = f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1'}f_{0, 2'}(1 - f_{0, 2}), \\
+    \pdv{\mathcal{B}}{f_2}_{f_0} = f_{0, 1}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1}f_{0, 2}(1 - f_{0, 1}), \\
+    \pdv{\mathcal{B}}{f_{1'}}_{f_0} = - f_{0, 1}f_{0, 2}(1 - f_{0, 2'}) - f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2}), \\
+    \pdv{\mathcal{B}}{f_{2'}}_{f_0} = - f_{0, 1}f_{0, 2}(1 - f_{0, 1'}) - f_{0, 1'}(1 - f_{0, 1})(1 - f_{0, 2}).
+  \end{gather}
+\end{frame}
+
+\begin{frame}
+  Substitute \(\fdif{f_i} = f_{0, i}(1 - f_{0, i})\psi_i\). E.g.,
+  \begin{align}
+    \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1}
+     & = \ab\Big[f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) + f_{0, 1'}f_{0, 2'}(1 - f_{0, 2})] \times f_{0, 1}(1 - f_{0, 1})\psi_1 \\
+     & = \ab\Big[f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'})(1 - f_{0, 1})
+    + f_{0, 1}f_{0, 1'}f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2})]\psi_1 \nonumber                                                   \\
+     & = \ab\Big(f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}))\ab\Big[(1 - f_{0, 1}) + f_{0, 1}]\psi_1                        \\
+     & = \ab\Big(f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}))\psi_1
+  \end{align}
+
+  Define \(F_{121'2'} = f_{0, 1}f_{0, 2}(1 - f_{0, 1'})(1 - f_{0, 2'}) = f_{0, 1'}f_{0, 2'}(1 - f_{0, 1})(1 - f_{0, 2})\). So that
+  \begin{equation}
+    \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1} = F_{121'2'}\psi_1
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \begin{blk}{}
+    \begin{equation}
+      \pdv{\mathcal{B}}{f_i}_{f_0} \fdif{f_i} = F_{121'2'}\psi_i
+    \end{equation}
+  \end{blk}
+
+  Hence,
+  \begin{align}
+    \mathcal{B}_{\textrm{lin}}
+     & = \pdv{\mathcal{B}}{f_1}_{f_0} \fdif{f_1} + \pdv{\mathcal{B}}{f_2}_{f_0} \fdif{f_2}
+    + \pdv{\mathcal{B}}{f_1'}_{f_0} \fdif{f_{1'}} + \pdv{\mathcal{B}}{f_{2'}}_{f_0} \fdif{f_{2'}} \\
+     & = F_{121'2'}\ab\big[\psi_1 + \psi_2 - \psi_{1'} - \psi_{2'}]                               \\
+     & = F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  \begin{align}
+    \hat{\mathcal{J}}[f]
+     & = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'}
+    W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2)\mathcal{B}                 \\
+     & = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'}
+    W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2)
+    \alert{(\mathcal{B}_{f_0} + \mathcal{B}_{\textrm{lin}} + \mathcal{B}_{\textrm{non-lin}})}
+  \end{align}
+
+  \begin{itemize}
+    \item Collision integral vanishes at equilibrium: \(\hat{\mathcal{J}}[f_0] = 0\)
+    \item Throw out \(\mathcal{B}_{\textrm{non-lin}}\)
+  \end{itemize}
+
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{multline}
+      \hat{\mathcal{J}}[f] = -\frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1,\vv{p}_2'} \\
+      \times W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) F_{121'2'} [\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+    \end{multline}
+  \end{blk}
+\end{frame}
+
+\begin{frame}{Expression of \(F_{121'2'}\)}
+  \begin{itemize}
+    \item For convenience, write \(F_{121'2'}\) as \alert{total momentum} (\(\vv{P}\)) and \alert{center of momentum} (\(\vv{Q}\))
+  \end{itemize}
+
+  \begin{blk}{}
+    \begin{equation}
+      \vv{P} = \vv{p}_1 + \vv{p}_2, \quad \vv{Q} = \frac{1}{2}\vv{p}_1 - \frac{1}{2}\vv{p}_2.
+    \end{equation}
+  \end{blk}
+\end{frame}
+
+\begin{frame}
+  \begin{align}
+    \vv{p}_1            & = \frac{1}{2}\vv{P} - \vv{Q},    \\
+    \vv{p}_2            & = \frac{1}{2}\vv{P} + \vv{Q},    \\
+    \vv{P} \vdot \vv{Q} & = \frac{1}{2}\ab(p_1^2 - p_2^2).
+  \end{align}
+
+  \begin{align}
+    \epsilon(\vv{p}_1) & = \frac{\hbar^2 p_1^2}{2 m^*} = \frac{\hbar^2}{2 m^*}\ab(\frac{1}{4}P^2 + Q^2 \alert{- \vv{P} \vdot \vv{Q}}), \\
+    \epsilon(\vv{p}_2) & = \frac{\hbar^2 p_2^2}{2 m^*} = \frac{\hbar^2}{2 m^*}\ab(\frac{1}{4}P^2 + Q^2 \alert{+ \vv{P} \vdot \vv{Q}}).
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  Define\footnote{\(X\) can possibly be interpretted as: \emph{average deviation from background chemical potential}}
+  \begin{equation}
+    \xi = \frac{\hbar^2 \beta}{2 m^*}, \mathand X = \beta\ab(\frac{\hbar^2 P^2}{8 m^*} + \frac{\hbar^2 Q^2}{2 m^*} - \mu)
+  \end{equation}
+  Then,
+  \begin{align}
+    \beta\ab\big(\epsilon(\vv{p}_1) - \mu)
+                                           & = \beta\ab(\frac{\hbar^2}{8 m^*} P^2 + \frac{\hbar^2}{2 m^*} Q^2 - \mu) - \frac{\hbar^2\beta}{2 m^*} \vv{P} \vdot \vv{Q} \\
+                                           & = X - \xi \vv{P} \vdot \vv{Q}.                                                                                           \\
+    \shortintertext{Similarly,}
+    \beta\ab\big(\epsilon(\vv{p}_2) - \mu) & = X + \xi \vv{P} \vdot \vv{Q}.
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  Hence,
+  \begin{gather}
+    f_0(\vv{p}_1) = \frac{1}{\exp[\beta\ab\big(\epsilon(\vv{p}_1) - \mu)]} = \frac{1}{\exp[X \alert{-} \xi \vv{P} \vdot \vv{Q}]}. \\
+    f_0(\vv{p}_2) = \frac{1}{\exp[\beta\ab\big(\epsilon(\vv{p}_1) - \mu)]} = \frac{1}{\exp[X \alert{+} \xi \vv{P} \vdot \vv{Q}]}
+  \end{gather}
+\end{frame}
+
+\begin{frame}
+  Recall that \(F_{121'2'} = f_0(\vv{p}_1)f_0(\vv{p}_2)(1 - f_0(\vv{p}_1'))(1 - f_0(\vv{p}_2'))\)
+  \begin{align}
+    f_0(\vv{p}_1)f_0(\vv{p}_2)
+     & = \frac{1}{\exp[X - \xi \vv{P} \vdot \vv{Q}]\exp[X + \xi \vv{P} \vdot \vv{Q}]}                        \\
+     & = \frac{1}{\exp[2X] + \exp[X]\ab(\exp[\xi \vv{P} \vdot \vv{Q}] + \exp[-\xi \vv{P} \vdot \vv{Q}]) + 1} \\
+     & = \frac{1}{\exp[2X] + 2\exp[X]\cosh(\xi \vv{P} \vdot \vv{Q}) + 1}                                     \\
+     & = \frac{1}{2\ab\big(\cosh X + \cosh(\xi \vv{P} \vdot \vv{Q}))}
+  \end{align}
+  By symmetry,
+  \begin{align}
+    (1 - f_0(\vv{p}_1'))(1 - f_0(\vv{p}_2')) = \frac{1}{2\ab\big(\cosh X + \cosh(\xi \vv{P'} \vdot \vv{Q'}))}
+  \end{align}
+
+  \begin{blk}{}
+    \begin{equation}
+      F_{121'2'} = \frac{1}{4[\cosh X + \cosh(\xi \vv{P} \vdot \vv{Q})][\cosh X + \cosh(\xi \vv{P} \vdot \vv{Q})]}
+    \end{equation}
+  \end{blk}
+\end{frame}
+
+\begin{frame}{Expression of \(W\) - the collision rate}
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{multline}
+      W(\vv{p}_1', \vv{p}_2'|\vv{p}_1, \vv{p}_2) = \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \\
+      \times\delta(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2')
+      \delta\ab\big(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2'))
+    \end{multline}
+  \end{blk}
+
+  \begin{align}
+    \hat{\mathcal{J}}[f(t, \vv{p}_1)]
+     & = \begin{multlined}[t]
+           - \frac{1}{(2\cpi)^6} \dotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \times \frac{2\cpi}{\hbar} |V|^2 \times (2\cpi)^2 \\
+           \times \delta(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2')
+           \delta\big(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2')) \\
+           \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined}
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  Change of coordinates: \(\vv{P} = \vv{p}_1 + \vv{p}_2\), \(\vv{Q} = \frac{1}{2}(\vv{p}_1 - \vv{p}_2)\).
+
+  \begin{align*}
+    \hat{\mathcal{J}}[f(t, \vv{p}_1)]
+     & = \begin{multlined}[t]
+           -\frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2,\vv{P}',\vv{Q}'}
+           \delta(\vv{P} - \vv{P}') \delta\ab(\frac{\hbar^2}{2 m^*} \ab(p_1^2 + p_2^2 - p_1'^2 - p_2'^2)) \\
+           \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined} \nonumber \\
+     & = \begin{multlined}[t]
+           - \frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2,\vv{Q'}}
+           \delta\ab(\frac{\hbar^2}{4m^*}(4Q^2 - 4Q'^2)) \\
+           \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined} \\
+     & = \begin{multlined}[t]
+           - \frac{1}{(2\cpi)^3\hbar} \dotsint \odif{\vv{p}_2} Q' \odif{Q',\Omega} \frac{m^*}{\hbar^2}\delta(Q^2 - Q'^2) \\
+           \times |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+         \end{multlined} \\
+     & = -\frac{m^*}{4\cpi\hbar^3} \dotsint \frac{\odif{\vv{p}_2}}{(2\cpi)^2} \int \odif{\Omega}
+    |V|^2 F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+  \end{align*}
+\end{frame}
+
+\subsection{Eigenvalue problem}
+
+\begin{frame}{Reducing the Boltzmann equation}
+  \begin{equation}
+    \ab(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar \vv{p}}) f(t, \vv{r}, \vv{p})
+    = \hat{\mathcal{J}}[f(t, \vv{r}, \vv{p})]
+  \end{equation}
+
+  \begin{itemize}
+    \item No external force: \(\vv{F} = \vv{0}\),
+    \item No thermal gradient: \(\pdv{f}{\vv{r}} = 0\).
+  \end{itemize}
+
+  The equation reduces to
+  \begin{equation}
+    \pdv{f}{t} = \hat{\mathcal{J}}[f]
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  Recall that
+  \begin{itemize}
+    \item \(f(t, \vv{p}) = f_0(\vv{p}) + \fdif{f}(t, \vv{p})\)
+    \item \(\fdif{f}(t, \vv{p}) = f_0(1 - f_0)\psi(t, \vv{p})\)
+    \item \(\pdv{f_0}{t} = 0, \quad \hat{\mathcal{J}}[f_0] = 0\)
+  \end{itemize}
+  Substituting,
+  \begin{align}
+    \pdv*{(f_0(\vv{p}) + \fdif{f}(t, \vv{p}))}{t} & = \hat{\mathcal{J}}[f_0(\vv{p}) + \fdif{f}(t, \vv{p})] \\
+    \pdv*{f_0(1 - f_0)\psi(t, \vv{p})}{t}         & = \hat{\mathcal{J}}[f_0(1 - f_0)\psi(t, \vv{p})]       \\
+    \pdv{\psi(t, \vv{p})}{t}                      & = \hat{\mathcal{J}}[\psi(t, \vv{p})]
+  \end{align}
+\end{frame}
+
+\begin{frame}
+  \begin{blk}{Proposed ansatz}
+    \(\psi(t, \vv{p}) = \e^{-\gamma t} \phi(\vv{p})\) (Chemical potential decays with time)
+  \end{blk}
+  So, the equation reduces to an eigenvalue problem:
+  \begin{blk}{}
+    \vspace{-\abovedisplayskip}
+    \begin{equation}
+      \hat{\mathcal{J}}[\phi(\vv{p})] = -\gamma \phi(\vv{p})
+    \end{equation}
+  \end{blk}
+\end{frame}
+
+\begin{frame}
+  If \emph{perturbation is smooth}, it can be \emph{expanded in the circular harmonics basis}:
+  \begin{equation}
+    \e^{\im m \theta}, \quad m \in \mathbb{Z}
+  \end{equation}
+
+  For a test mode \(m\),
+  \begin{equation}
+    \hat{\mathcal{J}}[\e^{\im m \theta}] = -\gamma_m \e^{\im m \theta}
+  \end{equation}
+
+  Our goal is to study the eigenvalues \(\gamma_m\) as a function of \(m\) and temperature \(T\).
+\end{frame}

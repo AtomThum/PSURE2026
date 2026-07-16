@@ -1,0 +1,99 @@
+\section{Odd-Even effect}
+
+\subsection{Zero modes}
+
+\begin{frame}{Trivial solution}
+  \(\gamma_m = 0\) is associated with \alert{conserved quantities}.
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item \(\gamma_0 = 0\)
+              \begin{enumerate}
+                \item \(\phi_0 = 1\): particle number
+                \item \(\phi_0 = \epsilon(\vv{p})\): energy
+              \end{enumerate}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \begin{itemize}
+        \item \(\gamma_1 = 0\)
+              \begin{enumerate}
+                \item \(\phi_1 = \e^{\im \theta}\): \(x\)-momentum
+                \item \(\phi_1 = \e^{-\im \theta}\): \(y\)-momentum
+              \end{enumerate}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Kinematic Constraints}
+
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      Near the Fermi surface,
+      \begin{equation}
+        \epsilon(\vv{p}_1) \approx \epsilon(\vv{p}_2) \approx \epsilon(\vv{p}_1') \approx \epsilon(\vv{p}_2') \approx \epsilon_F.
+      \end{equation}
+      Thus, \alert{conservation of energy} implies \alert{conservation of momentum magnitude}:
+      \begin{equation}
+        p_1 + p_2 = p_1' + p_2'.
+      \end{equation}
+      Three types of collisions that satisfy this constraint:
+      \begin{itemize}
+        \item Head-on collisions: \(\vv{p}_1 = -\vv{p}_2, \vv{p}_1' = -\vv{p}_2'\)
+        \item Forward exchange: \(\vv{p}_1' = \vv{p}_2, \vv{p}_2' = \vv{p}_1\)
+        \item No collision: \(\vv{p}_1' = \vv{p}_1, \vv{p}_2' = \vv{p}_2\)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[]
+        \centering
+        \includegraphics{collision_types.pdf}
+        \caption{Relevant collision types}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{description}
+    \item [\textbf{No collisions:}] Has no contribution to the collision integral.
+    \item [\textbf{Forward exchange \& No collisions:}]
+          \begin{itemize}
+            \item \(\vv{p}_1 = \vv{p}_1'\), \(\vv{p}_2 = \vv{p}_2'\).
+            \item \(\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') = 0\)\footnote{Recall that this is a multiplier in the collision integral}
+            \item \(\therefore\) These collisions has no contribution to the collision integral.
+          \end{itemize}
+  \end{description}
+
+  Only \alert{head-on collision} contribute to the collision integral.
+\end{frame}
+
+\begin{frame}{Head on collision}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics{head-on_collision.pdf}
+        \caption{Head-on collision angle}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{equation}
+        \theta_2 = \theta_1 + \cpi, \mathand \theta_2' = \theta_1' + \cpi.
+      \end{equation}
+      Substituting test mode \(m\), and recalling \(\e^{\im m (\theta + \cpi)} = (-1)^m \e^{\im m \theta}\), then
+      \begin{multline}
+        \psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2') \\
+        = (1 + (-1)^m)\e^{\im m \theta_1} - (1 + (-1)^m)\e^{\im m \theta_{1'}}.
+      \end{multline}
+      \vspace{-1.5em}
+      \begin{description}
+        \item [\(m\) is odd:] the term vanishes; thus the collision integral vanishes.
+        \item [\(m\) is even:] the term does not vanish.
+      \end{description}
+    \end{column}
+  \end{columns}
+\end{frame}

@@ -1,0 +1,92 @@
+\section{Introduction}
+
+\subsection{Boltzmann equation}
+
+\begin{frame}
+  \begin{blk}{Boltzmann equation}
+    \begin{equation}
+      \left(\pdv{}{t} + \vv{v} \vdot \pdv{}{\vv{r}} + \vv{F} \vdot \pdv{}{\hbar\vv{p}}\right) f(t,\vv{x},\vv{p}) = \hat{\mathcal{J}}[f(t,\vv{x},\vv{p})]
+    \end{equation}
+  \end{blk}
+
+  \begin{description}[\(\vv{v} \vdot \pdv{f}{\vv{r}} + \vv{F} \vdot \pdv{f}{\hbar\vv{p}}\):]
+    \item[\(f(t, \vv{x}, \vv{p})\):] Chance of finding a particle at \(\vv{x}\) with momentum \(\vv{p}\) at time \(t\).
+    \item[\(\pdv{f}{t}\):] Local time evolution
+    \item[\(\vv{v} \vdot \pdv{f}{\vv{r}}\):] Streaming/advection term
+    \item[\(\vv{F} \vdot \pdv{f}{\hbar\vv{p}}\):] Force/acceleration term due to external fields
+    \item[\(\hat{\mathcal{J}}\lbrack f \rbrack\):] Collision integral - effect of collisions on distribution function
+  \end{description}
+\end{frame}
+
+\subsection{Fermi Dirac distribution}
+
+\begin{frame}
+  \begin{blk}{Fermi-Dirac distribution}
+    \begin{equation}
+      f_0(\vv{p}) = \frac{1}{\exp[\beta(\epsilon(\vv{p}) - \mu)] + 1}
+    \end{equation}
+  \end{blk}
+
+  \begin{itemize}
+    \item \(\beta = 1/k_B T\) is the inverse temperature
+    \item \(\epsilon(\vv{p}) = \frac{\hbar^2 \vv{p}^2}{2m}\) is the energy of particles with momentum \(\vv{p}\)
+    \item \(\mu\) is the chemical potential
+  \end{itemize}
+
+  The Fermi-Dirac distribution is in \alert{equilibrium}.
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[]
+    \centering
+    \includegraphics[scale=0.75]{fermi-dirac_distribution.pdf}
+    \caption{Fermi-Dirac distribution at different temperatures}
+  \end{figure}
+  \vspace{-1.5em}
+
+  \begin{itemize}
+    \item At \(T = 0\), all states below the Fermi energy are filled, all states above are empty.
+    \item As \(T\) increases, the distribution smooths out.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\(k\)-space}
+  \begin{itemize}
+    \item Analogous to momentum space
+    \item Each point \(\vv{k}\) in \(k\)-space corresponds to a wave $\e^{\im \vv{k}}$
+    \item \alert{Fourier transform} converts between \(k\)-space to real space
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[]
+    \centering
+    \includegraphics[scale=0.75]{2D_k-space.pdf}
+    \caption{Representative waves of \(k\)-space}
+  \end{figure}
+
+  \vspace{-1.5em}
+  \begin{itemize}
+    \item Distance from origin \(\propto\) Wave frequency
+    \item Direction on \(k\)-space \(\implies\) Wave direction
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fermi surface}
+  \begin{itemize}
+    \item Surface in \(k\)-space where the energy of the electrons is equal to the Fermi energy.
+    \item Determined by periodicity and symmetry of crystal lattice.
+    \item Separates \emph{occupied electron states} from \emph{unoccupied electron states} at absolute zero.
+    \item Electrons near Fermi surface can conduct.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[]
+    \centering
+    \includegraphics[scale=0.75]{fermi-surface_perturbations.pdf}
+    \caption{Circular harmonical perturbations of the Fermi surface}
+  \end{figure}
+
+  Perturb the Fermi surface by external fields. For smooth perturbations, the perturbation can be expanded in harmonics basis: \(\e^{\im m \theta}\).
+\end{frame}
