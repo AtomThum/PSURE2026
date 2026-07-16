@@ -20,6 +20,7 @@
 
 \usepackage{pgfplots}
 \usetikzlibrary{calc, angles, quotes, patterns, decorations.pathreplacing, decorations.pathmorphing, calligraphy, arrows.meta}
+\pgfplotsset{compat=1.18}
 
 \definecolor{oldwhite}{HTML}{EFEFEF}
 \definecolor{ink}{HTML}{16161D}
@@ -32,38 +33,57 @@
 \definecolor{softblue}{HTML}{C5CFDD}
 
 \begin{document}
-\begin{tikzpicture}[scale=1.2, >=stealth]
-  % Axes
-  \draw[->, thick] (-0.2,0) -- (4.5,0) node[right] {Energy, $E$};
-  \draw[->, thick] (0,-0.2) -- (0,3.8) node[above] {Density of States, $g(E)$};
+\begin{tikzpicture}
+  \begin{axis}[
+      width=6cm, height=5cm,
+      xlabel={Energy},
+      ylabel={Density of states},
+      xmin=-3.15, xmax=3.15,
+      ymin=0, ymax=1.2,
+      xtick={0},
+      ytick={\empty},
+      axis lines=box,
+      axis line style={black},
+      tick style={black, thin},
+      tick align=inside,
+      every tick/.style={black},
+      ticklabel style={font=\small},
+      label style={font=\normalsize},
+      clip=true,
+      samples=250,
+      smooth,
+    ]
+    % --- graphene tight-binding density of states, piecewise to
+    % isolate the logarithmic van Hove singularities at E = +-1.
+    % Background rises monotonically from E=0 to the singularity at
+    % E=1, then decreases monotonically (curving down) all the way
+    % to the band edge E=3, where it is cut off vertically. ---
+    \def\baseA{0.30}
+    \def\edgeK{0.0375}
+    \def\vhK{0.24}
+    \def\vhW{0.42}
+    \pgfmathdeclarefunction{grBase}{1}{%
+      \pgfmathparse{ifthenelse(abs(#1)<=1,
+        \baseA*abs(#1),
+        \baseA - \edgeK*(abs(#1)-1)^2)}%
+    }
+    \pgfmathdeclarefunction{grDOS}{1}{%
+      \pgfmathparse{grBase(#1)
+        + \vhK*ln(1/max(abs(abs(#1)-1),0.001))
+        *exp(-((abs(#1)-1)/\vhW)^2)}%
+    }
 
-  % Free electron gas background (2D: constant DOS, dashed line)
-  \draw[dashed, gray!70, thick] (0, 0) -- (4.2, 0); % Just as a reference
-  % Instead of sqrt(E), we use a constant to imply 2D free gas at low energy
-  \draw[domain=0.01:4.2, samples=100, smooth, variable=\x, dashed, gray!70, thick]
-  plot (\x, {1.2});
-  \node[gray!70, right] at (3.5, 1.0) {$g_{2D}(E) \propto \text{const.}$};
+    % left band: -3 to just below -1 (spike clips at the top of the box)
+    \addplot[thick, blueink, domain=-3:-1.005] {grDOS(x)};
+    % middle band: spans across E=0, between the two singularities
+    \addplot[thick, blueink, domain=-0.995:0.995] {grDOS(x)};
+    % right band: just above +1 to 3
+    \addplot[thick, blueink, domain=1.005:3] {grDOS(x)};
 
-  % Real DOS with a highly dramatic 2D-like Divergent van Hove Singularity at E_c=2.2
-  % Formula creates a sharp divergence smoothed only by a small epsilon
-  \def\ec{2.2}
-  \def\epsilon{0.03}
-  \draw[domain=0.01:1.6, samples=100, smooth, variable=\x, blue!80!black, ultra thick]
-  plot (\x, {1.2 + 0.1*\x}); % Initial slightly-rising, flatish region
-  \draw[domain=1.6:\ec-0.005, samples=150, smooth, variable=\x, blue!80!black, ultra thick]
-  plot (\x, {1.36 + 1.2 / sqrt((\ec-\x)^2 + \epsilon^2)}); % Left divergence
-  \draw[domain=\ec+0.005:4.2, samples=150, smooth, variable=\x, blue!80!black, ultra thick]
-  plot (\x, {1.2 + 1.2 / sqrt((\x-\ec)^2 + \epsilon^2)}); % Right divergence
-
-  % Labels and annotations
-  % Critical Energy (E_c)
-  \draw[red, dashed, thick] (2.2,0) -- (2.2,3.3);
-  \fill[red] (2.2,3.3) circle (2pt);
-  \node[below] at (2.2,0) {$E_c$};
-
-  % Label for van Hove Singularity text, kept and pointed
-  \node[red!90!black, font=\bfseries] at (3.1, 3.5) {van Hove Singularity};
-  \draw[<-, thick, red!90!black, >=stealth] (2.2, 3.4) -- (3.1, 3.4);
-
+    % vertical cutoffs at the band edges E = +-3
+    \pgfmathsetmacro{\edgeval}{grDOS(3)}
+    \draw[thick, blueink] (axis cs:3,0) -- (axis cs:3,\edgeval);
+    \draw[thick, blueink] (axis cs:-3,0) -- (axis cs:-3,\edgeval);
+  \end{axis}
 \end{tikzpicture}
 \end{document}
