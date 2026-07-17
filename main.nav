@@ -7,135 +7,137 @@
 \headcommand {\sectionentry {1}{Introduction}{3}{Introduction}{0}}
 \headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\beamer@subsectionpages {3}{3}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{4}{Boltzmann equation}}
-\headcommand {\slideentry {1}{1}{1}{4/4}{Boltzmann equation}{0}}
+\headcommand {\slideentry {1}{0}{2}{4/4}{}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {1}{1}{2}{5/5}{Boltzmann equation}{0}}
+\headcommand {\beamer@subsectionpages {3}{4}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{5}{Boltzmann equation}}
+\headcommand {\slideentry {1}{1}{1}{5/5}{Boltzmann equation}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionpages {4}{5}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{6}{Fermi Dirac distribution}}
-\headcommand {\slideentry {1}{2}{1}{6/6}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{1}{2}{6/6}{Boltzmann equation}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {1}{2}{2}{7/7}{Fermi Dirac distribution}{0}}
+\headcommand {\beamer@subsectionpages {5}{6}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{7}{Fermi Dirac distribution}}
+\headcommand {\slideentry {1}{2}{1}{7/7}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {1}{2}{3}{8/8}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{2}{8/8}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {1}{2}{4}{9/9}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{3}{9/9}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {1}{2}{5}{10/10}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{4}{10/10}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {1}{2}{6}{11/11}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{5}{11/11}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {1}{2}{7}{12/12}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{6}{12/12}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {1}{2}{8}{13/13}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{7}{13/13}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {1}{2}{9}{14/14}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{8}{14/14}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {1}{2}{10}{15/15}{Fermi Dirac distribution}{0}}
+\headcommand {\slideentry {1}{2}{9}{15/15}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@sectionpages {3}{15}}
-\headcommand {\beamer@subsectionpages {6}{15}}
-\headcommand {\sectionentry {2}{Recovering equations}{16}{Recovering equations}{0}}
-\headcommand {\slideentry {2}{0}{1}{16/16}{}{0}}
+\headcommand {\slideentry {1}{2}{10}{16/16}{Fermi Dirac distribution}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\beamer@subsectionpages {16}{16}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{17}{Linearization of the collision integral}}
-\headcommand {\slideentry {2}{1}{1}{17/17}{Linearization of the collision integral}{0}}
+\headcommand {\beamer@sectionpages {3}{16}}
+\headcommand {\beamer@subsectionpages {7}{16}}
+\headcommand {\sectionentry {2}{Recovering equations}{17}{Recovering equations}{0}}
+\headcommand {\slideentry {2}{0}{1}{17/17}{}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {2}{1}{2}{18/18}{Linearization of the collision integral}{0}}
+\headcommand {\beamer@subsectionpages {17}{17}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{18}{Linearization of the collision integral}}
+\headcommand {\slideentry {2}{1}{1}{18/18}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {2}{1}{3}{19/19}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{2}{19/19}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {2}{1}{4}{20/20}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{3}{20/20}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {2}{1}{5}{21/21}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{4}{21/21}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {2}{1}{6}{22/22}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{5}{22/22}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {2}{1}{7}{23/23}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{6}{23/23}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {2}{1}{8}{24/24}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{7}{24/24}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {2}{1}{9}{25/25}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{8}{25/25}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\slideentry {2}{1}{10}{26/26}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{9}{26/26}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {26}{26}}
-\headcommand {\slideentry {2}{1}{11}{27/27}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{10}{27/27}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {27}{27}}
-\headcommand {\slideentry {2}{1}{12}{28/28}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{11}{28/28}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {28}{28}}
-\headcommand {\slideentry {2}{1}{13}{29/29}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{12}{29/29}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {29}{29}}
-\headcommand {\slideentry {2}{1}{14}{30/30}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{13}{30/30}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {30}{30}}
-\headcommand {\slideentry {2}{1}{15}{31/31}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{14}{31/31}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {31}{31}}
-\headcommand {\slideentry {2}{1}{16}{32/32}{Linearization of the collision integral}{0}}
+\headcommand {\slideentry {2}{1}{15}{32/32}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {32}{32}}
-\headcommand {\beamer@subsectionpages {17}{32}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{33}{Eigenvalue problem}}
-\headcommand {\slideentry {2}{2}{1}{33/33}{Eigenvalue problem}{0}}
+\headcommand {\slideentry {2}{1}{16}{33/33}{Linearization of the collision integral}{0}}
 \headcommand {\beamer@framepages {33}{33}}
-\headcommand {\slideentry {2}{2}{2}{34/34}{Eigenvalue problem}{0}}
+\headcommand {\beamer@subsectionpages {18}{33}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{34}{Eigenvalue problem}}
+\headcommand {\slideentry {2}{2}{1}{34/34}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {34}{34}}
-\headcommand {\slideentry {2}{2}{3}{35/35}{Eigenvalue problem}{0}}
+\headcommand {\slideentry {2}{2}{2}{35/35}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\slideentry {2}{2}{4}{36/36}{Eigenvalue problem}{0}}
+\headcommand {\slideentry {2}{2}{3}{36/36}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {36}{36}}
-\headcommand {\slideentry {2}{2}{5}{37/37}{Eigenvalue problem}{0}}
+\headcommand {\slideentry {2}{2}{4}{37/37}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\beamer@sectionpages {16}{37}}
-\headcommand {\beamer@subsectionpages {33}{37}}
-\headcommand {\sectionentry {3}{Odd-Even effect}{38}{Odd-Even effect}{0}}
-\headcommand {\slideentry {3}{0}{1}{38/38}{}{0}}
+\headcommand {\slideentry {2}{2}{5}{38/38}{Eigenvalue problem}{0}}
 \headcommand {\beamer@framepages {38}{38}}
-\headcommand {\slideentry {3}{0}{2}{39/39}{}{0}}
+\headcommand {\beamer@sectionpages {17}{38}}
+\headcommand {\beamer@subsectionpages {34}{38}}
+\headcommand {\sectionentry {3}{Odd-Even effect}{39}{Odd-Even effect}{0}}
+\headcommand {\slideentry {3}{0}{1}{39/39}{}{0}}
 \headcommand {\beamer@framepages {39}{39}}
-\headcommand {\slideentry {3}{0}{3}{40/40}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{40/40}{}{0}}
 \headcommand {\beamer@framepages {40}{40}}
-\headcommand {\slideentry {3}{0}{4}{41/41}{}{0}}
+\headcommand {\slideentry {3}{0}{3}{41/41}{}{0}}
 \headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {3}{0}{5}{42/42}{}{0}}
+\headcommand {\slideentry {3}{0}{4}{42/42}{}{0}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\slideentry {3}{0}{6}{43/43}{}{0}}
+\headcommand {\slideentry {3}{0}{5}{43/43}{}{0}}
 \headcommand {\beamer@framepages {43}{43}}
-\headcommand {\slideentry {3}{0}{7}{44/44}{}{0}}
+\headcommand {\slideentry {3}{0}{6}{44/44}{}{0}}
 \headcommand {\beamer@framepages {44}{44}}
-\headcommand {\slideentry {3}{0}{8}{45/45}{}{0}}
+\headcommand {\slideentry {3}{0}{7}{45/45}{}{0}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\slideentry {3}{0}{9}{46/46}{}{0}}
+\headcommand {\slideentry {3}{0}{8}{46/46}{}{0}}
 \headcommand {\beamer@framepages {46}{46}}
-\headcommand {\slideentry {3}{0}{10}{47/47}{}{0}}
+\headcommand {\slideentry {3}{0}{9}{47/47}{}{0}}
 \headcommand {\beamer@framepages {47}{47}}
-\headcommand {\slideentry {3}{0}{11}{48/48}{}{0}}
+\headcommand {\slideentry {3}{0}{10}{48/48}{}{0}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\slideentry {3}{0}{12}{49/49}{}{0}}
+\headcommand {\slideentry {3}{0}{11}{49/49}{}{0}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\slideentry {3}{0}{13}{50/50}{}{0}}
+\headcommand {\slideentry {3}{0}{12}{50/50}{}{0}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {3}{0}{14}{51/51}{}{0}}
+\headcommand {\slideentry {3}{0}{13}{51/51}{}{0}}
 \headcommand {\beamer@framepages {51}{51}}
-\headcommand {\slideentry {3}{0}{15}{52/52}{}{0}}
+\headcommand {\slideentry {3}{0}{14}{52/52}{}{0}}
 \headcommand {\beamer@framepages {52}{52}}
-\headcommand {\slideentry {3}{0}{16}{53/53}{}{0}}
+\headcommand {\slideentry {3}{0}{15}{53/53}{}{0}}
 \headcommand {\beamer@framepages {53}{53}}
-\headcommand {\beamer@sectionpages {38}{53}}
-\headcommand {\beamer@subsectionpages {38}{53}}
-\headcommand {\sectionentry {4}{Further works}{54}{Further works}{0}}
-\headcommand {\slideentry {4}{0}{1}{54/54}{}{0}}
+\headcommand {\slideentry {3}{0}{16}{54/54}{}{0}}
 \headcommand {\beamer@framepages {54}{54}}
-\headcommand {\slideentry {4}{0}{2}{55/55}{}{0}}
+\headcommand {\beamer@sectionpages {39}{54}}
+\headcommand {\beamer@subsectionpages {39}{54}}
+\headcommand {\sectionentry {4}{Further works}{55}{Further works}{0}}
+\headcommand {\slideentry {4}{0}{1}{55/55}{}{0}}
 \headcommand {\beamer@framepages {55}{55}}
-\headcommand {\slideentry {4}{0}{3}{56/56}{}{0}}
+\headcommand {\slideentry {4}{0}{2}{56/56}{}{0}}
 \headcommand {\beamer@framepages {56}{56}}
-\headcommand {\slideentry {4}{0}{4}{57/57}{}{0}}
+\headcommand {\slideentry {4}{0}{3}{57/57}{}{0}}
 \headcommand {\beamer@framepages {57}{57}}
-\headcommand {\slideentry {4}{0}{5}{58/58}{}{0}}
+\headcommand {\slideentry {4}{0}{4}{58/58}{}{0}}
 \headcommand {\beamer@framepages {58}{58}}
-\headcommand {\beamer@partpages {1}{58}}
-\headcommand {\beamer@subsectionpages {54}{58}}
-\headcommand {\beamer@sectionpages {54}{58}}
-\headcommand {\beamer@documentpages {58}}
-\headcommand {\gdef \inserttotalframenumber {46}}
+\headcommand {\slideentry {4}{0}{5}{59/59}{}{0}}
+\headcommand {\beamer@framepages {59}{59}}
+\headcommand {\beamer@partpages {1}{59}}
+\headcommand {\beamer@subsectionpages {55}{59}}
+\headcommand {\beamer@sectionpages {55}{59}}
+\headcommand {\beamer@documentpages {59}}
+\headcommand {\gdef \inserttotalframenumber {47}}
