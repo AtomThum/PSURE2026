@@ -33,7 +33,7 @@
 \usepackage[protrusion = true, expansion = true, tracking = true]{microtype}
 
 \usepackage{mathtools}
-\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\usepackage[math-style = TeX, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
 \setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
 \newtagform{compact}[\footnotesize\sffamily]{}{}
 \usetagform{compact}
@@ -230,7 +230,7 @@
 
 \setbeamercolor{alerted text}{fg=violet}
 
-% \setbeamercolor{bibliography entry author}{fg=blueink}
+\setbeamercolor{bibliography entry author}{fg=blueink}
 
 \setbeamertemplate{items}[circle]
 \setbeamertemplate{navigation symbols}{}
@@ -354,7 +354,7 @@
 \setlength{\pagesliderlength}{4cm}
 
 % Bibliography
-\usepackage[style=phys, backend=biber, biblabel=brackets, articletitle=false, chaptertitle=false]{biblatex}
+\usepackage[style=phys, backend=biber]{biblatex}
 \addbibresource{references.bib}
 
 \title{Relaxation and Odd-Even Effect in Fermi Liquids}
@@ -388,21 +388,21 @@
 \input{chapters/4-further_works}
 
 \setbeamertemplate{bibliography item}{\insertbiblabel}
-\begin{frame}{Bibliography}
+\begin{frame}[plain, noframenumbering]{Bibliography}
   \nocite{*}
   \printbibliography[heading=none]
 \end{frame}
 
 {
-  \setbeamercolor{background canvas}{bg=ink}
-  \begin{frame}[t, noframenumbering]
-    \vfill
-    \begin{center}
-      \color{oldwhite}
-      \usebeamerfont{title}Thank you!\par
-    \end{center}
-    \vfill
-  \end{frame}
+\setbeamercolor{background canvas}{bg=ink}
+\begin{frame}[plain, noframenumbering]
+  \vfill
+  \begin{center}
+    \color{oldwhite}
+    \usebeamerfont{title}Thank you!\par
+  \end{center}
+  \vfill
+\end{frame}
 }
 
 \end{document}

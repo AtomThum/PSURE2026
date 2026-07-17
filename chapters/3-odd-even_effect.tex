@@ -99,7 +99,7 @@
     \item Use \alert{auxiliary variable} \(\delta_1 = X-\xi\vv{P}\vdot\vv{Q}\) and \(\delta_2 = X+\xi\vv{P}\vdot\vv{Q}\), together with \(\delta_1=0\), and \(\theta_{12} = \theta_2 - \theta_1\).
     \item Collision integral over \(\vv{p}_2\) and \(\vv{\Omega}\). Decompose \(\vv{p}_2\) into \alert{magnitude} \(p_2\) and \alert{angle} \(\theta_2\).
     \item \alert{Change integration variable} from \(p_2\) to \(\delta_2\) and \(\theta_2\) to \(\theta_{12}=\theta_2-\theta_1\).
-    \item \alert{Omega integral}: Approximate far from \(\theta_{12}=0,\pi\), reduces to standard hyperbolic integral. Gains a \(T\) factor.
+    \item \alert{Omega integral}: Approximate far from \(\theta_{12}=0,\cpi\), reduces to standard hyperbolic integral. Gains a \(T\) factor.
     \item \alert{\(\delta_2\) integral}: Standard numeric integral. Gains another \(T\) factor from change of variables.
     \item \alert{\(\theta_{12}\) integral}: Seemingly diverges, but cut off by \(\Omega\) integral. Gains a \(\log(T)\) factor.
   \end{itemize}
@@ -137,9 +137,9 @@
 
 \begin{frame}{Finding the Even Decay Rate : \alert{\(F_{121'2'}\)}}
   \begin{align}
-    F_{121'2'} & = \frac{1}{4[\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q}}][\cosh{X}+\cosh{\xi\vv{P}\vdot\vv{Q'}}]}                                                           \\
-               & = \frac{1}{4[\cosh{(\delta_1+\delta_2)/2}+\cosh{(\delta_2-\delta_1)/2}][\cosh{(\delta_1+\delta_2)/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]} \\
-               & = \frac{1}{4[\cosh{\delta_2/2}+\cosh{\delta_2/2}][\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}                                  \\
+    F_{121'2'} & = \frac{1}{4[\cosh{X}+\cosh{(\xi\vv{P}\vdot\vv{Q})}][\cosh{X}+\cosh{(\xi\vv{P}\vdot\vv{Q'})}]}                                                                 \\
+               & = \frac{1}{4[\cosh{(\delta_1+\delta_2)/2}+\cosh{(\delta_2-\delta_1)/2}][\cosh{(\delta_1+\delta_2)/2}+\cosh{(\Lambda\sin\Omega|\sin(\theta_{12})|})]} \nonumber \\
+               & = \frac{1}{4[\cosh{\delta_2/2}+\cosh{\delta_2/2}][\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}                                            \\
                & = \frac{1}{8\cosh{\delta_2/2}[\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})]}.
   \end{align}
   where we have used \(\delta_1=0\).
@@ -148,9 +148,9 @@
 \begin{frame}{Finding the Even Decay Rate : \alert{Omega Integral}}
   Collecting terms that depend on \(\Omega\), we have
   \begin{equation}
-    \int_0^{2\pi} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})}.
+    \int_0^{2\cpi} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\sin\Omega})}.
   \end{equation}
-  For \(\theta_{12}\) not near \(0\) or \(\pi\), approximate \(\sin\Omega \approx u\), extend the integral to \((-\infty, \infty)\), and change integration variables to \(v=\Lambda|\sin(\theta_{12})|u\). Then the integral becomes
+  For \(\theta_{12}\) not near \(0\) or \(\cpi\), approximate \(\sin\Omega \approx u\), extend the integral to \((-\infty, \infty)\), and change integration variables to \(v=\Lambda|\sin(\theta_{12})|u\). Then the integral becomes
   \begin{align}
      & = \int_{-\infty}^{\infty} \frac{\odif{\Omega}}{\cosh{\delta_2/2}+\cosh{(\Lambda|\sin(\theta_{12})|\Omega})}
     = \frac{1}{\Lambda|\sin(\theta_{12})|} \int_{-\infty}^{\infty}  \frac{\odif{v}}{\cosh{\delta_2/2}+\cosh{v}}    \\
@@ -164,7 +164,7 @@
   \begin{equation}
     \frac{1}{8\cosh{\delta_2/2}} \frac{2\delta_2}{\Lambda\sin(\theta_{12})|\sinh{\delta_2/2}} = \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}}.
   \end{equation}
-  Using the standard integral \(\int_{-\infty}^{\infty} \frac{x}{\sinh{x}} \odif{x} = \frac{\pi^2}{2}\), we have
+  Using the standard integral \(\int_{-\infty}^{\infty} \frac{x}{\sinh{x}} \odif{x} = \frac{\cpi^2}{2}\), we have
   \begin{equation}
     \int_{-\infty}^{\infty} \frac{\delta_2}{2\Lambda\sin(\theta_{12})|\sinh{\delta_2}} \odif{\delta_2} = \frac{\cpi^2}{4\Lambda|\sin(\theta_{12})|}.
   \end{equation}
@@ -201,7 +201,7 @@
   Combining constants obtained during the change of integration variable, we obtain
   \begin{blk}{Collision Integral Approximation to Zero-th order}
     \begin{equation}
-      -\gamma_m \phi = \hat{\mathcal{J}}[\phi] = -\frac{k_B\pi^2m^{*2}|V|^2}{\hbar^4(2\pi)^3}\frac{T^2}{T_F}\ln(\frac{T_F}{T})\phi
+      -\gamma_m \phi = \hat{\mathcal{J}}[\phi] = -\frac{k_B\cpi^2m^{*2}|V|^2}{\hbar^4(2\cpi)^3}\frac{T^2}{T_F}\ln(\frac{T_F}{T})\phi
     \end{equation}
   \end{blk}
   Thus, we have \alert{\(\gamma_m \propto T^2\log T\)}. Note that this only works for small \(\phi\).
