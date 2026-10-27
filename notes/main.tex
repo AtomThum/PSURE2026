@@ -1,0 +1,471 @@
+% !TEX program = lualatex
+\documentclass[b5paper, 11pt, openleft]{memoir}
+
+\usepackage{indentfirst}
+
+%%% Fonts setup
+\usepackage[no-math]{fontspec}
+\setmainfont[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{ZillaSlab}
+\setmonofont[
+  Path = fonts/,
+  Extension = .ttf,
+  Scale = MatchLowercase,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{MapleMono-NF}
+\setsansfont[
+  Path = fonts/,
+  Extension = .ttf,
+  Scale = MatchLowercase,
+  UprightFont = *-Regular,
+  ItalicFont = *-Italic,
+  BoldFont = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+]{RedHatText}
+\defaultfontfeatures{Mapping = tex-text, Ligatures = {TeX, Common}, Scale = MatchLowercase}
+\usepackage[protrusion = true, expansion = true, tracking = true]{microtype}
+
+\usepackage{mathtools}
+\usepackage[math-style = ISO, mathrm = sym, warnings-off = {mathtools-colon}]{unicode-math}
+\setmathfont[Scale = MatchLowercase, Ligatures={TeX, Common}]{Concrete-Math.otf}
+\setmathfont[range = {"27E6-"27E7}]{Latin Modern Math}
+\usepackage{stmaryrd}
+\noDisplayskipStretch
+\allowdisplaybreaks
+\setoperatorfont\symscr
+\everymath{\displaystyle}
+\AtBeginDocument{ % Switching epsilon and varepsilon
+  \NewCommandCopy{\tempepsilon}{\epsilon}
+  \NewCommandCopy{\tempvarepsilon}{\varepsilon}
+  \DeclareDocumentCommand{\epsilon}{}{\tempvarepsilon}
+  \DeclareDocumentCommand{\varepsilon}{}{\tempepsilon}
+}
+
+%%% Stylings
+% Styling: Page Layout and Margins
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+\setlrmarginsandblock{4cm}{1.5cm}{*}
+\setulmarginsandblock{3cm}{2.5cm}{*}
+\setlength{\headheight}{30pt}
+\setlength{\parindent}{1.5cm}
+\setlength{\parskip}{0.3em}
+\setlength{\beforechapskip}{20pt}
+% Styling: Table of Contents
+\addtolength{\cftsectionnumwidth}{0.2em}
+\addtolength{\cftpartnumwidth}{0.3em}
+\RenewDocumentCommand{\cftbookfont}{}{\LARGE\bfseries\sffamily}
+\RenewDocumentCommand{\cftpartfont}{}{\Large\itshape\sffamily}
+\RenewDocumentCommand{\cftbookname}{}{Book }
+\RenewDocumentCommand{\arraystretch}{}{1}
+\setSpacing{1.5}
+\checkandfixthelayout
+% Styling: Footnotes
+\makepagestyle{compact}
+\makeheadrule{compact}{\textwidth}{0.5pt}
+\makeoddfoot{compact}{}{}{\textsf{\thesection. \emph{\rightmark}}}
+\makeevenhead{compact}{\textsf{\textbf{\thepage} ~$\big\vert$ \thechapter. \textsc{\leftmark}}}{}{}
+\makeoddhead{compact}{}{}{$\big\vert$ \textbf{\textsf{\thepage}}}
+\makepsmarks{compact}{
+  \createmark{chapter}{left}{nonumber}{}{}
+  \createmark{section}{right}{nonumber}{}{}
+}
+\nouppercaseheads
+\pagestyle{compact}
+% Styling: Figures
+\usepackage{multicol}
+\newsubfloat{figure}
+\newsubfloat{table}
+\captiondelim{$~\vert~$}
+\captionnamefont{\sffamily\bfseries}
+\captiontitlefont{\normalfont\scshape}
+\captionstyle[\centering]{\raggedright}
+\changecaptionwidth
+\captionwidth{0.6\textwidth}
+\subcaptionfont{\itshape\scshape}
+\subcaptionsize{\footnotesize}
+\subcaptionlabelfont{\sffamily\bfseries}
+% Styling: Titles
+\RenewDocumentCommand{\partnamefont}{}{\LARGE\bfseries\scshape\centering}
+\RenewDocumentCommand{\partnumfont}{}{\LARGE\bfseries\scshape\centering\MakeUppercase}
+\RenewDocumentCommand{\midpartskip}{}{\par\rule{1in}{0.5pt}\vspace{1em}\par}
+\RenewDocumentCommand{\printparttitle}{}{\HUGE\bfseries\scshape\centering}
+\RenewDocumentCommand{\afterpartskip}{}{\relax}
+% Styling: Chapter numbers
+\chapterstyle{veelo}
+\newlength{\chapnumheight}
+\NewDocumentCommand{\chapskipspace}{}{0.05\spinemargin}
+\ExplSyntaxOn
+\NewDocumentCommand{\chapnumwidth}{}{
+  \int_compare:nTF{\value{chapter} < 10}{0.35\spinemargin}{0.57\spinemargin}
+}
+\ExplSyntaxOff
+\renewcommand*{\printchapternum}{%
+  \makebox[0pt][l]{%
+    \hspace{\chapskipspace}
+    \settoheight{\chapnumheight}{\resizebox{\chapnumwidth}{!}{\ttfamily\thechapter}}
+    \resizebox{!}{\chapnumheight}{\thechapter}%
+    \hspace{\chapskipspace}
+    \rule[0pt]{\spinemargin}{\chapnumheight}%
+  }%
+}
+\setparaheadstyle{\bfseries\sffamily}
+
+%%% Packages
+% Packages: General
+\usepackage[dvipsnames]{xcolor}
+\usepackage{float, graphicx, pdfpages}
+\usepackage{tabularray}
+\SetTblrInner{stretch = 1}
+\usepackage[inkscapeversion = 1, inkscapelatex = true]{svg}
+\graphicspath{{diagrams/}}
+\svgpath{{diagrams/}}
+\usepackage{minted}
+\usemintedstyle{algol_nu}
+\setminted{
+  frame = lines,
+  bgcolor = lightgray,
+  linenos,
+  breaklines
+}
+\usepackage{csquotes}
+\usepackage[inline]{enumitem}
+
+\usepackage[colorlinks, allcolors = blue]{hyperref}
+\usepackage{cleveref}
+
+% Packages: Mathematics
+\usepackage[makeroom]{cancel}
+\usepackage{physics2, derivative, siunitx}
+\usephysicsmodule{ab, ab.braket}
+\DeclareDifferential{\adif}{\symrm{\Delta}}
+\DeclareDerivative{\adv}{\symrm{\Delta}}
+
+% Packages: Boxes
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, theorems, skins, listings}
+
+\definecolor{TheoremCol}{HTML}{C2D4FF}
+\definecolor{TheoremColText}{HTML}{002469}
+\definecolor{DefCol}{HTML}{DCF3CE}
+\definecolor{DefColText}{HTML}{234210}
+\definecolor{DefColAccent}{HTML}{A0E377}
+\definecolor{AxiomCol}{HTML}{FFC2CA}
+\definecolor{AxiomColText}{HTML}{4A0000}
+\definecolor{AxiomColAccent}{HTML}{FF5C72}
+\definecolor{LittleCol}{HTML}{FFC72B}
+\definecolor{LittleColAccent}{HTML}{F7EDAD}
+
+\NewTcbTheorem[number within = section, list inside = mathboxes]{theorem}{Theorem}{
+  enhanced, breakable,
+  label type = theorem,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  coltitle = TheoremColText,
+  colback = TheoremCol,
+  colbacktitle = TheoremCol,
+  toptitle = 0.5ex,
+  bottomtitle = 0.5ex,
+  list entry = \thetcbcounter: \quad #2,#1
+}{th}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section, list inside = examples]{exmp}{Example}{
+  enhanced, breakable,
+  label type = example,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  coltitle = black,
+  detach title,
+  before upper = {\tcbtitle},
+  attach title to upper = {\quad\parindent1.5cm},
+  leftrule = 0pt,
+  rightrule = 0pt,
+  arc = 0pt,
+  breakable,
+  parbox = false,
+}{ex}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section, list inside = mathboxes]{axiom}{Axiom\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = axiom,
+  lower separated = false,
+  top = 1em,
+  colback = AxiomCol,
+  colframe = white,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  colbacktitle = AxiomColAccent,
+  coltitle = AxiomColText,
+  boxed title style = {colframe = black},
+  attach boxed title to top left = {xshift = 0.5cm, yshift = -3.6mm},
+}{ax}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section, list inside = mathboxes]{df}{Definition\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = definition,
+  lower separated = false,
+  top = 1em,
+  colback = DefCol,
+  colframe = white,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  colbacktitle = DefColAccent,
+  coltitle = DefColText,
+  enhanced,
+  boxed title style = {colframe = black},
+  attach boxed title to top left = {xshift = 0.5cm, yshift = -3.6mm},
+  parbox = false,
+}{df}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section, list inside = mathboxes]{lemma}{Lemma\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = lemma,
+  coltitle = black,
+  sharp corners,
+  colback = LittleColAccent,
+  colframe = LittleCol,
+  leftrule = 3pt,
+  rightrule = 0pt,
+  toprule = 0pt,
+  bottomrule = 0pt,
+  detach title = true,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  before upper = {\tcbtitle\quad},
+}{le}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section, list inside = mathboxes]{cor}{Corollary\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = corollary,
+  coltitle = black,
+  sharp corners, frame hidden,
+  colback = LittleColAccent,
+  colframe = LittleCol,
+  leftrule = 3pt,
+  rightrule = 0pt,
+  toprule = 0pt,
+  bottomrule = 0pt,
+  detach title = true,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  before upper = {\tcbtitle\quad}
+}{co}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section, list inside = mathboxes]{prop}{Proposition\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = proposition,
+  coltitle = black,
+  sharp corners, frame hidden,
+  colback = LittleColAccent,
+  colframe = LittleCol,
+  leftrule = 3pt,
+  rightrule = 0pt,
+  toprule = 0pt,
+  bottomrule = 0pt,
+  detach title = true,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+  before upper = {\tcbtitle\quad}
+}{pr}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section]{remark}{Remarks}{
+  parbox = false,
+  enhanced, breakable,
+  label type = remark,
+  coltitle = white,
+  colframe = black,
+  colback = lightgray!40,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+}{re}
+\NewTcbTheorem[use counter = tcb@cnt@theorem, number within = section]{notation}{Notation\vphantom{Ay}}{
+  enhanced, breakable,
+  label type = notation,
+  coltitle = black,
+  colframe = black,
+  colback = lightgray!20,
+  colbacktitle = lightgray!40,
+  attach boxed title to top center = {yshift = -3.5mm},
+  top = 1em,
+  fonttitle = \bfseries\sffamily,
+  description font = \normalfont\itshape\sffamily,
+}{no}
+\crefname{lemma}{lem.}{lem.}
+\Crefname{lemma}{Lem.}{Lem.}
+\crefname{example}{ex.}{ex.}
+\Crefname{example}{Ex.}{Ex.}
+\crefname{axiom}{axiom}{axioms}
+\Crefname{axiom}{Axiom}{Axioms}
+\crefname{definition}{def.}{def.}
+\Crefname{definition}{Def.}{Def.}
+\crefname{proposition}{prop.}{prop.}
+\Crefname{proposition}{Prop.}{Prop.}
+\crefname{corollary}{corollary}{corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{notation}{notation}{notations}
+\Crefname{notation}{Notation}{Notations}
+
+% Packages: Proof boxes from amsthm
+\usepackage{amsthm}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item\relax
+  {
+    \sffamily\itshape\bfseries
+    \underline{#1}\@addpunct{.}
+  }
+  \hspace\labelsep\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+%%% Commands
+% Commands: Geometry
+\let\line\overline
+% Commands: Mathematical constants
+\NewDocumentCommand{\e}{}{\symrm{e}}
+\NewDocumentCommand{\im}{}{\symrm{i}}
+\NewDocumentCommand{\cpi}{}{\symrm{\pi}}
+% Commands: Mathematical operators
+\DeclareMathOperator*{\ssum}{\symrm{\Sigma}}
+\DeclareMathOperator*{\Proj}{\symrm{Proj}}
+\DeclareMathOperator*{\sgn}{\symrm{sgn}}
+\DeclareMathOperator{\kdel}{\symrm{\delta}}
+\DeclareMathOperator{\ddel}{\symrm{\delta}}
+\DeclareMathOperator*{\intr}{\symrm{int}}
+\DeclareMathOperator*{\clos}{\symrm{cls}}
+\DeclareMathOperator*{\li}{\symrm{li}}
+\DeclareMathOperator*{\bnd}{\symrm{bnd}}
+% Commands: Hyperbolic Trigonometry
+\DeclareMathOperator{\sech}{\symrm{sech}}
+% Commands: Mathematical Delimiters
+\DeclarePairedDelimiter{\peval}{(}{|}
+% Commands: Vectors notation
+\NewDocumentCommand{\vv}{m}{\symbfup{#1}}
+\NewDocumentCommand{\vdot}{}{\pmb{\cdot}}
+\NewDocumentCommand{\conj}{}{^{\ast}}
+\NewDocumentCommand{\dagr}{}{^{\dag}}
+\NewDocumentCommand{\trnsp}{}{^{\intercal}}
+\NewDocumentCommand{\iden}{}{\symbb{I}}
+\NewDocumentCommand{\uv}{m}{\hat{\vv{e}}_{#1}}
+\NewCommandCopy{\tensor}{\otimes}
+\NewDocumentCommand{\bmat}{m}{
+  \begin{bmatrix}
+    #1
+  \end{bmatrix}
+}
+\NewDocumentCommand{\ihat}{}{\hat{\i}}
+\NewDocumentCommand{\jhat}{}{\hat{\j}}
+\NewDocumentCommand{\khat}{}{\hat{k}}
+\NewDocumentCommand{\xhat}{}{\hat{\vv{x}}}
+\NewDocumentCommand{\yhat}{}{\hat{\vv{y}}}
+\NewDocumentCommand{\zhat}{}{\hat{\vv{z}}}
+\NewDocumentCommand{\rc}{}{{{\mbox{$\resizebox{1.2ex}{1.15ex}{\includegraphics[trim= 1em 0 14em 0,clip]{fonts/scriptr.pdf}}$}}}}
+\NewDocumentCommand{\brc}{}{{{\mbox{$\resizebox{1.2ex}{1.15ex}{\includegraphics[trim= 1em 0 14em 0,clip]{fonts/boldcursiver.pdf}}$}}}}
+\NewDocumentCommand{\rchat}{}{{{\mbox{$\hat\brc$}}}}
+% Commands: Intervals
+\NewDocumentCommand{\ointv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\rrbracket #2 \llbracket\mathclose{}}
+  {\mathopen{}\left\rrbracket #2 \right\llbracket\mathclose{}}
+}
+\NewDocumentCommand{\cintv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\llbracket #2 \rrbracket\mathclose{}}
+  {\mathopen{}\left\llbracket #2 \right\rrbracket\mathclose{}}
+}
+\NewDocumentCommand{\cointv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\llbracket #2 \llbracket\mathclose{}}
+  {\mathopen{}\left\llbracket #2 \right\llbracket\mathclose{}}
+}
+\NewDocumentCommand{\ocintv}{sm}{
+  \IfBooleanTF{#1}
+  {\mathopen{}\rrbracket #2 \rrbracket\mathclose{}}
+  {\mathopen{}\left\rrbracket #2 \right\rrbracket\mathclose{}}
+}
+% Commands: Real analysis
+\NewDocumentCommand{\Zint}{m}{#1^{\ddagger}}
+\NewDocumentCommand{\Zreal}{m}{\mathfrak{R}\ab(#1)}
+\NewDocumentCommand{\oball}{mmm}{B_{#1}\ab({#2};{#3})}
+\NewDocumentCommand{\cball}{mmm}{\overline{B}_{#1}\ab({#2}; {#3})}
+\NewDocumentCommand{\sequence}{mmm}{\ab(#1)_{#2}^{#3}}
+\NewDocumentCommand{\forwarddir}{}{\(\symbb{( \Rightarrow )}~\)}
+\NewDocumentCommand{\backwarddir}{}{\(\symbb{( \Leftarrow )}~\)}
+% Commands: Physical quantities
+\NewDocumentCommand{\lagr}{}{\mathcal{L}}
+\NewDocumentCommand{\haml}{}{\mathcal{H}}
+\NewDocumentCommand{\hilb}{}{\mathcal{E}}
+% Commands: Calculus
+\NewDocumentCommand{\appr}{}{\rightarrow}
+\RenewDocumentCommand{\idotsint}{}{\int\!\!\dots\!\!\int}
+\newcommand{\alc}[2][0.3]{&\parbox[c]{#1\textwidth}{#2}}
+% Commands: Mathematical conjunctions and expressions
+\NewDocumentCommand{\mathand}{}{\quad\textrm{and}\quad}
+\NewDocumentCommand{\mathor}{}{\quad\textrm{or}\quad}
+\NewDocumentCommand{\mathif}{}{\quad\textrm{if}\quad}
+\NewDocumentCommand{\mathiff}{}{\quad\textrm{\emph{iff}}\quad}
+\NewDocumentCommand{\maththerefore}{}{\emquad\textrm{\emph{therefore,}}\emquad}
+\NewDocumentCommand{\ifft}{}{\emph{iff}~}
+\NewDocumentCommand{\basecase}{}{\noindent\textbf{Base case:}~}
+\NewDocumentCommand{\inductivestep}{}{\noindent\textbf{Inductive step:}~}
+% Commands: Typesetting
+\NewDocumentCommand{\smin}{}{\backslash}
+\NewDocumentCommand{\flatfrac}{mm}{#1\fracslash#2}
+% Commands: Sectioning
+\NewDocumentCommand{\conclusion}{}{\section{Conclusion for Chapter \thechapter}}
+\NewDocumentCommand{\formula}{}{\section{Formula from Chapter \thechapter}}
+\NewDocumentCommand{\prelude}{m}{
+  \chapter*{Prelude: #1}
+  \addcontentsline{toc}{chapter}{Prelude: #1}
+}
+\NewDocumentCommand{\prerequisites}{m}{\textbf{Prerequisites:}~\emph{#1}}
+% Commands: Column types
+\NewColumnType{C}{Q[mode=math, c]}
+\NewColumnType{L}{Q[mode=math, l]}
+\NewColumnType{R}{Q[mode=math, r]}
+
+%%% Backmatter
+% Backmatter: Bibliography
+\usepackage[
+  backend = biber,
+  style = science,
+  sorting = anyvt
+]{biblatex}
+\addbibresource{bibliography.bib}
+% Backmatter: Indices
+\usepackage{imakeidx}
+\makeindex[intoc=true]
+
+\begin{document}
+
+\thispagestyle{empty}
+\title{
+  Nonequilibrium odd-even relaxation effect in tight binding models where Fermi surface is near the van Hove singularity
+}
+\author{Pongarunotai, K. and Thumbanthu, P.\footnote{Arranged by alphabetical order}}
+\date{
+  Started: August 15, 2026 \\
+  Revision: \today
+}
+\maketitle
+
+\mainmatter
+
+\tableofcontents
+
+% \include{chapters/tight_binding_model}
+\include{chapters/calculation_of_kernel}
+
+\backmatter
+
+\printindex
+\printbibliography
+
+\end{document}

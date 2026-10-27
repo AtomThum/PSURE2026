@@ -1,0 +1,125 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{hofmann-2025}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=592f7b7838a1eeee7778d7f46483ecbc}{%
+           family={Nilsson},
+           familyi={N\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=466205a91966d9b44118269594292c95}{%
+           family={Gran},
+           familyi={G\bibinitperiod},
+           given={Ulf},
+           giveni={U\bibinitperiod}}}%
+        {{hash=da3f4d7be4be5f48f6525dd628ab5fed}{%
+           family={Hofmann},
+           familyi={H\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{ba56ab7e523f1bb89892a55676331ffc}
+      \strng{fullhash}{62e7fe1d344a587be23ad2e077ab943d}
+      \strng{fullhashraw}{62e7fe1d344a587be23ad2e077ab943d}
+      \strng{bibnamehash}{62e7fe1d344a587be23ad2e077ab943d}
+      \strng{authorbibnamehash}{62e7fe1d344a587be23ad2e077ab943d}
+      \strng{authornamehash}{ba56ab7e523f1bb89892a55676331ffc}
+      \strng{authorfullhash}{62e7fe1d344a587be23ad2e077ab943d}
+      \strng{authorfullhashraw}{62e7fe1d344a587be23ad2e077ab943d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{4}
+      \field{journaltitle}{Phys. Rev. X}
+      \field{month}{10}
+      \field{title}{Nonequilibrium Relaxation and Odd-Even Effect in Finite-Temperature Electron Gases}
+      \field{volume}{15}
+      \field{year}{2025}
+      \true{nocite}
+      \field{pages}{041007}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/ly37-5gdw
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/ly37-5gdw
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/ly37-5gdw
+      \endverb
+    \endentry
+    \entry{mit-excitation-hierarchy}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=f790fe4d464cf07123eb83a19dc758b1}{%
+           family={Ledwith},
+           familyi={L\bibinitperiod},
+           given={Patrick\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=c657022f118159e6377cdf7ead811d6b}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Haoyu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f3e8629e81e2e978d708f0c6ec584b76}{%
+           family={Levitov},
+           familyi={L\bibinitperiod},
+           given={Leonid},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{036f21eb1206a6b094b0f80f8c501215}
+      \strng{fullhash}{a752a6b7ed2ec1944fe9146150396271}
+      \strng{fullhashraw}{a752a6b7ed2ec1944fe9146150396271}
+      \strng{bibnamehash}{a752a6b7ed2ec1944fe9146150396271}
+      \strng{authorbibnamehash}{a752a6b7ed2ec1944fe9146150396271}
+      \strng{authornamehash}{036f21eb1206a6b094b0f80f8c501215}
+      \strng{authorfullhash}{a752a6b7ed2ec1944fe9146150396271}
+      \strng{authorfullhashraw}{a752a6b7ed2ec1944fe9146150396271}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0003-4916}
+      \field{journaltitle}{Annals of Physics}
+      \field{title}{The hierarchy of excitation lifetimes in two-dimensional Fermi gases}
+      \field{volume}{411}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{167913}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.aop.2019.167913
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S000349161930168X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S000349161930168X
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

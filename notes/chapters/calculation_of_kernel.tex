@@ -1,0 +1,402 @@
+\chapter{Calculation of the collision kernel}
+
+\section{Linearization of the collision integral}
+
+The Boltzmann equation is
+\begin{equation}
+  \odv{f}{t} + \vv{v} \vdot \odv{f}{\vv{r}} + \vv{F} \vdot \odv{f}{\hbar\vv{p}} = \mathcal{J}[f]
+\end{equation}
+where \(f(t, \vv{x}, \vv{p})\) is the one particle density function, and \(\mathcal{J}\), the collision integral given by
+\begin{equation}
+  \mathcal{J}[f]
+  = - \frac{1}{(2\cpi)^6} \idotsint \odif{\vv{p}_2,\vv{p_1}',\vv{p_2}'} W(\vv{p}_1', \vv{p}_2' | \vv{p}_1, \vv{p}_2) \mathcal{B}
+\end{equation}
+where
+\begin{multline}
+  \mathcal{B} = \big[ f(\vv{p}_1)f(\vv{p}_2)(1 - f(\vv{p}_1'))(1 - f(\vv{p}_2')) \\
+    - f(\vv{p}_1')f(\vv{p}_2')(1 - f(\vv{p}_1))(1 - f(\vv{p}_2)) \big]
+\end{multline}
+This integral is non-linear and is hard to solve. Hence in this section, we shall simplify the integral by linearizing it w.r.t. \(f\).
+
+From here, we shall write \(f_i = f(\vv{p}_i)\) and \(f_{0,i} = f(\vv{p}_i)\). Primed \(f_i'\) are understood as \(f(\vv{p}_i')\).
+
+Consider the taylor expansion of \(\mathcal{B}\) at \(f_0\):
+\begin{equation}
+  \mathcal{B} = \mathcal{B}|_{f_0} + \mathcal{B}_{\textrm{linear}} + \mathcal{B}_{\textrm{non-linear}}.
+\end{equation}
+The linear part can be expanded w.r.t. each of the \(f_i\)'s to get
+\begin{equation}
+  \mathcal{B}_{\textrm{linear}}
+  = \fdif{f_1}\pdv{\mathcal{B}}{f_1}_{f_0} + \fdif{f_2}\pdv{\mathcal{B}}{f_2}_{f_0}
+  + \fdif{f_1'}\pdv{\mathcal{B}}{f_1'}_{f_0} + \fdif{f_2'} \pdv{\mathcal{B}}{f_2'}_{f_0}
+\end{equation}
+
+% \begin{notation}{Notation}{}
+%   \vspace{-1.5em}
+%   \begin{align}
+%     \vv{S} & = \vv{p}_1 + \vv{p}_2                         \\
+%     \vv{D} & = \vv{p}_1 - \vv{p}_2                         \\
+%     \vv{q} & = \vv{p}_1' - \vv{p}_1 = \vv{p}_2 - \vv{p}_2' \\
+%     R      & = \frac{1}{4}(D_y^2 - D_x^2)
+%   \end{align}
+% \end{notation}
+%
+% \section{Kinematic constraints}
+%
+% These kinematic constraints includes the momentum and energy conservation which will be imposed into the integral via the use of dirac deltas:
+% \begin{gather}
+%   \vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2' = 0 \\
+%   \epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2') = 0
+% \end{gather}
+% The momentum constraint is trivial, and can be satisfied by setting
+% \begin{gather}
+%   \vv{p}_1' = \vv{p}_1 + \vv{q}, \\
+%   \vv{p}_2' = \vv{p}_2 - \vv{q}.
+% \end{gather}
+% Hence, we move to the energy constraint with the dispersion relation given by
+% \begin{equation}
+%   \epsilon(\vv{p}) = \frac{\hbar^2}{2m}(p_x^2 - p_y^2).
+% \end{equation}
+% where \(m\) is the effective mass, carrying the units of \(\unit{\kilogram^3\meter^3\second^{-2}}\).
+%
+% The expression of the energy constraint can be expanded to
+% \begin{align}
+%    & \begin{multlined}[t][0.8\textwidth]
+%        \frac{\hbar^2}{2m} \Big[
+%          (p_{1x}^2 - p_{1y}^2) + (p_{2x}^2 - p_{2y}^2) \\
+%          - \ab((p_{1x} + q_x)^2 - (p_{1y} + q_y)^2) \\
+%          - \ab((p_{2x} - q_x)^2 - (p_{2y} - q_y)^2)
+%          \Big]
+%      \end{multlined}                               \\
+%    & = \begin{multlined}[t][0.8\textwidth]
+%          \frac{\hbar^2}{2m} \Big[
+%            p_{1x}^2 - p_{1y}^2 + p_{2x}^2 - p_{2y}^2 \\
+%            - p_{1x}^2 - 2p_{1x}q_x - q_x^2 + p_{1y}^2 + 2p_{1y}q_y + q_y^2 \\
+%            -p_{2x}^2 + 2p_{2x}q_x - q_x^2 + p_{2y}^2 - 2p_{2y}q_y + q_y^2
+%            \Big]
+%        \end{multlined} \\
+%    & = \frac{\hbar^2}{2m}[-2p_{1x}q_x + 2p_{2x}q_x - 2q_x^2 + 2p_{1y}q_y - 2p_{2y}q_y + 2q_y^2]                                                                              \\
+%    & = \frac{\hbar^2}{m}\ab\Big[\ab\big(q_y^2 + q_y(p_{1y} - p_{2y})) - \ab\big(q_x^2 + q_x(p_{1x} - p_{2x}))]
+%   \intertext{Let \(\vv{D} = \vv{p}_1 - \vv{p}_2\), and complete the square:}
+%    & = \frac{\hbar^2}{m}\ab[q_y(D_y + q_y) - q_x(D_x + q_x)]                                                                                                                 \\
+%    & = \begin{multlined}[t]
+%          \frac{\hbar^2}{m}\Bigg[\ab(q_y^2 + 2(q_y)\ab\Big(\frac{1}{2}D_y) + \frac{1}{4}D_y^2)
+%            - \ab(q_x^2 + 2(q_x)\ab\Big(\frac{1}{2}D_x) + \frac{1}{4}D_x^2) \\
+%            - \frac{1}{4}(D_y^2 - D_x^2)\Bigg]
+%        \end{multlined}                                                                      \\
+%    & = \frac{\hbar^2}{m} \ab[\ab(q_y + \frac{D_y}{2})^2 - \ab(q_x + \frac{D_x}{2})^2 - \frac{1}{4}(D_y^2 - D_x^2)]
+% \end{align}
+%
+% Here, we can define
+% \begin{equation}
+%   R = \frac{1}{4}(D_y^2 - D_x^2)
+% \end{equation}
+%
+% % We then perform a change of coordinates in the scheme of
+% % \begin{gather}
+% %   r\cosh\theta = q_y + \frac{D_y}{2} \\
+% %   r\sinh\theta = q_x + \frac{D_x}{2} \\
+% %   R = \frac{1}{4}(D_y^2 - D_x^2)
+% % \end{gather}
+% To evaluate the delta functions, we split the phase space into four cones that are analogous to the light cone structure:
+% \begin{align}
+%   \begin{cases}
+%     \textrm{Future:} & R > 0, D_y > 0 \\
+%     \textrm{Past:}   & R > 0, D_y < 0 \\
+%     \textrm{Right:}  & R < 0, D_x > 0 \\
+%     \textrm{Left:}   & R < 0, D_x < 0 \\
+%   \end{cases}
+% \end{align}
+%
+% For the future and past cone (\(R > 0\)), we set
+% \begin{gather}
+%   r\cosh\theta = q_y + \frac{D_y}{2} \\
+%   r\sinh\theta = q_x + \frac{D_x}{2}
+% \end{gather}
+% Combining the two equations prior, we get
+% \begin{align}
+%   r^2 (\cosh^2 \theta - \sinh^2 \theta) & = \ab(q_y + \frac{D_y}{2})^2 + \ab(q_x + \frac{D_x}{2})^2             \\
+%   r                                     & = \pm \sqrt{\ab(q_y + \frac{D_y}{2})^2 + \ab(q_x + \frac{D_x}{2})^2},
+% \end{align}
+% where \(r, \theta \in \mathbb{R}\). As seen, the integral is split into the \(r > 0\) branch and \(r < 0\) branch. Either ways, we get
+% \begin{equation}
+%   \frac{\hbar^2}{m}\ab[r^2 (\cosh^2\theta - \sinh^2\theta) - R] = \frac{\hbar^2}{m}(r^2 - R)
+% \end{equation}
+% Substitute this into the collision integral to get:
+% \begin{equation}
+%   \mathcal{J}[f] = \begin{multlined}[t][0.8\textwidth]
+%     - \frac{1}{(2\cpi)^6} \idotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \\
+%     \times \frac{(2\cpi)^3}{\hbar} |V^2| \ddel(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2') \frac{m}{\hbar^2} \ddel(r^2 - R) \\
+%     \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')].
+%   \end{multlined}
+% \end{equation}
+% For simplicity, let \(\mathcal{C} = F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]\), the integral then simplifies to
+% \begin{equation}
+%   - \frac{m|V|^2}{(2\cpi)^3\hbar^3} \idotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \ddel(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2') \ddel(r^2 - R) \mathcal{C}
+% \end{equation}
+%
+% To evaluate these delta functions, we perform another change of coordinates from \((\vv{p}_1', \vv{p}_2')\) to \((\vv{S}', \vv{q})\) given by
+% \begin{gather}
+%   S_x' = p_{1x}' + p_{2x}' \\
+%   S_y' = p_{1y}' + p_{2y}' \\
+%   q_x = p_{1x}' - p_{1x} \\
+%   q_y = p_{1y}' - p_{1y}
+% \end{gather}
+% The jacobian of this transformation is then
+% \begin{equation*}
+%   \ab|\jdv{S_x', S_y', q_x, q_y}{p_{1x}', p_{1y}', p_{2x}', p_{2y}'}| = \begin{vmatrix}
+%     \pdv{S_x'}{p_{1x}'} & \pdv{S_x'}{p_{1y}'} & \pdv{S_x'}{p_{2x}'} & \pdv{S_x'}{p_{2y}'} \\
+%     \pdv{S_y'}{p_{1x}'} & \pdv{S_y'}{p_{1y}'} & \pdv{S_y'}{p_{2x}'} & \pdv{S_y'}{p_{2y}'} \\
+%     \pdv{q_x}{p_{1x}'}  & \pdv{q_x}{p_{1y}'}  & \pdv{q_x}{p_{2x}'}  & \pdv{q_x}{p_{2y}'}  \\
+%     \pdv{q_y}{p_{1x}'}  & \pdv{q_y}{p_{1y}'}  & \pdv{q_y}{p_{2x}'}  & \pdv{q_y}{p_{2y}'}  \\
+%   \end{vmatrix} = \begin{vmatrix}
+%     1 & 0 & 1 & 0 \\
+%     0 & 1 & 0 & 1 \\
+%     1 & 0 & 0 & 0 \\
+%     0 & 1 & 0 & 0
+%   \end{vmatrix} = 1
+% \end{equation*}
+% Hence, \(\odif{\vv{p}_1',\vv{p}_2'} = \odif{\vv{S}',\vv{q}'}\). Substituting this into the integral to get:
+% \begin{align}
+%   \mathcal{J}[f] & = -\frac{m|V|^2}{(2\cpi)^3\hbar^3} \idotsint \odif{\vv{p}_2,\vv{S}',\vv{q}} \ddel(\vv{p}_1 + \vv{p}_2 - \vv{S}')\ddel(r^2 - R)\mathcal{C} \\
+%                  & = -\frac{m|V|^2}{(2\cpi)^3\hbar^3} \idotsint \odif{\vv{p}_2,\vv{q}} \ddel(r^2 - R) \mathcal{C}|_{\vv{p}_1 + \vv{p}_2 = \vv{S}'}
+% \end{align}
+%
+% The energy conservation delta function can be splitted in to by the identity
+% \begin{equation}
+%   \ddel(g(x)) = \sum_{i} \frac{\ddel(x - x_i)}{|g'(x_i)|}
+% \end{equation}
+% where \(x_i\) is the roots of \(g(x)\). Here, \(r^2 - R\) has roots \(\sqrt{R}\) and \(-\sqrt{R}\). Thus,
+% \begin{align}
+%   \ddel(r^2 - R) & = \frac{\ddel(r + \sqrt{R})}{2\sqrt{R}} + \frac{\ddel(r - \sqrt{R})}{2\sqrt{R}} \\
+%                  & = \frac{1}{2\sqrt{R}}\ab(\ddel(r + \sqrt{R}) + \ddel(r - \sqrt{R}))
+% \end{align}
+% But since \(r \in \ocintv{0, \infty}\), only \(\ddel(r - \sqrt{R})\) contributes to the integral. Hence,
+% \begin{equation}
+%   \mathcal{J}[f] = - \frac{m|V|^2}{16 \cpi^3 \hbar^3} \idotsint \odif{\vv{p}_2,\vv{q}} \frac{1}{\sqrt{R}} \ddel(r - \sqrt{R}) \mathcal{C}|_{\vv{p}_1 + \vv{p}_2 = \vv{S}'}.
+% \end{equation}
+%
+% To evaluate the final delta function, we transform from \((\vv{p}_2, \vv{q})\) to \((r, \theta, \vv{D})\) via
+% \begin{gather}
+%   r \cosh\theta = q_y + \frac{D_y}{2}, \label{eq:rcoshtheta-to-qy} \\
+%   r \sinh\theta = q_x + \frac{D_x}{2}, \label{eq:rsinhtheta-to-qx} \\
+%   D_x = p_{1x} - p_{2x}, \\
+%   D_y = p_{1y} - p_{2y}.
+% \end{gather}
+% Since \(\vv{p}_1\) is fixed, \(\odif{\vv{D}} = \odif{\vv{p}_2}\). The only work here is then to calculate the Jacobian of the transformation \((\vv{q})\) to \((r, \theta)\).
+% \begin{equation}
+%   \ab|\jdv{r, \theta}{q_x, q_y}| = \begin{vmatrix}
+%     \pdv{r}{q_x}      & \pdv{r}{q_y}      \\
+%     \pdv{\theta}{q_x} & \pdv{\theta}{q_y} \\
+%   \end{vmatrix} = \ab|\pdv{r}{q_x}\pdv{\theta}{q_y} - \pdv{r}{q_y}\pdv{\theta}{q_x}|
+% \end{equation}
+%
+% To evaluate the partial derivative of \(r\) w.r.t. \(q_x\) and \(q_y\), we take the sum of squares of \cref{eq:rcoshtheta-to-qy} and \cref{eq:rsinhtheta-to-qx} to yield
+% \begin{align}
+%   r^2(\cosh^2\theta - \sinh^2\theta) = \ab(q_y + \frac{D_y}{2})^2 - \ab(q_x + \frac{D_x}{2})^2 \\
+%   r^2 = \ab(q_y + \frac{D_y}{2})^2 - \ab(q_x + \frac{D_x}{2})^2,
+% \end{align}
+% in which
+% \begin{align}
+%   \pdv{r^2}{q_x}  & = \pdv*{\ab(\ab\Big(q_y + \frac{D_y}{2})^2 - \ab\Big(q_x + \frac{D_x}{2})^2)}{q_x} \\
+%   2r \pdv{r}{q_y} & = - 2\ab(q_x + \frac{D_x}{2})                                                      \\
+%   \pdv{r}{q_x}    & = -\frac{1}{r}\ab(q_x + \frac{D_x}{2}) = - \sinh\theta.
+% \end{align}
+% Similarly,
+% \begin{align}
+%   \pdv{r^2}{q_y}  & = \pdv*{\ab(\ab\Big(q_y + \frac{D_y}{2})^2 - \ab\Big(q_x + \frac{D_x}{2})^2)}{q_y} \\
+%   2r \pdv{r}{q_y} & = 2\ab(q_y + \frac{D_y}{2})                                                        \\
+%   \pdv{r}{q_y}    & = \frac{1}{r}\ab(q_y + \frac{D_y}{2}) = \cosh\theta.
+% \end{align}
+%
+% To evaluate the partial derivative of \(\theta\) w.r.t. \(q_x\) and \(q_y\), take the quotient of \cref{eq:rsinhtheta-to-qx,eq:rcoshtheta-to-qy} to get
+% \begin{equation}
+%   \tanh \theta = \frac{q_x + D_x/2}{q_y + D_y/2},
+% \end{equation}
+% in which
+% \begin{align}
+%   \pdv{\tanh\theta}{q_x}          & = \pdv*{\ab(\frac{q_x + D_x/2}{q_y + D_y/2})}{q_x}             \\
+%   \sech^2\theta \pdv{\theta}{q_x} & = \frac{1}{q_y + D_y/2}                                        \\
+%   \pdv{\theta}{q_x}               & = \frac{\cosh^2\theta}{r\cosh\theta} = \frac{1}{r}\cosh\theta.
+% \end{align}
+% Similarly,
+% \begin{align}
+%   \pdv{\tanh\theta}{q_y}          & = \pdv*{\ab(\frac{q_x + D_x/2}{q_y + D_y/2})}{q_y}                               \\
+%   \sech^2\theta \pdv{\theta}{q_y} & = - \frac{q_x + D_x/2}{(q_y + D_y/2)^2}                                          \\
+%   \pdv{\theta}{q_y}               & = -\cosh^2\theta \frac{r\sinh\theta}{r^2\cosh^2\theta} = -\frac{1}{r}\sinh\theta
+% \end{align}
+%
+% The Jacobian then evaluates to
+% \begin{align}
+%    & \ab|(-\sinh\theta) \ab(-\frac{1}{r}\sinh\theta) - (\cosh\theta) \ab(\frac{1}{r}\cosh\theta)| \\
+%    & = \ab|\frac{1}{r}\ab(\sinh^2\theta - \cosh^2\theta)| = \frac{1}{r}
+% \end{align}
+% Hence, \(\odif{\vv{q}} = r\odif{r,\theta}\) and the integral simplifies to
+% \begin{align}
+%   \mathcal{J}[f] & = - \frac{m|V^2|}{16\cpi^3\hbar^3} \idotsint \odif{\vv{D},r,\theta} \cdot \frac{r}{\sqrt{R}}\ddel(r - \sqrt{R}) \mathcal{C}|_{\vv{p}_1 + \vv{p}_2 = \vv{S}'} \\
+%                  & = - \frac{m|V^2|}{16\cpi^3\hbar^3} \idotsint \odif{D_x,D_y,\theta}~\mathcal{C}|_{\vv{p}_1 + \vv{p}_2 = \vv{S}', r = \sqrt{R}}.
+% \end{align}
+
+\section{Preliminary simplification of the Fermi factor}
+
+Let \(a \coloneq \beta(\epsilon(\vv{p}_1) - \mu)\) and \(b \coloneq \beta(\epsilon(\vv{p}_2) - \mu)\), then
+\begin{align}
+  f_0(\vv{p}_1)f_0(\vv{p}_2)
+   & = \frac{1}{(1 + \e^a)(1 + \e^b)}                                                      \\
+   & = \frac{1}{1 + \e^a + \e^b + \e^{a + b}}                                              \\
+   & = \frac{1}{
+    \e^{\frac{a + b}{2}}\ab(\e^{-\frac{a + b}{2}} + \e^{\frac{a + b}{2}}
+    + \e^{\frac{a - b}{2}} + \e^{-\frac{a - b}{2}})
+  }                                                                                        \\
+   & = \frac{1}{2\e^{\frac{a + b}{2}}
+    \ab[\frac{1}{2}(\e^{-\frac{a + b}{2}} + \e^{\frac{a + b}{2}})
+      +\frac{1}{2}\ab(\e^{\frac{a - b}{2}} + \e^{-\frac{a - b}{2}})]
+  }                                                                                        \\
+   & = \frac{1}{2\e^{\frac{a + b}{2}}\ab[\cosh(\frac{a + b}{2}) + \cosh(\frac{a - b}{2})]}
+\end{align}
+Similarly, let \(a' \coloneq \beta(\epsilon(\vv{p}_1') - \mu)\) and \(b' \coloneq \beta(\epsilon(\vv{p}_2') - \mu)\), then
+\begin{align}
+  \ab(1 - f_0(\vv{p}_1'))\ab(1 - f_0(\vv{p}_2'))
+   & = \ab(\frac{\e^{a'}}{1 + \e^{a'}})\ab(\frac{\e^{b'}}{1 + \e^{b'}})                                     \\
+   & = \frac{\e^{a' + b'}}{(1 + \e^{a'})(1 + \e^{b'})}                                                      \\
+   & = \frac{\e^{a' + b'}}{2\e^{\frac{a' + b'}{2}}\ab[\cosh(\frac{a' + b'}{2}) + \cosh(\frac{a' - b'}{2})]}
+\end{align}
+Together, we get that
+\begin{equation}
+  F_{121'2'}
+  = \frac{1}{2\e^{\frac{a + b}{2}} \ab[\cosh(\frac{a + b}{2}) + \cosh(\frac{a - b}{2})]}
+  \cdot \frac{\e^{a' + b'}}{2\e^{\frac{a' + b'}{2}}\ab[\cosh(\frac{a' + b'}{2}) + \cosh(\frac{a' - b'}{2})]} \nonumber \\
+\end{equation}
+By energy conservation, \(a' + b' = a + b\). Hence, \(F_{121'2'}\) evaluates to
+\begin{equation}
+  \frac{1}{
+    4\ab[\cosh \xi + \cosh\ab(\frac{\beta}{2}(\epsilon(\vv{p_1}) - \epsilon(\vv{p}_2)))]
+    \ab[\cosh \xi + \cosh\ab(\frac{\beta}{2}(\epsilon(\vv{p}_1') - \epsilon(\vv{p}_2')))]
+  }
+\end{equation}
+where \(\xi \coloneq \frac{\beta}{2}(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - 2\mu)\).
+
+\section{Kinematic constraints}
+
+The kinematic constraints includes the momentum and energy conservation which will be imposed into the integral via dirac deltas:
+\begin{gather}
+  \vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2' = 0, \\
+  \epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2') = 0.
+\end{gather}
+
+To evaluate these dirac deltas, we turn into the center of momentum and relative momentum coordinates defined as:
+\begin{align}
+  \vv{S} & = \vv{p}_1 + \vv{p}_2 & \vv{p}_1 & = \frac{1}{2}(\vv{S}+ \vv{D})   \\
+  \vv{D} & = \vv{p}_1 - \vv{p}_2 & \vv{p}_2 & = \frac{1}{2}(\vv{S} - \vv{D}).
+\end{align}
+The same scheme is used for the primed variables.
+
+Here are then some useful identities that will be used later on. Firstly, the sum of the square of momentas in each axes:
+\begin{align}
+  p_{1x}^2 + p_{2x}^2
+   & = \ab(\frac{1}{2}(S_x + D_x))^2 + \ab(\frac{1}{2}(S_x - D_x))^2         \\
+   & = \frac{1}{4}\ab(S_x^2 + 2 S_x D_x + D_x^2 + S_x^2 - 2 S_x D_x + D_x^2) \\
+   & = \frac{1}{4}(2 S_x^2 + 2 D_x^2) = \frac{1}{2}(S_x^2 + D_x^2)
+\end{align}
+In a similar manner,
+\begin{equation}
+  p_{1y}^2 + p_{2y}^2 = \frac{1}{2}(S_y^2 + D_y^2).
+\end{equation}
+Secondly, the difference of momentas squared:
+\begin{align}
+  p_{1x}^2 - p_{2x}^2
+   & = \ab(\frac{1}{2}(S_x + D_x))^2 - \ab(\frac{1}{2}(S_x - D_x))^2      \\
+   & = \frac{1}{4}(S_x^2 + 2 S_x D_x + D_x^2 - S_x^2 + 2 S_x D_x - D_x^2) \\
+   & = \frac{1}{4}(4 S_x D_x) = S_x D_x.
+\end{align}
+Similarly,
+\begin{equation}
+  p_{2x}^2 - p_{2y}^2 = S_y D_y.
+\end{equation}
+Hence,
+\begin{align}
+  \epsilon(\vv{p}_1) + \epsilon(\vv{p}_2)
+   & = \frac{\hbar^2}{2m}(p_{1x}^2 - p_{1y}^2 + p_{2x}^2 - p_{2y}^2)        \\
+   & = \frac{\hbar^2}{2m}\ab((p_{1x}^2 + p_{2x}^2) - (p_{1y}^2 + p_{2y}^2)) \\
+   & = \frac{\hbar^2}{4m}(S_x^2 + D_x^2 - S_y^2 - D_y^2).
+\end{align}
+By detailed balance, \(\epsilon(\vv{p}_1') + \epsilon(\vv{p}_2')\) is also equal to this. For the difference in energy,
+\begin{align}
+  \epsilon(\vv{p_1}) - \epsilon(\vv{p}_2)
+   & = \frac{\hbar^2}{2m}(p_{1x}^2 - p_{1y}^2 - (p_{2x}^2 - p_{2y}^2)) \\
+   & = \frac{\hbar^2}{2m}(p_{1x}^2 - p_{2x}^2 - (p_{1y}^2 - p_{2y}^2)) \\
+   & = \frac{\hbar^2}{2m}(S_x D_x - S_y D_y).
+\end{align}
+Similarly,
+\begin{equation}
+  \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2') = \frac{h^2}{2m}(S_x' D_x' - S_y' D_y').
+\end{equation}
+
+For ease of reading, we shall restate the integral:
+\begin{align}
+  \mathcal{J}[f]
+   & = \begin{multlined}[t][0.8\textwidth]
+         - \frac{1}{(2\cpi)^6} \idotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \times \frac{(2\cpi)^3}{\hbar} |V|^2 \\
+         \times \ddel(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2')
+         \ddel(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2')) \\
+         \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')].
+       \end{multlined} \\
+   & = \begin{multlined}[t][0.8\textwidth]
+         - \frac{|V|^2}{8 \cpi^3 \hbar} \idotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \\
+         \times \ddel(\vv{p}_1 + \vv{p}_2 - \vv{p}_1' - \vv{p}_2')
+         \ddel(\epsilon(\vv{p}_1) + \epsilon(\vv{p}_2) - \epsilon(\vv{p}_1') - \epsilon(\vv{p}_2')) \\
+         \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')].
+       \end{multlined}
+\end{align}
+Performing the change of coordinates, we get
+\begin{align}
+  \mathcal{J}[f]
+   & = \begin{multlined}[t][0.8\textwidth]
+         - \frac{|V|^2}{8 \cpi^3 \hbar} \idotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \times \delta(\vv{S} - \vv{S}') \\
+         \times \frac{4m}{\hbar^2} \delta(S_x^2 + D_x^2 - S_y^2 - D_y^2 - S_x'^2 - D_x'^2 + S_y'^2 + D_y'^2) \\
+         \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')].
+       \end{multlined}    \\
+   & = \begin{multlined}[t][0.8\textwidth]
+         - \frac{m|V|^2}{2 \cpi^3 \hbar^3} \idotsint \odif{\vv{p}_2,\vv{p}_1',\vv{p}_2'} \times \delta(\vv{S} - \vv{S}') \\
+         \times \delta(S_x^2 + D_x^2 - S_y^2 - D_y^2 - S_x'^2 - D_x'^2 + S_y'^2 + D_y'^2) \\
+         \times F_{121'2'}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')].
+       \end{multlined}
+\end{align}
+
+We then change the measure from \((\vv{p}_1', \vv{p}_2')\) to \((\vv{S}', \vv{D}')\). The jacobian can be calculated as follows:
+\begin{equation}
+  \begin{vmatrix}
+    \pdv{S_x'}{p_{1x}'} & \pdv{S_x'}{p_{1y}'} & \pdv{S_x'}{p_{2x}'} & \pdv{S_x'}{p_{2y}'} \\
+    \pdv{S_y'}{p_{1x}'} & \pdv{S_y'}{p_{1y}'} & \pdv{S_y'}{p_{2x}'} & \pdv{S_y'}{p_{2y}'} \\
+    \pdv{D_x'}{p_{1x}'} & \pdv{D_x'}{p_{1y}'} & \pdv{D_x'}{p_{2x}'} & \pdv{D_x'}{p_{2y}'} \\
+    \pdv{D_y'}{p_{1x}'} & \pdv{D_y'}{p_{1y}'} & \pdv{D_y'}{p_{2x}'} & \pdv{D_y'}{p_{2y}'}
+  \end{vmatrix} = \begin{vmatrix}
+    1 & 0 & 1  & 0  \\
+    0 & 1 & 0  & 1  \\
+    1 & 0 & -1 & 0  \\
+    0 & 1 & 0  & -1
+  \end{vmatrix} = 4.
+\end{equation}
+Hence,
+\begin{equation}
+  \odif{\vv{p}_1',\vv{p}_2'} = \ab|\jdv{p_{1x}',p_{1y}',p_{2x}',p_{2y}'}{S_x',S_y',D_x',D_y'}|\odif{\vv{S},\vv{D}} = \frac{1}{4}\odif{\vv{S},\vv{D}},
+\end{equation}
+\begin{align}
+  \mathcal{J}[f]
+   & = \begin{multlined}[t][0.7\textwidth]
+         \frac{m |V|^2}{2 \cpi^3 \hbar^3} \idotsint \odif{\vv{p}_2,\vv{S'},\vv{D}'} \times \\
+         \frac{1}{4} \delta(\vv{S} - \vv{S}')\delta(S_x^2 + D_x^2 - S_y^2 - D_y^2 - S_x'^2 - D_x'^2 + S_y'^2 + D_y'^2) \\
+         \times F_{121'2}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')]
+       \end{multlined}                       \\
+   & = \begin{multlined}[t][0.7\textwidth]
+         \frac{m|V|^2}{8 \cpi^3 \hbar^3} \idotsint \odif{\vv{p}_2,\vv{D}'} \times \delta\ab((D_x^2 - D_x'^2) - (D_y^2 - D_y'^2)) \\
+         \times F_{121'2}\ab\big[\psi(\vv{p}_1) + \psi(\vv{p}_2) - \psi(\vv{p}_1') - \psi(\vv{p}_2')].
+       \end{multlined}.
+\end{align}
+
+Under this coordinate, the Fermi factor becomes
+\begin{equation}
+  \frac{1}{4\ab[\cosh\xi + \cosh\ab(\frac{\beta\hbar^2}{4m}(S_x D_x - S_y D_y))]
+    \ab[\cosh\xi + \cosh\ab(\frac{\beta\hbar^2}{4m}(S_x' D_x' - S_y' D_y'))]}
+\end{equation}
+where \(\xi\) now becomes \(\frac{\beta\hbar^2}{8m}(S_x^2 + D_x^2 - S_y^2 - D_y^2) - \beta\mu\).
